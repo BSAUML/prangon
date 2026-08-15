@@ -1,0 +1,29 @@
+[
+  {
+    "id": "welcome-gathering-2026",
+    "title": "Welcome Gathering",
+    "date": "2026-09-05",
+    "image": "images/welcome-gathering.jpg",
+    "description": "Meet new and returning Bangladeshi students and connect with the BSA community at UMass Lowell. Event details can be added here as they are finalized.",
+    "facebook": "",
+    "instagram": ""
+  },
+  {
+    "id": "fall-graduates-2026",
+    "title": "Celebrating Our Fall Graduates",
+    "date": "2026-12-18",
+    "image": "images/fall-graduates.jpg",
+    "description": "BSA UML congratulates our graduating students and celebrates this important milestone with the wider Bangladeshi community.",
+    "facebook": "",
+    "instagram": ""
+  },
+  {
+    "id": "community-update",
+    "title": "Community Update",
+    "date": "2026-08-20",
+    "image": "images/community-update.jpg",
+    "description": "This is a sample Bulletin entry for an announcement, achievement, faculty update, or other important community news.",
+    "facebook": "",
+    "instagram": ""
+  }
+]
