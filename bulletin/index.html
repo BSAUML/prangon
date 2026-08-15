@@ -114,7 +114,7 @@
     }
 
     .navbar {
-      min-height: 210px;
+      min-height: 180px;
       position: relative;
       display: grid;
       grid-template-columns: minmax(360px, 1fr) minmax(510px, auto);
@@ -214,11 +214,13 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      transform: translateX(34px);
     }
 
     .nav-logo-box {
       width: 154px;
       height: 98px;
+      position: relative;
       display: grid;
       place-items: center;
       padding: 0.6rem 0.7rem;
@@ -249,17 +251,25 @@
       max-width: 132px;
       max-height: 76px;
       object-fit: contain;
+      opacity: 0.72;
     }
 
     .nav-logo-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
       min-height: 68px;
-      display: none;
+      display: grid;
       place-items: center;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 1.35rem;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.22rem;
       font-weight: 600;
       line-height: 0.95;
       text-align: center;
+      text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.72);
+      pointer-events: none;
     }
 
     .header-divider {
@@ -297,7 +307,7 @@
 
     @media (max-width: 1180px) {
       .navbar {
-        min-height: 180px;
+        min-height: 160px;
         grid-template-columns: minmax(310px, 1fr) minmax(430px, auto);
       }
 
@@ -337,11 +347,15 @@
         height: 86px;
         margin: 0 0.25rem;
       }
+
+      .header-right {
+        transform: translateX(18px);
+      }
     }
 
     @media (max-width: 930px) {
       .navbar {
-        min-height: 154px;
+        min-height: 140px;
         grid-template-columns: minmax(250px, 1fr) minmax(355px, auto);
       }
 
@@ -381,11 +395,15 @@
       .uml-logo-link {
         width: 78px;
       }
+
+      .header-right {
+        transform: translateX(8px);
+      }
     }
 
     @media (max-width: 680px) {
       .navbar {
-        min-height: 122px;
+        min-height: 112px;
         grid-template-columns: minmax(180px, 1fr) minmax(240px, auto);
         gap: 0.3rem;
       }
@@ -419,6 +437,7 @@
 
       .header-right {
         gap: 0.15rem;
+        transform: translateX(0);
       }
 
       .nav-logo-box {
@@ -471,8 +490,8 @@
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
       box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 1.25rem;
+      font-weight: 400;
       transition: 160ms ease;
     }
 
@@ -485,7 +504,7 @@
     }
 
     h1 {
-      font-size: clamp(3rem, 6vw, 4.9rem);
+      font-size: clamp(2.7rem, 5vw, 4.2rem);
       font-weight: 600;
       line-height: 0.9;
       letter-spacing: -0.025em;
@@ -904,7 +923,7 @@
       }
 
       .home-button {
-        font-size: 0.9rem;
+        font-size: 1.05rem;
       }
 
       .bulletin-grid {
@@ -962,7 +981,7 @@
           <img
             src="../assets/bsa-bulletin.png"
             alt="BSA Bulletin"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            onerror="this.style.display='none';"
           >
           <span class="nav-logo-fallback">BSA<br>Bulletin</span>
         </a>
@@ -971,7 +990,7 @@
           <img
             src="../assets/bsa-community.png"
             alt="BSA Community"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            onerror="this.style.display='none';"
           >
           <span class="nav-logo-fallback">BSA<br>Community</span>
         </a>
