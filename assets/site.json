@@ -1,6 +1,6 @@
 {
   "association": {
-    "name": "Bangladesh Students Association",
+    "name": "Bangladeshi Students Association",
     "university": "University of Massachusetts Lowell"
   },
   "navigation": {
@@ -16,14 +16,14 @@
     "uml_logo": "../assets/umass-lowell.png"
   },
   "footer": {
-    "brand": "Bangladesh Students Association at UMass Lowell",
+    "brand": "Bangladeshi Students Association at UMass Lowell",
     "description": "Building community, celebrating Bangladeshi culture, and supporting students at the University of Massachusetts Lowell.",
     "connect_heading": "Connect",
     "instagram_label": "Instagram",
     "instagram_url": "#",
     "facebook_label": "Facebook",
     "facebook_url": "#",
-    "copyright_name": "Bangladesh Students Association at UMass Lowell.",
+    "copyright_name": "Bangladeshi Students Association at UMass Lowell.",
     "tagline": "প্রাঙ্গণ · Community beyond borders"
   }
 }
