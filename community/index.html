@@ -674,29 +674,67 @@
 
     /* Community directory */
 
-    .community-directory {
-      padding: 0.8rem 0 6rem;
-    }
-
-    .community-layout {
+    .community-hero-layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 250px;
       align-items: start;
       gap: 3rem;
     }
 
+    .community-directory {
+      padding: 0.8rem 0 6rem;
+    }
+
     .community-main {
       min-width: 0;
     }
 
-    .community-section {
-      padding: 1.6rem 0 3.2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    .community-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 2rem;
     }
 
-    .community-section:first-child {
-      padding-top: 0;
-      border-top: 0;
+    .community-tab {
+      min-height: 46px;
+      padding: 0.62rem 1.05rem;
+      color: rgba(255, 255, 255, 0.68);
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition:
+        color 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .community-tab:hover,
+    .community-tab:focus-visible {
+      color: rgba(255, 255, 255, 0.94);
+      background: rgba(11, 75, 58, 0.72);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .community-tab.active {
+      color: var(--white);
+      background: rgba(11, 75, 58, 0.92);
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+    }
+
+    .community-panel[hidden] {
+      display: none;
+    }
+
+    .community-section {
+      padding: 0 0 3.2rem;
     }
 
     .section-heading-row {
@@ -792,13 +830,15 @@
     }
 
     .community-tally {
-      position: sticky;
-      top: 1.2rem;
       padding: 1.35rem;
       background: rgba(3, 24, 19, 0.42);
       border: 1px solid rgba(255, 255, 255, 0.10);
       border-radius: 18px;
       box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-tally {
+      margin-top: 0;
     }
 
     .community-tally h2 {
@@ -842,7 +882,7 @@
     }
 
     @media (max-width: 1000px) {
-      .community-layout {
+      .community-hero-layout {
         grid-template-columns: minmax(0, 1fr) 220px;
         gap: 2rem;
       }
@@ -853,13 +893,12 @@
     }
 
     @media (max-width: 760px) {
-      .community-layout {
+      .community-hero-layout {
         grid-template-columns: 1fr;
       }
 
-      .community-tally {
-        position: static;
-        grid-row: 1;
+      .hero-tally {
+        margin-top: 1rem;
       }
 
       .profile-list {
@@ -1243,45 +1282,102 @@
 
   <main>
     <section class="bulletin-hero">
-      <div class="container hero-inner">
-        <h1 id="communityPageTitle"></h1>
+      <div class="container community-hero-layout">
+        <div class="hero-inner">
+          <h1 id="communityPageTitle"></h1>
 
-        <p id="communityPageDescription"></p>
+          <p id="communityPageDescription"></p>
 
-        <a class="home-button" id="returnHomeButton" href="../index.html"></a>
+          <a class="home-button" id="returnHomeButton" href="../index.html"></a>
+        </div>
+
+        <aside class="community-tally hero-tally">
+          <h2 id="tallyTitle"></h2>
+          <div id="tallyList"></div>
+        </aside>
       </div>
     </section>
 
     <section class="community-directory">
-      <div class="container community-layout">
+      <div class="container">
+
+        <div class="community-tabs" role="tablist" aria-label="Community directory sections">
+          <button
+            class="community-tab active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="eboardSection"
+            data-target="eboardSection"
+            id="eboardTab"
+          >
+            E-Board
+          </button>
+
+          <button
+            class="community-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="cohortSection"
+            data-target="cohortSection"
+            id="cohortTab"
+          >
+            Student Cohorts
+          </button>
+
+          <button
+            class="community-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tagSection"
+            data-target="tagSection"
+            id="tagTab"
+          >
+            Community
+          </button>
+        </div>
 
         <div class="community-main">
-          <section class="community-section" id="eboardSection">
+          <section
+            class="community-section community-panel active"
+            id="eboardSection"
+            role="tabpanel"
+            aria-labelledby="eboardTab"
+          >
             <div class="section-heading-row">
               <h2 id="eboardTitle"></h2>
             </div>
             <div id="eboardGroups"></div>
           </section>
 
-          <section class="community-section" id="cohortSection">
+          <section
+            class="community-section community-panel"
+            id="cohortSection"
+            role="tabpanel"
+            aria-labelledby="cohortTab"
+            hidden
+          >
             <div class="section-heading-row">
               <h2 id="cohortTitle"></h2>
             </div>
             <div id="cohortGroups"></div>
           </section>
 
-          <section class="community-section" id="tagSection">
+          <section
+            class="community-section community-panel"
+            id="tagSection"
+            role="tabpanel"
+            aria-labelledby="tagTab"
+            hidden
+          >
             <div class="section-heading-row">
               <h2 id="tagTitle"></h2>
             </div>
             <div id="tagGroups"></div>
           </section>
         </div>
-
-        <aside class="community-tally">
-          <h2 id="tallyTitle"></h2>
-          <div id="tallyList"></div>
-        </aside>
 
       </div>
     </section>
@@ -1584,6 +1680,27 @@
           </div>
         `;
       });
+
+    const communityTabs = [...document.querySelectorAll(".community-tab")];
+    const communityPanels = [...document.querySelectorAll(".community-panel")];
+
+    communityTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.dataset.target;
+
+        communityTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+
+        communityPanels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.classList.toggle("active", isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
 
     document.getElementById("currentYear").textContent =
       new Date().getFullYear();
