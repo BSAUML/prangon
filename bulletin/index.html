@@ -115,105 +115,96 @@
 
     .navbar {
       min-height: 152px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 2rem;
     }
 
-    .brand {
-      display: flex;
+    .logo-navbar {
+      display: grid;
+      grid-template-columns:
+        minmax(90px, 0.85fr)
+        minmax(190px, 1.7fr)
+        minmax(125px, 1fr)
+        minmax(125px, 1fr)
+        minmax(100px, 0.9fr);
       align-items: center;
-      gap: 0.8rem;
-      justify-self: start;
+      gap: 1.45rem;
+    }
+
+    .logo-slot {
       min-width: 0;
-    }
-
-    .header-bsa-logo {
-      width: 76px;
-      height: 76px;
-      object-fit: contain;
-    }
-
-    .center-wordmark {
-      min-width: 230px;
-      min-height: 78px;
+      min-height: 92px;
       display: grid;
       place-items: center;
-      justify-self: center;
-      padding: 0.2rem 1rem;
-      white-space: nowrap;
+      padding: 0.45rem 0.6rem;
+      border-radius: 16px;
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        opacity 160ms ease;
     }
 
-    .center-wordmark img {
-      max-width: 220px;
-      max-height: 72px;
-      object-fit: contain;
-    }
-
-    .nav-area {
-      display: flex;
-      align-items: center;
-      justify-self: end;
-      gap: 1rem;
-    }
-
-    .top-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.42rem;
-    }
-
-    .top-nav a {
-      min-width: 112px;
-      min-height: 72px;
-      display: grid;
-      place-items: center;
-      padding: 0.35rem 0.55rem;
-      transition: 160ms ease;
-    }
-
-    .top-nav a:hover,
-    .top-nav a:focus-visible {
+    .logo-slot:hover,
+    .logo-slot:focus-visible {
+      background: rgba(255, 255, 255, 0.045);
       transform: translateY(-2px);
-      opacity: 0.82;
+      outline: none;
     }
 
-    .top-nav .active {
-      opacity: 1;
-    }
-
-    .top-nav a img {
-      max-width: 104px;
-      max-height: 62px;
+    .logo-slot img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 82px;
       object-fit: contain;
     }
 
-    .uml-logo-slot {
-      width: 118px;
-      height: 76px;
-      display: grid;
+    .bsa-slot img {
+      max-width: 86px;
+      max-height: 86px;
+    }
+
+    .prangon-slot img {
+      max-width: 230px;
+      max-height: 82px;
+    }
+
+    .bulletin-slot img,
+    .community-slot img {
+      max-width: 145px;
+      max-height: 76px;
+    }
+
+    .uml-slot img {
+      max-width: 112px;
+      max-height: 78px;
+    }
+
+    .active-logo {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .logo-fallback {
+      min-height: 64px;
+      display: none;
       place-items: center;
-      padding-left: 0.4rem;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1;
       text-align: center;
     }
 
-    .uml-logo-slot img {
-      max-width: 108px;
-      max-height: 66px;
-      object-fit: contain;
+    .prangon-fallback {
+      font-size: 1.7rem;
     }
 
     /* Hero sits directly on the flag background — no white panel */
 
     .bulletin-hero {
       position: relative;
-      padding: 6.5rem 0 3.8rem;
+      padding: 5.2rem 0 3.2rem;
     }
 
     .hero-inner {
-      width: 100%;
-      max-width: none;
+      /* Keep the normal .container width so this aligns with the cards below. */
     }
 
     .home-button {
@@ -574,30 +565,35 @@
 
     @media (max-width: 1000px) {
       .navbar {
-        min-height: 122px;
-        grid-template-columns: auto 1fr auto;
-        gap: 1rem;
+        min-height: 126px;
       }
 
-      .header-bsa-logo {
-        width: 64px;
-        height: 64px;
+      .logo-navbar {
+        grid-template-columns:
+          minmax(70px, 0.8fr)
+          minmax(150px, 1.5fr)
+          minmax(105px, 1fr)
+          minmax(105px, 1fr)
+          minmax(85px, 0.8fr);
+        gap: 0.8rem;
       }
 
-      .center-wordmark {
-        min-width: 160px;
-        min-height: 64px;
+      .logo-slot {
+        min-height: 76px;
+        padding: 0.35rem;
+      }
+
+      .logo-slot img {
+        max-height: 68px;
+      }
+
+      .logo-fallback {
+        min-height: 54px;
+        font-size: 1rem;
+      }
+
+      .prangon-fallback {
         font-size: 1.35rem;
-      }
-
-      .uml-logo-slot {
-        display: none;
-      }
-
-      .top-nav a {
-        min-width: 92px;
-        min-height: 62px;
-        font-size: 0.9rem;
       }
 
       .bulletin-card.vertical,
@@ -621,34 +617,33 @@
       }
 
       .navbar {
-        min-height: 92px;
-        grid-template-columns: auto 1fr;
-        gap: 0.65rem;
+        min-height: auto;
       }
 
-      .header-bsa-logo {
-        width: 52px;
-        height: 52px;
-      }
-
-      .center-wordmark {
-        display: none;
-      }
-
-      .nav-area {
+      .logo-navbar {
+        grid-template-columns: repeat(5, 1fr);
         gap: 0.2rem;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
       }
 
-      .top-nav {
-        gap: 0.18rem;
-      }
-
-      .top-nav a {
-        min-width: 76px;
+      .logo-slot {
         min-height: 52px;
-        padding: 0.4rem 0.5rem;
-        border-radius: 12px;
-        font-size: 0.78rem;
+        padding: 0.2rem;
+        border-radius: 10px;
+      }
+
+      .logo-slot img {
+        max-height: 46px;
+      }
+
+      .logo-fallback {
+        min-height: 42px;
+        font-size: 0.72rem;
+      }
+
+      .prangon-fallback {
+        font-size: 0.88rem;
       }
 
       .bulletin-hero {
@@ -682,30 +677,59 @@
 
 <body>
   <header class="site-header">
-    <div class="container navbar">
-      <a class="brand" href="../index.html" aria-label="BSA UML homepage">
-        <img class="header-bsa-logo" src="../assets/bsa-logo.png" alt="BSA UML">
+    <div class="container navbar logo-navbar">
+
+      <a class="logo-slot bsa-slot" href="../index.html" aria-label="BSA UML homepage">
+        <img
+          src="../assets/bsa-logo.png"
+          alt="BSA UML"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="logo-fallback">BSA UML</span>
       </a>
 
-      <a class="center-wordmark" href="../index.html" aria-label="UML Prangon homepage">
-        <img src="../assets/uml-prangon.png" alt="UMLপ্রাঙ্গণ">
+      <a class="logo-slot prangon-slot" href="../index.html" aria-label="UML Prangon homepage">
+        <img
+          src="../assets/uml-prangon.png"
+          alt="UMLপ্রাঙ্গণ"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="logo-fallback prangon-fallback">UMLপ্রাঙ্গণ</span>
       </a>
 
-      <div class="nav-area">
-        <nav class="top-nav" aria-label="Main navigation">
-          <a class="active" href="index.html" aria-label="BSA Bulletin">
-            <img src="../assets/bsa-bulletin.png" alt="BSA Bulletin">
-          </a>
+      <a class="logo-slot bulletin-slot active-logo" href="index.html" aria-label="BSA Bulletin">
+        <img
+          src="../assets/bsa-bulletin.png"
+          alt="BSA Bulletin"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="logo-fallback">BSA Bulletin</span>
+      </a>
 
-          <a href="../community/index.html" aria-label="BSA Community">
-            <img src="../assets/bsa-community.png" alt="BSA Community">
-          </a>
-        </nav>
+      <a class="logo-slot community-slot" href="../community/index.html" aria-label="BSA Community">
+        <img
+          src="../assets/bsa-community.png"
+          alt="BSA Community"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="logo-fallback">BSA Community</span>
+      </a>
 
-        <a class="uml-logo-slot" href="https://www.uml.edu/" aria-label="UMass Lowell">
-          <img src="../assets/umass-lowell.png" alt="UMass Lowell">
-        </a>
-      </div>
+      <a
+        class="logo-slot uml-slot"
+        href="https://www.uml.edu/"
+        aria-label="UMass Lowell"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="../assets/umass-lowell.png"
+          alt="UMass Lowell"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="logo-fallback">UMass Lowell</span>
+      </a>
+
     </div>
   </header>
 
