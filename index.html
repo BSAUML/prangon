@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
@@ -14,19 +13,16 @@
 
   <style>
     :root {
-      --green-dark: #063d2b;
       --green: #006a4e;
-      --green-light: #e9f5f0;
+      --green-dark: #064c39;
       --red: #d62828;
-      --red-dark: #a81818;
-      --cream: #faf8f2;
+      --text: #18211e;
+      --muted: #66716d;
+      --line: #e4e9e7;
+      --soft: #f7f9f8;
       --white: #ffffff;
-      --text: #17211d;
-      --muted: #5f6d67;
-      --border: #dce5e1;
-      --shadow: 0 14px 36px rgba(6, 61, 43, 0.12);
+      --max-width: 1160px;
       --radius: 18px;
-      --max-width: 1180px;
     }
 
     * {
@@ -50,7 +46,7 @@
 
     img {
       display: block;
-      max-width: 100%;
+      width: 100%;
     }
 
     a {
@@ -58,33 +54,135 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea {
+    button {
       font: inherit;
     }
 
-    section {
-      scroll-margin-top: 90px;
-    }
-
     .container {
-      width: min(100% - 2rem, var(--max-width));
+      width: min(calc(100% - 2rem), var(--max-width));
       margin-inline: auto;
     }
 
     .section {
-      padding: 5.5rem 0;
+      padding: 5rem 0;
     }
 
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 2.5rem;
+    .section-title {
+      margin-bottom: 0.65rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
 
-    .eyebrow {
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .brand-text {
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 0.18rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .top-nav a {
+      padding: 0.72rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 750;
+      transition: 160ms ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      color: var(--green);
+      background: #f2f7f5;
+      border-color: #d7e6e0;
+    }
+
+    .top-nav a:last-child {
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .top-nav a:last-child:hover,
+    .top-nav a:last-child:focus-visible {
+      color: var(--white);
+      background: var(--green-dark);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 7rem 0 6rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy {
+      max-width: 830px;
+    }
+
+    .hero-kicker {
       display: inline-block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: var(--red);
       font-size: 0.8rem;
       font-weight: 800;
@@ -92,1073 +190,584 @@
       text-transform: uppercase;
     }
 
-    h1,
-    h2,
-    h3 {
-      line-height: 1.15;
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
     }
 
-    h1 {
-      font-size: clamp(2.8rem, 7vw, 5.8rem);
-      letter-spacing: -0.055em;
+    .hero h1 span {
+      color: var(--green);
     }
 
-    h2 {
-      margin-bottom: 1rem;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      letter-spacing: -0.04em;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-    }
-
-    p {
+    .hero p {
+      max-width: 710px;
+      margin-top: 1.6rem;
       color: var(--muted);
+      font-size: 1.12rem;
     }
 
-    .skip-link {
-      position: fixed;
-      top: -100px;
-      left: 1rem;
-      z-index: 9999;
-      padding: 0.8rem 1rem;
-      color: var(--white);
-      background: var(--green-dark);
-      border-radius: 8px;
+    /* Featured slider */
+
+    .featured {
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
     }
 
-    .skip-link:focus {
-      top: 1rem;
-    }
-
-    /* Navigation */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid rgba(220, 229, 225, 0.8);
-      backdrop-filter: blur(14px);
-    }
-
-    .navbar {
-      min-height: 74px;
+    .featured-head {
+      margin-bottom: 1.8rem;
       display: flex;
-      align-items: center;
+      align-items: end;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-weight: 800;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      color: var(--white);
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.15);
-    }
-
-    .brand-mark::after {
-      content: "";
-      width: 13px;
-      height: 13px;
-      background: var(--red);
-      border-radius: 50%;
-    }
-
-    .brand-text {
-      line-height: 1.1;
-    }
-
-    .brand-text small {
-      display: block;
-      margin-top: 0.2rem;
-      color: var(--muted);
-      font-size: 0.72rem;
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #33423c;
-      font-size: 0.95rem;
-      font-weight: 650;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
+    .featured-head a {
       color: var(--green);
-    }
-
-    .menu-button {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--border);
-      color: var(--green-dark);
-      background: var(--white);
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    /* Buttons */
-
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 1.25rem;
-      border: 2px solid transparent;
-      border-radius: 999px;
       font-weight: 750;
-      transition:
-        transform 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      color: var(--white);
-      background: var(--green);
-      box-shadow: 0 10px 24px rgba(0, 106, 78, 0.22);
-    }
-
-    .button-primary:hover {
-      background: var(--green-dark);
-    }
-
-    .button-secondary {
-      color: var(--green-dark);
-      background: var(--white);
-      border-color: var(--border);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--green);
-      box-shadow: 0 8px 20px rgba(6, 61, 43, 0.1);
-    }
-
-    /* Hero */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 6rem 0 5rem;
-      background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(214, 40, 40, 0.12),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 10% 90%,
-          rgba(0, 106, 78, 0.15),
-          transparent 32%
-        ),
-        linear-gradient(135deg, var(--cream), var(--white));
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 4rem;
-      right: -7rem;
-      width: 360px;
-      height: 360px;
-      border: 70px solid rgba(0, 106, 78, 0.06);
-      border-radius: 50%;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 4rem;
-    }
-
-    .hero-copy p {
-      max-width: 670px;
-      margin-top: 1.4rem;
-      font-size: 1.1rem;
-    }
-
-    .hero-accent {
-      color: var(--green);
-    }
-
-    .hero-card {
-      position: relative;
-      min-height: 430px;
-      overflow: hidden;
-      color: var(--white);
-      background:
-        linear-gradient(
-          145deg,
-          rgba(6, 61, 43, 0.98),
-          rgba(0, 106, 78, 0.9)
-        );
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: -40px;
-      right: -50px;
-      width: 230px;
-      height: 230px;
-      background: var(--red);
-      border-radius: 50%;
-      opacity: 0.95;
-    }
-
-    .hero-card::after {
-      content: "বাংলাদেশ";
-      position: absolute;
-      right: 1.5rem;
-      bottom: 1.25rem;
-      color: rgba(255, 255, 255, 0.12);
-      font-family: Georgia, serif;
-      font-size: clamp(3rem, 8vw, 5.8rem);
-      font-weight: 800;
       white-space: nowrap;
     }
 
-    .hero-card-content {
+    .slider {
       position: relative;
-      z-index: 1;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.2rem;
-    }
-
-    .hero-card-label {
-      width: fit-content;
-      margin-bottom: 1rem;
-      padding: 0.35rem 0.75rem;
-      color: var(--green-dark);
-      background: var(--white);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 800;
-    }
-
-    .hero-card h2 {
-      max-width: 420px;
-      margin-bottom: 0.9rem;
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .hero-card p {
-      max-width: 390px;
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    /* Quick links */
-
-    .quick-links {
-      position: relative;
-      z-index: 3;
-      margin-top: -1.7rem;
-    }
-
-    .quick-link-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       overflow: hidden;
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      border-radius: 24px;
     }
 
-    .quick-link {
-      min-height: 130px;
-      display: block;
-      padding: 1.5rem;
-      border-right: 1px solid var(--border);
-      transition:
-        background 180ms ease,
-        transform 180ms ease;
+    .slides {
+      display: flex;
+      transition: transform 500ms ease;
     }
 
-    .quick-link:last-child {
-      border-right: 0;
+    .slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 410px;
     }
 
-    .quick-link:hover {
-      background: var(--green-light);
+    .slide-image {
+      min-height: 320px;
+      background: #dfe7e4;
     }
 
-    .quick-link span {
-      display: block;
-      margin-bottom: 0.4rem;
+    .slide-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-placeholder {
+      height: 100%;
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      color: #7b8984;
+      background:
+        linear-gradient(135deg, #e8efec, #dbe7e2);
+      font-weight: 700;
+    }
+
+    .slide-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+
+    .slide-copy small {
+      margin-bottom: 0.8rem;
       color: var(--red);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .quick-link strong {
-      color: var(--green-dark);
-      font-size: 1.15rem;
+    .slide-copy h3 {
+      margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
     }
 
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: center;
-      gap: 4rem;
+    .slide-copy p {
+      color: var(--muted);
     }
 
-    .about-visual {
-      position: relative;
-      min-height: 410px;
-      overflow: hidden;
-      background:
-        linear-gradient(
-          rgba(6, 61, 43, 0.15),
-          rgba(6, 61, 43, 0.1)
-        ),
-        var(--green-light);
-      border-radius: 28px;
-    }
-
-    .about-visual-main {
+    .slider-controls {
       position: absolute;
-      inset: 2rem;
-      display: grid;
-      place-items: center;
-      color: var(--white);
-      background: var(--green);
-      border-radius: 22px;
+      right: 1rem;
+      bottom: 1rem;
+      display: flex;
+      gap: 0.5rem;
     }
 
-    .about-visual-main span {
-      font-family: Georgia, serif;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
+    .slider-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 50%;
+      cursor: pointer;
     }
 
-    .about-badge {
-      position: absolute;
-      right: 0.7rem;
-      bottom: 1.3rem;
-      max-width: 190px;
-      padding: 1rem;
-      color: var(--white);
-      background: var(--red);
-      border: 7px solid var(--white);
-      border-radius: 18px;
-      font-weight: 800;
-      box-shadow: var(--shadow);
-    }
-
-    .about-copy p + p {
-      margin-top: 1rem;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .value {
-      padding: 1.2rem;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-    .value strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--green-dark);
-    }
-
-    .value p {
-      font-size: 0.9rem;
-    }
-
-    /* Events */
-
-    .events-section {
-      background: var(--cream);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.4rem;
-    }
-
-    .card {
-      overflow: hidden;
+    .slider-button:hover {
       background: var(--white);
-      border: 1px solid var(--border);
+      border-color: #c8d2ce;
+    }
+
+    .slider-dots {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      background: #c9d2cf;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--green);
+    }
+
+    /* Main destinations */
+
+    .destination-grid {
+      margin-top: 2.25rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .destination {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       transition:
         transform 180ms ease,
-        box-shadow 180ms ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .card-image {
-      min-height: 190px;
-      display: flex;
-      align-items: flex-end;
-      padding: 1.2rem;
-      color: var(--white);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(6, 61, 43, 0.95),
-          rgba(0, 106, 78, 0.68)
-        );
-    }
-
-    .card:nth-child(2) .card-image {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(152, 22, 22, 0.95),
-          rgba(214, 40, 40, 0.68)
-        );
-    }
-
-    .card:nth-child(3) .card-image {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(34, 67, 56, 0.95),
-          rgba(113, 139, 127, 0.7)
-        );
-    }
-
-    .card-image span {
-      padding: 0.35rem 0.7rem;
-      color: var(--green-dark);
-      background: var(--white);
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .card-content {
-      padding: 1.4rem;
-    }
-
-    .card-content h3 {
-      margin-bottom: 0.55rem;
-    }
-
-    .card-content p {
-      font-size: 0.95rem;
-    }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: var(--green);
-      font-weight: 750;
-    }
-
-    /* Resources */
-
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.3rem;
-    }
-
-    .resource {
-      display: flex;
-      gap: 1rem;
-      padding: 1.4rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition:
         border-color 180ms ease,
         background 180ms ease;
     }
 
-    .resource:hover {
-      background: var(--green-light);
-      border-color: rgba(0, 106, 78, 0.4);
+    .destination:hover {
+      transform: translateY(-3px);
+      background: var(--soft);
+      border-color: #bfd1ca;
     }
 
-    .resource-icon {
-      width: 48px;
-      height: 48px;
+    .destination-label {
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .destination h3 {
+      margin: 1rem 0 0.65rem;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .destination p {
+      max-width: 500px;
+      color: var(--muted);
+    }
+
+    .destination-arrow {
+      margin-top: 2rem;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* Resources */
+
+    .resources {
+      background: var(--soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resource-grid {
+      margin-top: 2rem;
       display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      color: var(--white);
-      background: var(--green);
-      border-radius: 14px;
-      font-weight: 900;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
-    .resource h3 {
-      margin-bottom: 0.3rem;
+    .resource-card {
+      padding: 1.7rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color 180ms ease;
     }
 
-    .resource p {
-      font-size: 0.92rem;
+    .resource-card:hover {
+      border-color: #b8ccc4;
     }
 
-    /* CTA */
-
-    .cta {
-      padding: 0 0 5.5rem;
+    .resource-card small {
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 3rem;
-      color: var(--white);
-      background: var(--green-dark);
-      border-radius: 28px;
+    .resource-card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
     }
 
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      right: -70px;
-      bottom: -100px;
-      width: 240px;
-      height: 240px;
-      background: var(--red);
-      border-radius: 50%;
-      opacity: 0.8;
+    .resource-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .cta-copy,
-    .cta-actions {
-      position: relative;
-      z-index: 1;
-    }
+    /* Contact */
 
-    .cta-box h2 {
-      margin-bottom: 0.7rem;
-    }
-
-    .cta-box p {
-      max-width: 700px;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .cta-box .button-secondary {
-      border-color: var(--white);
+    .contact-box {
+      min-height: 180px;
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
     }
 
     /* Footer */
 
     .site-footer {
       padding: 3.5rem 0 1.5rem;
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255, 255, 255, 0.8);
       background: #082b21;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr 0.8fr;
+      grid-template-columns: 1.5fr 0.8fr;
       gap: 3rem;
     }
 
     .footer-brand {
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
       color: var(--white);
-      font-size: 1.15rem;
-      font-weight: 850;
+      font-size: 1.05rem;
+      font-weight: 800;
     }
 
     .footer-copy {
-      max-width: 460px;
-      color: rgba(255, 255, 255, 0.67);
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.64);
     }
 
-    .footer-column h3 {
-      margin-bottom: 1rem;
+    .footer-connect h3 {
+      margin-bottom: 0.8rem;
       color: var(--white);
       font-size: 1rem;
     }
 
     .footer-links {
-      display: grid;
-      gap: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
       list-style: none;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.7);
     }
 
     .footer-links a:hover {
       color: var(--white);
+      text-decoration: underline;
     }
 
     .footer-bottom {
       margin-top: 3rem;
-      padding-top: 1.4rem;
+      padding-top: 1.3rem;
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.5);
       border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
     /* Responsive */
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .about-grid,
-      .cta-box,
+    @media (max-width: 800px) {
+      .brand-text span {
+        display: none;
+      }
+
+      .slide {
+        grid-template-columns: 1fr;
+      }
+
+      .slide-copy {
+        padding: 2rem;
+      }
+
+      .destination-grid,
+      .resource-grid,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 4.5rem;
-      }
-
-      .hero-card {
-        min-height: 370px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        gap: 2rem;
-      }
-
-      .cta-actions {
-        justify-self: start;
+      .featured-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 0.75rem;
       }
     }
 
-    @media (max-width: 760px) {
-      .menu-button {
-        display: grid;
-        place-items: center;
+    @media (max-width: 620px) {
+      .navbar {
+        min-height: 70px;
+        gap: 0.8rem;
       }
 
-      .nav-links {
-        position: absolute;
-        top: 74px;
-        left: 1rem;
-        right: 1rem;
+      .brand-text {
         display: none;
-        padding: 1rem;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        box-shadow: var(--shadow);
       }
 
-      .nav-links.open {
-        display: grid;
+      .top-nav {
+        gap: 0.25rem;
       }
 
-      .quick-link-grid,
-      .values,
-      .resource-grid {
-        grid-template-columns: 1fr;
+      .top-nav a {
+        padding: 0.62rem 0.7rem;
+        font-size: 0.8rem;
       }
 
-      .quick-link {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .quick-link:last-child {
-        border-bottom: 0;
+      .hero {
+        padding: 5rem 0 4rem;
       }
 
       .section {
-        padding: 4.3rem 0;
-      }
-
-      .cta-box {
-        padding: 2rem;
+        padding: 4rem 0;
       }
 
       .footer-bottom {
         flex-direction: column;
       }
     }
-
-    @media (max-width: 480px) {
-      .brand-text {
-        font-size: 0.9rem;
-      }
-
-      .brand-text small {
-        font-size: 0.65rem;
-      }
-
-      .hero-card-content {
-        padding: 1.5rem;
-      }
-
-      .about-visual {
-        min-height: 330px;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
   <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="#home" aria-label="BSA UML homepage">
-        <span class="brand-mark" aria-hidden="true"></span>
+      <a class="brand" href="index.html" aria-label="BSA UML homepage">
+        <!-- Replace this placeholder with the actual BSA logo image later. -->
+        <span class="brand-logo">BSA</span>
 
         <span class="brand-text">
-          Bangladesh Students Association
-          <small>University of Massachusetts Lowell</small>
+          <strong>Bangladesh Students Association</strong>
+          <span>University of Massachusetts Lowell</span>
         </span>
       </a>
 
-      <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="navigation"
-      >
-        ☰
-      </button>
-
-      <nav aria-label="Main navigation">
-        <ul class="nav-links" id="navigation">
-          <li><a href="#about">About</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#join">Join Us</a></li>
-        </ul>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="bulletin/index.html">BSA Bulletin</a>
+        <a href="community/index.html">BSA Community</a>
       </nav>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="hero" id="home">
-      <div class="container hero-grid">
+  <main>
+    <section class="hero">
+      <div class="container">
         <div class="hero-copy">
-          <span class="eyebrow">Welcome to Prangon</span>
+          <span class="hero-kicker">Welcome to Prangon</span>
 
           <h1>
             A community that feels
-            <span class="hero-accent">like home.</span>
+            <span>like home.</span>
           </h1>
 
           <p>
-            The Bangladesh Students Association at UMass Lowell brings
-            students together through culture, friendship, academic support,
-            celebration, and shared community.
+            The Bangladesh Students Association at UMass Lowell brings students
+            together through culture, friendship, academic support, celebration,
+            and shared community.
           </p>
-
-          <div class="button-group">
-            <a class="button button-primary" href="#join">Join the community</a>
-            <a class="button button-secondary" href="#events">Explore events</a>
-          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-card" aria-label="Bangladesh community feature">
-          <div class="hero-card-content">
-            <span class="hero-card-label">প্রাঙ্গণ · Prangon</span>
-
-            <h2>Our shared space at UMass Lowell.</h2>
-
-            <p>
-              Meet fellow students, celebrate Bangladeshi heritage, discover
-              resources, and build meaningful connections across campus.
+    <section class="section featured">
+      <div class="container">
+        <div class="featured-head">
+          <div>
+            <h2 class="section-title">Upcoming & featured</h2>
+            <p class="section-intro">
+              Important events and updates from the BSA community.
             </p>
           </div>
+
+          <a href="bulletin/index.html">View BSA Bulletin →</a>
+        </div>
+
+        <div class="slider" aria-label="Featured BSA updates">
+          <div class="slides" id="slides">
+
+            <article class="slide">
+              <div class="slide-image">
+                <div class="slide-placeholder">Event image</div>
+              </div>
+
+              <div class="slide-copy">
+                <small>Upcoming event</small>
+                <h3>Welcome Gathering</h3>
+                <p>
+                  Meet new and returning Bangladeshi students and connect with
+                  the BSA community at UMass Lowell.
+                </p>
+              </div>
+            </article>
+
+            <article class="slide">
+              <div class="slide-image">
+                <div class="slide-placeholder">Event image</div>
+              </div>
+
+              <div class="slide-copy">
+                <small>BSA event</small>
+                <h3>Community Celebration</h3>
+                <p>
+                  Celebrate Bangladeshi culture, food, language, and community
+                  with students and friends across UML.
+                </p>
+              </div>
+            </article>
+
+            <article class="slide">
+              <div class="slide-image">
+                <div class="slide-placeholder">Update image</div>
+              </div>
+
+              <div class="slide-copy">
+                <small>Community update</small>
+                <h3>Latest from BSA UML</h3>
+                <p>
+                  This space can feature a major student, faculty, community,
+                  or association update.
+                </p>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="slider-controls">
+            <button
+              class="slider-button"
+              id="previousSlide"
+              type="button"
+              aria-label="Previous slide"
+            >
+              ←
+            </button>
+
+            <button
+              class="slider-button"
+              id="nextSlide"
+              type="button"
+              aria-label="Next slide"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div class="slider-dots" aria-label="Select slide">
+          <button class="dot active" type="button" data-slide="0" aria-label="Slide 1"></button>
+          <button class="dot" type="button" data-slide="1" aria-label="Slide 2"></button>
+          <button class="dot" type="button" data-slide="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </section>
 
-    <div class="quick-links">
+    <section class="section">
       <div class="container">
-        <div class="quick-link-grid">
-          <a class="quick-link" href="#events">
-            <span>Discover</span>
-            <strong>Upcoming events</strong>
-            <p>See what is happening in the BSA community.</p>
-          </a>
+        <h2 class="section-title">Explore BSA UML</h2>
+        <p class="section-intro">
+          Follow what is happening in the association or meet the people who
+          make up our community.
+        </p>
 
-          <a class="quick-link" href="#resources">
-            <span>Support</span>
-            <strong>Student resources</strong>
-            <p>Find useful information for life at UMass Lowell.</p>
-          </a>
-
-          <a class="quick-link" href="#join">
-            <span>Connect</span>
-            <strong>Become a member</strong>
-            <p>Join our growing Bangladeshi student community.</p>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-visual">
-          <div class="about-visual-main">
-            <span>প্রাঙ্গণ</span>
-          </div>
-
-          <div class="about-badge">
-            Culture, connection, and community.
-          </div>
-        </div>
-
-        <div class="about-copy">
-          <span class="eyebrow">Who we are</span>
-
-          <h2>Bringing Bangladesh to the heart of UML.</h2>
-
-          <p>
-            The Bangladesh Students Association is a student-led organization
-            serving Bangladeshi students and anyone interested in Bangladeshi
-            culture at the University of Massachusetts Lowell.
-          </p>
-
-          <p>
-            We create opportunities for students to connect, celebrate our
-            heritage, support one another, and build a welcoming community
-            throughout their university journey.
-          </p>
-
-          <div class="values">
-            <div class="value">
-              <strong>Community</strong>
-              <p>Creating a welcoming space where students belong.</p>
+        <div class="destination-grid">
+          <a class="destination" href="bulletin/index.html">
+            <div>
+              <span class="destination-label">News & events</span>
+              <h3>BSA Bulletin</h3>
+              <p>
+                Events, announcements, achievements, milestones, and updates
+                from the Bangladesh Students Association and our community.
+              </p>
             </div>
 
-            <div class="value">
-              <strong>Culture</strong>
-              <p>Celebrating the traditions and diversity of Bangladesh.</p>
+            <span class="destination-arrow">Open Bulletin →</span>
+          </a>
+
+          <a class="destination" href="community/index.html">
+            <div>
+              <span class="destination-label">Our people</span>
+              <h3>BSA Community</h3>
+              <p>
+                Meet students, faculty, community members, and past and present
+                BSA executive boards.
+              </p>
             </div>
 
-            <div class="value">
-              <strong>Support</strong>
-              <p>Helping students navigate academic and campus life.</p>
-            </div>
-          </div>
+            <span class="destination-arrow">Meet the Community →</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section events-section" id="events">
+    <section class="section resources" id="resources">
       <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Events and activities</span>
-
-          <h2>Celebrate, connect, and make memories.</h2>
-
-          <p>
-            Replace these sample cards with your upcoming events, programs, and
-            community announcements.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-image">
-              <span>Coming soon</span>
-            </div>
-
-            <div class="card-content">
-              <h3>Welcome Gathering</h3>
-
-              <p>
-                Meet new and returning Bangladeshi students and learn more
-                about the association.
-              </p>
-
-              <a class="card-link" href="#join">View details →</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-image">
-              <span>Community</span>
-            </div>
-
-            <div class="card-content">
-              <h3>Cultural Celebration</h3>
-
-              <p>
-                Celebrate Bangladeshi music, food, history, language, and
-                traditions with the UML community.
-              </p>
-
-              <a class="card-link" href="#join">View details →</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-image">
-              <span>Student support</span>
-            </div>
-
-            <div class="card-content">
-              <h3>Student Networking Session</h3>
-
-              <p>
-                Connect with fellow students, alumni, and community members
-                across different academic programs.
-              </p>
-
-              <a class="card-link" href="#join">View details →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resources">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Student resources</span>
-
-          <h2>Helpful information in one place.</h2>
-
-          <p>
-            These sections can later link to dedicated pages, documents, forms,
-            or university resources.
-          </p>
-        </div>
+        <h2 class="section-title">Resources</h2>
+        <p class="section-intro">
+          A simple starting point for Bangladeshi students navigating life at
+          UMass Lowell and in the wider Lowell community.
+        </p>
 
         <div class="resource-grid">
-          <a class="resource" href="#">
-            <span class="resource-icon" aria-hidden="true">01</span>
-
-            <span>
-              <h3>New Student Guide</h3>
-              <p>
-                Essential information for newly admitted and incoming
-                Bangladeshi students.
-              </p>
-            </span>
+          <a class="resource-card" href="#">
+            <small>For incoming students</small>
+            <h3>New Student Guide</h3>
+            <p>
+              Essential information for newly admitted and incoming Bangladeshi
+              students.
+            </p>
           </a>
 
-          <a class="resource" href="#">
-            <span class="resource-icon" aria-hidden="true">02</span>
-
-            <span>
-              <h3>Housing and Transportation</h3>
-              <p>
-                Community guidance for finding housing and getting around
-                Lowell.
-              </p>
-            </span>
-          </a>
-
-          <a class="resource" href="#">
-            <span class="resource-icon" aria-hidden="true">03</span>
-
-            <span>
-              <h3>Academic and Campus Resources</h3>
-              <p>
-                Find useful UMass Lowell services, offices, and student
-                support information.
-              </p>
-            </span>
-          </a>
-
-          <a class="resource" href="#">
-            <span class="resource-icon" aria-hidden="true">04</span>
-
-            <span>
-              <h3>Community Directory</h3>
-              <p>
-                Connect with student leaders, members, alumni, and community
-                partners.
-              </p>
-            </span>
+          <a class="resource-card" href="#">
+            <small>Useful information</small>
+            <h3>Community Resources</h3>
+            <p>
+              Helpful campus, housing, transportation, local, and community
+              information in one place.
+            </p>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="join">
+    <section class="section" id="contact">
       <div class="container">
-        <div class="cta-box">
-          <div class="cta-copy">
-            <span class="eyebrow" style="color: #ffffff;">Join BSA UML</span>
-
-            <h2>There is a place for you in our Prangon.</h2>
-
-            <p>
-              Join our mailing list, attend an event, volunteer with the
-              association, or connect with the executive board.
-            </p>
-          </div>
-
-          <div class="cta-actions">
-            <!-- Replace # with your membership form or contact link -->
-            <a class="button button-secondary" href="#">
-              Become a member
-            </a>
-          </div>
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-box">
+          <!-- Contact content will be added later. -->
         </div>
       </div>
     </section>
@@ -1178,33 +787,20 @@
           </p>
         </div>
 
-        <div class="footer-column">
-          <h3>Explore</h3>
-
-          <ul class="footer-links">
-            <li><a href="#about">About us</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#join">Membership</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
+        <div class="footer-connect">
           <h3>Connect</h3>
 
           <ul class="footer-links">
-            <!-- Replace these placeholders with actual links -->
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="mailto:your-email@example.com">Email us</a></li>
+            <!-- Replace # with the official BSA UML social links. -->
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <span>
-          © <span id="currentYear"></span> Bangladesh Students Association at
-          UMass Lowell.
+          © <span id="currentYear"></span> Bangladesh Students Association at UMass Lowell.
         </span>
 
         <span>প্রাঙ্গণ · Community beyond borders</span>
@@ -1213,24 +809,40 @@
   </footer>
 
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const navigation = document.getElementById("navigation");
-    const navigationLinks = navigation.querySelectorAll("a");
+    const slides = document.getElementById("slides");
+    const dots = [...document.querySelectorAll(".dot")];
+    const previousButton = document.getElementById("previousSlide");
+    const nextButton = document.getElementById("nextSlide");
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = navigation.classList.toggle("open");
+    let currentSlide = 0;
+    const totalSlides = dots.length;
 
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.textContent = isOpen ? "✕" : "☰";
+    function showSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentSlide);
+      });
+    }
+
+    previousButton.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
     });
 
-    navigationLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navigation.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.textContent = "☰";
+    nextButton.addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        showSlide(Number(dot.dataset.slide));
       });
     });
+
+    setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 6000);
 
     document.getElementById("currentYear").textContent =
       new Date().getFullYear();
