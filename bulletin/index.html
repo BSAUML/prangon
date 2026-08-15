@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="BSA Bulletin — news, events, announcements, and community updates from the Bangladesh Students Association at UMass Lowell."
+  >
+
+  <title>BSA Bulletin | UMass Lowell</title>
+
+  <style>
+    :root {
+      --green: #006a4e;
+      --green-dark: #064c39;
+      --red: #d62828;
+      --text: #18211e;
+      --muted: #66716d;
+      --line: #e4e9e7;
+      --soft: #f7f9f8;
+      --white: #ffffff;
+      --max-width: 1160px;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .brand-text {
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 0.18rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .top-nav a {
+      padding: 0.72rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 750;
+      transition: 160ms ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      color: var(--green);
+      background: #f2f7f5;
+      border-color: #d7e6e0;
+    }
+
+    .top-nav .active {
+      color: var(--white);
+      background: var(--green);
+    }
+
+    /* Page intro */
+
+    .page-intro {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .page-intro p {
+      max-width: 680px;
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* Cards */
+
+    .bulletin-section {
+      padding: 1rem 0 6rem;
+    }
+
+    .bulletin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .bulletin-card {
+      position: relative;
+      min-height: 330px;
+      overflow: hidden;
+      color: var(--white);
+      background: #dce5e1;
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: left;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .bulletin-card:hover,
+    .bulletin-card:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.14);
+      outline: none;
+    }
+
+    .bulletin-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bulletin-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.28) 48%,
+          rgba(0, 0, 0, 0.06) 100%
+        );
+    }
+
+    .card-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #6f7d78;
+      background:
+        linear-gradient(135deg, #edf2f0, #dce7e2);
+      font-weight: 800;
+    }
+
+    .card-content {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.5rem;
+    }
+
+    .card-date {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 750;
+      opacity: 0.88;
+    }
+
+    .card-title {
+      font-size: 1.45rem;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 4rem 1rem;
+      color: var(--muted);
+      text-align: center;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+    }
+
+    /* Detail panel */
+
+    .panel-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      background: rgba(5, 15, 12, 0.58);
+      backdrop-filter: blur(3px);
+    }
+
+    .panel-backdrop.open {
+      display: block;
+    }
+
+    .detail-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2001;
+      width: min(560px, 100%);
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transform: translateX(100%);
+      transition: transform 240ms ease;
+    }
+
+    .detail-panel.open {
+      transform: translateX(0);
+    }
+
+    .panel-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .panel-image {
+      min-height: 330px;
+      background: #e1e9e6;
+    }
+
+    .panel-image img {
+      height: 100%;
+      min-height: 330px;
+      object-fit: cover;
+    }
+
+    .panel-fallback {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      color: #72817b;
+      background: linear-gradient(135deg, #edf2f0, #dce7e2);
+      font-weight: 800;
+    }
+
+    .panel-content {
+      padding: 2.2rem;
+    }
+
+    .panel-date {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel-title {
+      margin-bottom: 1.2rem;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .panel-description {
+      color: var(--muted);
+      white-space: pre-line;
+    }
+
+    .panel-links {
+      margin-top: 1.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .panel-links a {
+      padding: 0.65rem 0.9rem;
+      color: var(--green);
+      border: 1px solid #cfe0da;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    body.panel-open {
+      overflow: hidden;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 3.5rem 0 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      background: #082b21;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      margin-bottom: 0.9rem;
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .footer-copy {
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .footer-connect h3 {
+      margin-bottom: 0.8rem;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      list-style: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 900px) {
+      .bulletin-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand-text {
+        display: none;
+      }
+
+      .top-nav {
+        gap: 0.25rem;
+      }
+
+      .top-nav a {
+        padding: 0.62rem 0.7rem;
+        font-size: 0.8rem;
+      }
+
+      .bulletin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bulletin-card {
+        min-height: 290px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="../index.html" aria-label="BSA UML homepage">
+        <span class="brand-logo">BSA</span>
+
+        <span class="brand-text">
+          <strong>Bangladesh Students Association</strong>
+          <span>University of Massachusetts Lowell</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Main navigation">
+        <a class="active" href="index.html">BSA Bulletin</a>
+        <a href="../community/index.html">BSA Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container">
+        <span class="eyebrow">BSA UML</span>
+        <h1>BSA Bulletin</h1>
+
+        <p>
+          Events, announcements, achievements, milestones, and updates from the
+          Bangladesh Students Association and our wider community.
+        </p>
+      </div>
+    </section>
+
+    <section class="bulletin-section">
+      <div class="container">
+        <div class="bulletin-grid" id="bulletinGrid">
+          <div class="empty-state">Loading Bulletin...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="panel-backdrop" id="panelBackdrop"></div>
+
+  <aside
+    class="detail-panel"
+    id="detailPanel"
+    aria-hidden="true"
+    aria-label="Bulletin details"
+  >
+    <button
+      class="panel-close"
+      id="panelClose"
+      type="button"
+      aria-label="Close details"
+    >
+      ×
+    </button>
+
+    <div id="panelBody"></div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            Bangladesh Students Association at UMass Lowell
+          </div>
+
+          <p class="footer-copy">
+            Building community, celebrating Bangladeshi culture, and supporting
+            students at the University of Massachusetts Lowell.
+          </p>
+        </div>
+
+        <div class="footer-connect">
+          <h3>Connect</h3>
+
+          <ul class="footer-links">
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> Bangladesh Students Association at UMass Lowell.
+        </span>
+
+        <span>প্রাঙ্গণ · Community beyond borders</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bulletinGrid = document.getElementById("bulletinGrid");
+    const detailPanel = document.getElementById("detailPanel");
+    const panelBackdrop = document.getElementById("panelBackdrop");
+    const panelBody = document.getElementById("panelBody");
+    const panelClose = document.getElementById("panelClose");
+
+    let bulletinItems = [];
+
+    function formatDate(dateString) {
+      const date = new Date(`${dateString}T12:00:00`);
+
+      return new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).format(date);
+    }
+
+    function makeImageMarkup(item, className, fallbackClass) {
+      return `
+        <img
+          src="${item.image}"
+          alt=""
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <div class="${fallbackClass}" style="display:none;">
+          Image
+        </div>
+      `;
+    }
+
+    function renderBulletin(items) {
+      if (!items.length) {
+        bulletinGrid.innerHTML =
+          '<div class="empty-state">No Bulletin entries yet.</div>';
+        return;
+      }
+
+      bulletinGrid.innerHTML = items.map((item, index) => `
+        <button
+          class="bulletin-card"
+          type="button"
+          data-index="${index}"
+          aria-label="Open ${item.title}"
+        >
+          ${makeImageMarkup(item, "card-image", "card-fallback")}
+
+          <span class="card-content">
+            <span class="card-date">${formatDate(item.date)}</span>
+            <span class="card-title">${item.title}</span>
+          </span>
+        </button>
+      `).join("");
+
+      document.querySelectorAll(".bulletin-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          openPanel(Number(card.dataset.index));
+        });
+      });
+    }
+
+    function openPanel(index) {
+      const item = bulletinItems[index];
+      if (!item) return;
+
+      const socialLinks = [
+        item.facebook
+          ? `<a href="${item.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>`
+          : "",
+        item.instagram
+          ? `<a href="${item.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+          : ""
+      ].filter(Boolean).join("");
+
+      panelBody.innerHTML = `
+        <div class="panel-image">
+          ${makeImageMarkup(item, "panel-image", "panel-fallback")}
+        </div>
+
+        <div class="panel-content">
+          <span class="panel-date">${formatDate(item.date)}</span>
+          <h2 class="panel-title">${item.title}</h2>
+          <p class="panel-description">${item.description}</p>
+
+          ${socialLinks ? `<div class="panel-links">${socialLinks}</div>` : ""}
+        </div>
+      `;
+
+      detailPanel.classList.add("open");
+      panelBackdrop.classList.add("open");
+      detailPanel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("panel-open");
+      panelClose.focus();
+    }
+
+    function closePanel() {
+      detailPanel.classList.remove("open");
+      panelBackdrop.classList.remove("open");
+      detailPanel.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("panel-open");
+    }
+
+    panelClose.addEventListener("click", closePanel);
+    panelBackdrop.addEventListener("click", closePanel);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closePanel();
+      }
+    });
+
+    fetch("bulletin.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load bulletin.json");
+        }
+
+        return response.json();
+      })
+      .then((items) => {
+        bulletinItems = [...items].sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
+        renderBulletin(bulletinItems);
+      })
+      .catch((error) => {
+        console.error(error);
+
+        bulletinGrid.innerHTML = `
+          <div class="empty-state">
+            Bulletin data could not be loaded.
+          </div>
+        `;
+      });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
