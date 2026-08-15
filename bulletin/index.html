@@ -213,45 +213,43 @@
       justify-self: end;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      transform: translateX(34px);
+      gap: 0.8rem;
+      transform: translateX(72px);
     }
 
     .nav-logo-box {
-      width: 154px;
-      height: 98px;
+      width: 164px;
+      height: 106px;
       position: relative;
       display: grid;
       place-items: center;
-      padding: 0.6rem 0.7rem;
-      background: rgba(255, 255, 255, 0.012);
-      border: 1px solid rgba(255, 255, 255, 0.11);
-      border-radius: 18px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
       transition:
         transform 160ms ease,
-        background 160ms ease,
-        border-color 160ms ease;
+        opacity 160ms ease;
     }
 
     .nav-logo-box:hover,
     .nav-logo-box:focus-visible {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.18);
       transform: translateY(-2px);
+      opacity: 0.9;
       outline: none;
     }
 
     .active-logo {
-      background: rgba(11, 75, 58, 0.72);
-      border-color: rgba(255, 255, 255, 0.15);
+      background: transparent;
+      border: 0;
     }
 
     .nav-logo-box img {
       width: 100%;
-      max-width: 132px;
-      max-height: 76px;
+      max-width: 158px;
+      max-height: 100px;
       object-fit: contain;
-      opacity: 0.72;
+      opacity: 1;
     }
 
     .nav-logo-fallback {
@@ -259,7 +257,7 @@
       inset: 0;
       z-index: 2;
       min-height: 68px;
-      display: grid;
+      display: none;
       place-items: center;
       color: rgba(255, 255, 255, 0.96);
       font-size: 1.22rem;
@@ -349,7 +347,7 @@
       }
 
       .header-right {
-        transform: translateX(18px);
+        transform: translateX(28px);
       }
     }
 
@@ -397,7 +395,7 @@
       }
 
       .header-right {
-        transform: translateX(8px);
+        transform: translateX(12px);
       }
     }
 
@@ -981,7 +979,7 @@
           <img
             src="../assets/bsa-bulletin.png"
             alt="BSA Bulletin"
-            onerror="this.style.display='none';"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
           >
           <span class="nav-logo-fallback">BSA<br>Bulletin</span>
         </a>
@@ -990,7 +988,7 @@
           <img
             src="../assets/bsa-community.png"
             alt="BSA Community"
-            onerror="this.style.display='none';"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
           >
           <span class="nav-logo-fallback">BSA<br>Community</span>
         </a>
