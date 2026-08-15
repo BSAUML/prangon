@@ -906,6 +906,132 @@
       }
     }
 
+
+    /* Workshopped E-Board presentation */
+
+    .eboard-current-group {
+      margin-bottom: 3rem;
+      padding: 1.4rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.20);
+    }
+
+    .eboard-current-group .group-title {
+      margin-bottom: 1.25rem;
+      color: rgba(255, 255, 255, 0.90);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .eboard-current-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .eboard-current-card {
+      min-width: 0;
+      padding: 1rem;
+      background: rgba(6, 31, 25, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+    }
+
+    .eboard-current-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.84);
+      background: linear-gradient(145deg, rgba(11, 75, 58, 0.95), rgba(95, 27, 32, 0.68));
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 14px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .eboard-current-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .eboard-current-position {
+      margin-top: 0.9rem;
+      color: rgba(215, 84, 88, 0.92);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .eboard-current-name {
+      margin-top: 0.18rem;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .eboard-current-affiliation {
+      display: -webkit-box;
+      margin-top: 0.28rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.85rem;
+      line-height: 1.2;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .eboard-current-bio {
+      margin-top: 0.7rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .eboard-history-card {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+    }
+
+    .eboard-history-position {
+      color: rgba(215, 84, 88, 0.88);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .eboard-history-bio {
+      display: -webkit-box;
+      margin-top: 0.22rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.8rem;
+      line-height: 1.2;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    @media (max-width: 900px) {
+      .eboard-current-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .eboard-current-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Detail panel */
 
     .panel-backdrop {
@@ -1425,50 +1551,21 @@
     }
 
     function applySiteData(site) {
-      document.getElementById("associationName").textContent =
-        site.association.name;
-
-      document.getElementById("associationUniversity").textContent =
-        site.association.university;
-
-      document.getElementById("brandHomeLink").href =
-        site.navigation.home_url;
-
-      document.getElementById("prangonHomeLink").href =
-        site.navigation.home_url;
-
-      document.getElementById("bulletinNavLink").href =
-        "../bulletin/index.html";
-
-      document.getElementById("communityNavLink").href =
-        "index.html";
-
-      document.getElementById("umlNavLink").href =
-        site.navigation.uml_url;
-
-      document.getElementById("bsaLogo").src =
-        site.assets.bsa_logo;
-
-      document.getElementById("prangonLogo").src =
-        site.assets.prangon_logo;
-
-      document.getElementById("bulletinLogo").src =
-        site.assets.bulletin_logo;
-
-      document.getElementById("communityLogo").src =
-        site.assets.community_logo;
-
-      document.getElementById("umlLogo").src =
-        site.assets.uml_logo;
-
-      document.getElementById("footerBrand").textContent =
-        site.footer.brand;
-
-      document.getElementById("footerDescription").textContent =
-        site.footer.description;
-
-      document.getElementById("footerConnectHeading").textContent =
-        site.footer.connect_heading;
+      document.getElementById("associationName").textContent = site.association.name;
+      document.getElementById("associationUniversity").textContent = site.association.university;
+      document.getElementById("brandHomeLink").href = site.navigation.home_url;
+      document.getElementById("prangonHomeLink").href = site.navigation.home_url;
+      document.getElementById("bulletinNavLink").href = "../bulletin/index.html";
+      document.getElementById("communityNavLink").href = "index.html";
+      document.getElementById("umlNavLink").href = site.navigation.uml_url;
+      document.getElementById("bsaLogo").src = site.assets.bsa_logo;
+      document.getElementById("prangonLogo").src = site.assets.prangon_logo;
+      document.getElementById("bulletinLogo").src = site.assets.bulletin_logo;
+      document.getElementById("communityLogo").src = site.assets.community_logo;
+      document.getElementById("umlLogo").src = site.assets.uml_logo;
+      document.getElementById("footerBrand").textContent = site.footer.brand;
+      document.getElementById("footerDescription").textContent = site.footer.description;
+      document.getElementById("footerConnectHeading").textContent = site.footer.connect_heading;
 
       const instagramLink = document.getElementById("instagramLink");
       instagramLink.textContent = site.footer.instagram_label;
@@ -1478,44 +1575,24 @@
       facebookLink.textContent = site.footer.facebook_label;
       facebookLink.href = site.footer.facebook_url;
 
-      document.getElementById("footerCopyrightName").textContent =
-        site.footer.copyright_name;
-
-      document.getElementById("footerTagline").textContent =
-        site.footer.tagline;
-
-      document.getElementById("returnHomeButton").href =
-        site.navigation.home_url;
+      document.getElementById("footerCopyrightName").textContent = site.footer.copyright_name;
+      document.getElementById("footerTagline").textContent = site.footer.tagline;
+      document.getElementById("returnHomeButton").href = site.navigation.home_url;
     }
 
     function applyCommunityConfig(config) {
-      document.getElementById("communityPageTitle").textContent =
-        config.page.title;
-
-      document.getElementById("communityPageDescription").textContent =
-        config.page.description;
-
-      document.getElementById("returnHomeButton").textContent =
-        config.page.return_text;
-
-      document.getElementById("eboardTitle").textContent =
-        config.sections.eboard.title;
-
-      document.getElementById("cohortTitle").textContent =
-        config.sections.cohorts.title;
-
-      document.getElementById("tagTitle").textContent =
-        config.sections.tags.title;
-
-      document.getElementById("tallyTitle").textContent =
-        config.tally.title;
+      document.getElementById("communityPageTitle").textContent = config.page.title;
+      document.getElementById("communityPageDescription").textContent = config.page.description;
+      document.getElementById("returnHomeButton").textContent = config.page.return_text;
+      document.getElementById("eboardTitle").textContent = config.sections.eboard.title;
+      document.getElementById("cohortTitle").textContent = config.sections.cohorts.title;
+      document.getElementById("tagTitle").textContent = config.sections.tags.title;
+      document.getElementById("tallyTitle").textContent = config.tally.title;
+      document.getElementById("cohortTab").textContent = config.sections.cohorts.title;
     }
 
     function splitValues(value) {
-      return String(value || "")
-        .split(";")
-        .map((item) => item.trim())
-        .filter(Boolean);
+      return String(value || "").split(";").map((item) => item.trim()).filter(Boolean);
     }
 
     function aySort(a, b) {
@@ -1525,13 +1602,12 @@
     }
 
     function initials(name) {
-      return String(name || "?")
-        .trim()
-        .split(/\s+/)
-        .slice(0, 2)
-        .map((part) => part[0] || "")
-        .join("")
-        .toUpperCase();
+      return String(name || "?").trim().split(/\s+/).slice(0, 2)
+        .map((part) => part[0] || "").join("").toUpperCase();
+    }
+
+    function isCurrent(value) {
+      return String(value || "").trim().toLowerCase() === "yes";
     }
 
     function profileHTML(member) {
@@ -1540,21 +1616,12 @@
       const photo = String(member.photo || "").trim();
 
       const photoMarkup = photo
-        ? `
-          <div class="profile-photo">
-            <img
-              src="${escapeHTML(photo)}"
-              alt=""
-              onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(member.name))}';"
-            >
-          </div>
-        `
+        ? `<div class="profile-photo"><img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(member.name))}';"></div>`
         : `<div class="profile-photo">${escapeHTML(initials(member.name))}</div>`;
 
       return `
         <article class="profile">
           ${photoMarkup}
-
           <div class="profile-copy">
             <div class="profile-name">${name}</div>
             <div class="profile-affiliation">${affiliation}</div>
@@ -1587,98 +1654,175 @@
       container.appendChild(section);
     }
 
-    function renderDirectory(config, members) {
-      const eboardContainer = document.getElementById("eboardGroups");
+    function currentBoardCard(row, person) {
+      const photo = String(person?.photo || "").trim();
+      const photoMarkup = photo
+        ? `<img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';">`
+        : escapeHTML(initials(row.name));
+
+      return `
+        <article class="eboard-current-card">
+          <div class="eboard-current-photo">${photoMarkup}</div>
+          <div class="eboard-current-position">${escapeHTML(row.position || "")}</div>
+          <div class="eboard-current-name">${escapeHTML(row.name || "")}</div>
+          <div class="eboard-current-affiliation">${escapeHTML(person?.affiliation || "")}</div>
+          <div class="eboard-current-bio">${escapeHTML(row.bio || "")}</div>
+        </article>
+      `;
+    }
+
+    function historicalBoardCard(row, person) {
+      const photo = String(person?.photo || "").trim();
+      const photoMarkup = photo
+        ? `<div class="profile-photo"><img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';"></div>`
+        : `<div class="profile-photo">${escapeHTML(initials(row.name))}</div>`;
+
+      return `
+        <article class="eboard-history-card">
+          ${photoMarkup}
+          <div class="profile-copy">
+            <div class="eboard-history-position">${escapeHTML(row.position || "")}</div>
+            <div class="profile-name">${escapeHTML(row.name || "")}</div>
+            <div class="profile-affiliation">${escapeHTML(person?.affiliation || "")}</div>
+            <div class="eboard-history-bio">${escapeHTML(row.bio || "")}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderEBoard(boardRows, directory) {
+      const container = document.getElementById("eboardGroups");
+      container.innerHTML = "";
+
+      const directoryByName = new Map(
+        directory.map((person) => [String(person.name || "").trim(), person])
+      );
+
+      const years = [...new Set(
+        boardRows.map((row) => String(row.academic_year || "").trim()).filter(Boolean)
+      )].sort(aySort);
+
+      const latestYear = years[0];
+
+      years.forEach((year) => {
+        const rows = boardRows.filter(
+          (row) => String(row.academic_year || "").trim() === year
+        );
+
+        if (year === latestYear) {
+          const group = document.createElement("section");
+          group.className = "eboard-current-group";
+
+          const title = document.createElement("h3");
+          title.className = "group-title";
+          title.textContent = year;
+          group.appendChild(title);
+
+          const grid = document.createElement("div");
+          grid.className = "eboard-current-grid";
+          grid.innerHTML = rows.map((row) =>
+            currentBoardCard(row, directoryByName.get(String(row.name || "").trim()))
+          ).join("");
+
+          group.appendChild(grid);
+          container.appendChild(group);
+        } else {
+          const group = document.createElement("section");
+          group.className = "member-group";
+
+          const title = document.createElement("h3");
+          title.className = "group-title";
+          title.textContent = year;
+          group.appendChild(title);
+
+          const list = document.createElement("div");
+          list.className = "profile-list";
+          list.innerHTML = rows.map((row) =>
+            historicalBoardCard(row, directoryByName.get(String(row.name || "").trim()))
+          ).join("");
+
+          group.appendChild(list);
+          container.appendChild(group);
+        }
+      });
+    }
+
+    function renderDirectory(config, directory) {
       const cohortContainer = document.getElementById("cohortGroups");
       const tagContainer = document.getElementById("tagGroups");
       const tallyList = document.getElementById("tallyList");
 
-      const eboardYears = [...config.sections.eboard.academic_years].sort(aySort);
-      const cohortYears = [...config.sections.cohorts.academic_years].sort(aySort);
+      cohortContainer.innerHTML = "";
+      tagContainer.innerHTML = "";
+      tallyList.innerHTML = "";
 
-      eboardYears.forEach((academicYear) => {
-        const matches = members.filter((member) =>
-          splitValues(member.eboard_ay).includes(academicYear)
-        );
-        renderGroup(eboardContainer, academicYear, matches);
-      });
-
-      cohortYears.forEach((academicYear) => {
-        const matches = members.filter(
-          (member) => String(member.cohort_ay || "").trim() === academicYear
+      [...config.sections.cohorts.academic_years].sort(aySort).forEach((academicYear) => {
+        const matches = directory.filter(
+          (member) => String(member.joined_ay || "").trim() === academicYear
         );
         renderGroup(cohortContainer, academicYear, matches);
       });
 
       config.sections.tags.items.forEach((tag) => {
-        const matches = members.filter((member) =>
+        const matches = directory.filter((member) =>
+          String(member.member_type || "").trim() === tag ||
           splitValues(member.tags).includes(tag)
         );
         renderGroup(tagContainer, tag, matches);
       });
 
-      config.tally.member_types.forEach((tag) => {
-        const count = members.filter((member) =>
-          splitValues(member.tags).includes(tag)
+      const tallySource = config.tally.count_only_current
+        ? directory.filter((member) => isCurrent(member["current?"]))
+        : directory;
+
+      config.tally.member_types.forEach((type) => {
+        const count = tallySource.filter(
+          (member) => String(member.member_type || "").trim() === type
         ).length;
 
         const row = document.createElement("div");
         row.className = "tally-row";
-        row.innerHTML = `
-          <span class="tally-label">${escapeHTML(tag)}</span>
-          <span class="tally-count">${count}</span>
-        `;
+        row.innerHTML = `<span class="tally-label">${escapeHTML(type)}</span><span class="tally-count">${count}</span>`;
         tallyList.appendChild(row);
       });
     }
 
-    async function loadExcelMembers() {
-      const response = await fetch("community.xlsx");
-
-      if (!response.ok) {
-        throw new Error("Could not load community.xlsx");
-      }
+    async function loadWorkbookRows(filename) {
+      const response = await fetch(filename);
+      if (!response.ok) throw new Error(`Could not load ${filename}`);
 
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: "array" });
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-      return XLSX.utils.sheet_to_json(sheet, {
-        defval: "",
-        raw: false
-      });
+      return XLSX.utils.sheet_to_json(sheet, { defval: "", raw: false });
     }
 
     Promise.all([
       fetch("../assets/site.json").then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not load ../assets/site.json");
-        }
+        if (!response.ok) throw new Error("Could not load ../assets/site.json");
         return response.json();
       }),
-
       fetch("community.json").then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not load community.json");
-        }
+        if (!response.ok) throw new Error("Could not load community.json");
         return response.json();
-      }),
-
-      loadExcelMembers()
+      })
     ])
-      .then(([siteData, communityConfig, members]) => {
+      .then(async ([siteData, communityConfig]) => {
+        const [directory, boardRows] = await Promise.all([
+          loadWorkbookRows(communityConfig.data_files.directory),
+          loadWorkbookRows(communityConfig.data_files.eboard)
+        ]);
+
         applySiteData(siteData);
         applyCommunityConfig(communityConfig);
-        renderDirectory(communityConfig, members);
+        renderEBoard(boardRows, directory);
+        renderDirectory(communityConfig, directory);
       })
       .catch((error) => {
         console.error(error);
-
-        document.querySelector(".community-main").innerHTML = `
-          <div class="directory-error">
-            Community data could not be loaded.
-          </div>
-        `;
+        document.querySelector(".community-main").innerHTML =
+          `<div class="directory-error">Community data could not be loaded.</div>`;
       });
 
     const communityTabs = [...document.querySelectorAll(".community-tab")];
@@ -1702,8 +1846,7 @@
       });
     });
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
