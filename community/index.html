@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="BSA Community — students, faculty, executive boards, and community members connected with the Bangladesh Students Association at UMass Lowell."
+    content="BSA Community — students, faculty, postdocs, executive boards, and community members connected with the Bangladeshi Students Association at UMass Lowell."
   >
 
   <title>BSA Community | UMass Lowell</title>
@@ -672,8 +672,199 @@
       font-size: 1.2rem;
     }
 
-    .community-placeholder {
-      min-height: 340px;
+    /* Community directory */
+
+    .community-directory {
+      padding: 0.8rem 0 6rem;
+    }
+
+    .community-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      align-items: start;
+      gap: 3rem;
+    }
+
+    .community-main {
+      min-width: 0;
+    }
+
+    .community-section {
+      padding: 1.6rem 0 3.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .community-section:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .section-heading-row {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading-row h2,
+    .community-tally h2 {
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .member-group + .member-group {
+      margin-top: 2.2rem;
+    }
+
+    .group-title {
+      margin-bottom: 0.9rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+
+    .profile-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .profile {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+    }
+
+    .profile-photo {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 58px;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.86);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11, 75, 58, 0.95),
+          rgba(95, 27, 32, 0.68)
+        );
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 50%;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-copy {
+      min-width: 0;
+    }
+
+    .profile-name {
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.05;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .profile-affiliation {
+      display: -webkit-box;
+      margin-top: 0.22rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.18;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .community-tally {
+      position: sticky;
+      top: 1.2rem;
+      padding: 1.35rem;
+      background: rgba(3, 24, 19, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+    }
+
+    .community-tally h2 {
+      margin-bottom: 1rem;
+      font-size: 1.45rem;
+    }
+
+    .tally-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tally-row:first-child {
+      border-top: 0;
+    }
+
+    .tally-label {
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.92rem;
+      line-height: 1.05;
+    }
+
+    .tally-count {
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .empty-group {
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.92rem;
+    }
+
+    .directory-error {
+      padding: 2rem 0;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    @media (max-width: 1000px) {
+      .community-layout {
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 2rem;
+      }
+
+      .profile-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .community-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .community-tally {
+        position: static;
+        grid-row: 1;
+      }
+
+      .profile-list {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Detail panel */
@@ -1053,22 +1244,45 @@
   <main>
     <section class="bulletin-hero">
       <div class="container hero-inner">
-        <h1 id="communityPageTitle">BSA Community</h1>
+        <h1 id="communityPageTitle"></h1>
 
-        <p id="communityPageDescription">Students, faculty, executive boards, and community members who make up the BSA UML community.</p>
+        <p id="communityPageDescription"></p>
 
-        <a class="home-button" id="returnHomeButton" href="../index.html">Return to UMLপ্রাঙ্গণ</a>
+        <a class="home-button" id="returnHomeButton" href="../index.html"></a>
       </div>
     </section>
 
-    <section class="bulletin-section">
-      <div class="container">
-        <div class="community-placeholder">
-          <!--
-            Community directory will be populated later from the
-            spreadsheet / JSON data source.
-          -->
+    <section class="community-directory">
+      <div class="container community-layout">
+
+        <div class="community-main">
+          <section class="community-section" id="eboardSection">
+            <div class="section-heading-row">
+              <h2 id="eboardTitle"></h2>
+            </div>
+            <div id="eboardGroups"></div>
+          </section>
+
+          <section class="community-section" id="cohortSection">
+            <div class="section-heading-row">
+              <h2 id="cohortTitle"></h2>
+            </div>
+            <div id="cohortGroups"></div>
+          </section>
+
+          <section class="community-section" id="tagSection">
+            <div class="section-heading-row">
+              <h2 id="tagTitle"></h2>
+            </div>
+            <div id="tagGroups"></div>
+          </section>
         </div>
+
+        <aside class="community-tally">
+          <h2 id="tallyTitle"></h2>
+          <div id="tallyList"></div>
+        </aside>
+
       </div>
     </section>
   </main>
@@ -1102,7 +1316,18 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
   <script>
+    function escapeHTML(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
     function applySiteData(site) {
       document.getElementById("associationName").textContent =
         site.association.name;
@@ -1167,19 +1392,197 @@
         site.navigation.home_url;
     }
 
-    fetch("../assets/site.json")
-      .then((response) => {
+    function applyCommunityConfig(config) {
+      document.getElementById("communityPageTitle").textContent =
+        config.page.title;
+
+      document.getElementById("communityPageDescription").textContent =
+        config.page.description;
+
+      document.getElementById("returnHomeButton").textContent =
+        config.page.return_text;
+
+      document.getElementById("eboardTitle").textContent =
+        config.sections.eboard.title;
+
+      document.getElementById("cohortTitle").textContent =
+        config.sections.cohorts.title;
+
+      document.getElementById("tagTitle").textContent =
+        config.sections.tags.title;
+
+      document.getElementById("tallyTitle").textContent =
+        config.tally.title;
+    }
+
+    function splitValues(value) {
+      return String(value || "")
+        .split(";")
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
+
+    function aySort(a, b) {
+      const yearA = Number((String(a).match(/\d{4}/) || ["0"])[0]);
+      const yearB = Number((String(b).match(/\d{4}/) || ["0"])[0]);
+      return yearB - yearA;
+    }
+
+    function initials(name) {
+      return String(name || "?")
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((part) => part[0] || "")
+        .join("")
+        .toUpperCase();
+    }
+
+    function profileHTML(member) {
+      const name = escapeHTML(member.name || "");
+      const affiliation = escapeHTML(member.affiliation || "");
+      const photo = String(member.photo || "").trim();
+
+      const photoMarkup = photo
+        ? `
+          <div class="profile-photo">
+            <img
+              src="${escapeHTML(photo)}"
+              alt=""
+              onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(member.name))}';"
+            >
+          </div>
+        `
+        : `<div class="profile-photo">${escapeHTML(initials(member.name))}</div>`;
+
+      return `
+        <article class="profile">
+          ${photoMarkup}
+
+          <div class="profile-copy">
+            <div class="profile-name">${name}</div>
+            <div class="profile-affiliation">${affiliation}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderGroup(container, label, members) {
+      const section = document.createElement("section");
+      section.className = "member-group";
+
+      const title = document.createElement("h3");
+      title.className = "group-title";
+      title.textContent = label;
+      section.appendChild(title);
+
+      if (!members.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-group";
+        empty.textContent = "No members listed yet.";
+        section.appendChild(empty);
+      } else {
+        const list = document.createElement("div");
+        list.className = "profile-list";
+        list.innerHTML = members.map(profileHTML).join("");
+        section.appendChild(list);
+      }
+
+      container.appendChild(section);
+    }
+
+    function renderDirectory(config, members) {
+      const eboardContainer = document.getElementById("eboardGroups");
+      const cohortContainer = document.getElementById("cohortGroups");
+      const tagContainer = document.getElementById("tagGroups");
+      const tallyList = document.getElementById("tallyList");
+
+      const eboardYears = [...config.sections.eboard.academic_years].sort(aySort);
+      const cohortYears = [...config.sections.cohorts.academic_years].sort(aySort);
+
+      eboardYears.forEach((academicYear) => {
+        const matches = members.filter((member) =>
+          splitValues(member.eboard_ay).includes(academicYear)
+        );
+        renderGroup(eboardContainer, academicYear, matches);
+      });
+
+      cohortYears.forEach((academicYear) => {
+        const matches = members.filter(
+          (member) => String(member.cohort_ay || "").trim() === academicYear
+        );
+        renderGroup(cohortContainer, academicYear, matches);
+      });
+
+      config.sections.tags.items.forEach((tag) => {
+        const matches = members.filter((member) =>
+          splitValues(member.tags).includes(tag)
+        );
+        renderGroup(tagContainer, tag, matches);
+      });
+
+      config.tally.member_types.forEach((tag) => {
+        const count = members.filter((member) =>
+          splitValues(member.tags).includes(tag)
+        ).length;
+
+        const row = document.createElement("div");
+        row.className = "tally-row";
+        row.innerHTML = `
+          <span class="tally-label">${escapeHTML(tag)}</span>
+          <span class="tally-count">${count}</span>
+        `;
+        tallyList.appendChild(row);
+      });
+    }
+
+    async function loadExcelMembers() {
+      const response = await fetch("community.xlsx");
+
+      if (!response.ok) {
+        throw new Error("Could not load community.xlsx");
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: "array" });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+      return XLSX.utils.sheet_to_json(sheet, {
+        defval: "",
+        raw: false
+      });
+    }
+
+    Promise.all([
+      fetch("../assets/site.json").then((response) => {
         if (!response.ok) {
           throw new Error("Could not load ../assets/site.json");
         }
-
         return response.json();
-      })
-      .then((siteData) => {
+      }),
+
+      fetch("community.json").then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load community.json");
+        }
+        return response.json();
+      }),
+
+      loadExcelMembers()
+    ])
+      .then(([siteData, communityConfig, members]) => {
         applySiteData(siteData);
+        applyCommunityConfig(communityConfig);
+        renderDirectory(communityConfig, members);
       })
       .catch((error) => {
         console.error(error);
+
+        document.querySelector(".community-main").innerHTML = `
+          <div class="directory-error">
+            Community data could not be loaded.
+          </div>
+        `;
       });
 
     document.getElementById("currentYear").textContent =
