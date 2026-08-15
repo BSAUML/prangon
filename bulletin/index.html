@@ -99,8 +99,7 @@
     /* Dark expanded top bar */
 
     .site-header {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 1000;
       color: rgba(255, 255, 255, 0.94);
       background:
@@ -168,9 +167,7 @@
       place-items: center;
       justify-self: center;
       padding: 0.2rem 1rem;
-      color: rgba(255, 255, 255, 0.72);
-      border: 1px dashed rgba(255, 255, 255, 0.22);
-      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.78);
       font-size: 1.7rem;
       font-weight: 600;
       white-space: nowrap;
@@ -258,6 +255,7 @@
     .hero-title-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -710,6 +708,7 @@
       }
 
       .hero-title-row {
+        align-items: flex-start;
         gap: 0.75rem;
       }
 
@@ -783,8 +782,8 @@
     <section class="bulletin-hero">
       <div class="container hero-inner">
         <div class="hero-title-row">
-          <a class="home-button" href="../index.html">← Return to UMLপ্রাঙ্গণ</a>
           <h1>BSA Bulletin</h1>
+          <a class="home-button" href="../index.html">Return to UMLপ্রাঙ্গণ</a>
         </div>
 
         <p>
