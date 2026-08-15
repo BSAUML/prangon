@@ -129,35 +129,10 @@
       min-width: 0;
     }
 
-    .brand-logo {
+    .header-bsa-logo {
       width: 76px;
       height: 76px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      color: var(--white);
-      background: var(--green);
-      border-radius: 50%;
-      font-size: 0.92rem;
-      font-weight: 700;
-    }
-
-    .brand-text {
-      line-height: 1.05;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .brand-text span {
-      display: block;
-      margin-top: 0.12rem;
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 0.78rem;
-      font-weight: 500;
+      object-fit: contain;
     }
 
     .center-wordmark {
@@ -167,10 +142,13 @@
       place-items: center;
       justify-self: center;
       padding: 0.2rem 1rem;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 1.7rem;
-      font-weight: 600;
       white-space: nowrap;
+    }
+
+    .center-wordmark img {
+      max-width: 220px;
+      max-height: 72px;
+      object-fit: contain;
     }
 
     .nav-area {
@@ -191,28 +169,18 @@
       min-height: 72px;
       display: grid;
       place-items: center;
-      padding: 0.6rem 0.85rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1;
-      text-align: center;
+      padding: 0.35rem 0.55rem;
       transition: 160ms ease;
     }
 
     .top-nav a:hover,
     .top-nav a:focus-visible {
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
+      opacity: 0.82;
     }
 
     .top-nav .active {
-      color: var(--white);
-      background: rgba(11, 75, 58, 0.88);
-      border-color: rgba(255, 255, 255, 0.16);
+      opacity: 1;
     }
 
     .top-nav a img {
@@ -226,12 +194,7 @@
       height: 76px;
       display: grid;
       place-items: center;
-      padding-left: 1rem;
-      color: rgba(255, 255, 255, 0.66);
-      border-left: 1px solid rgba(255, 255, 255, 0.13);
-      font-size: 0.77rem;
-      font-weight: 700;
-      line-height: 1;
+      padding-left: 0.4rem;
       text-align: center;
     }
 
@@ -249,37 +212,30 @@
     }
 
     .hero-inner {
-      max-width: 900px;
-    }
-
-    .hero-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      width: 100%;
+      max-width: none;
     }
 
     .home-button {
-      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.65rem 1rem;
+      margin-top: 1.15rem;
+      padding: 0.68rem 1.05rem;
       color: rgba(255, 255, 255, 0.92);
-      background: rgba(3, 24, 19, 0.56);
+      background: rgba(3, 24, 19, 0.62);
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
-      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
       font-size: 1rem;
       font-weight: 500;
-      white-space: nowrap;
       transition: 160ms ease;
     }
 
     .home-button:hover,
     .home-button:focus-visible {
-      background: rgba(11, 75, 58, 0.86);
+      color: var(--white);
+      background: rgba(11, 75, 58, 0.9);
       border-color: rgba(255, 255, 255, 0.28);
       transform: translateY(-1px);
     }
@@ -623,11 +579,7 @@
         gap: 1rem;
       }
 
-      .brand-text {
-        display: none;
-      }
-
-      .brand-logo {
+      .header-bsa-logo {
         width: 64px;
         height: 64px;
       }
@@ -674,16 +626,12 @@
         gap: 0.65rem;
       }
 
-      .brand-logo {
+      .header-bsa-logo {
         width: 52px;
         height: 52px;
       }
 
       .center-wordmark {
-        display: none;
-      }
-
-      .brand-text {
         display: none;
       }
 
@@ -707,13 +655,7 @@
         padding: 4.2rem 0 3rem;
       }
 
-      .hero-title-row {
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-
       .home-button {
-        min-height: 42px;
         font-size: 0.9rem;
       }
 
@@ -742,38 +684,27 @@
   <header class="site-header">
     <div class="container navbar">
       <a class="brand" href="../index.html" aria-label="BSA UML homepage">
-        <!-- Replace with official BSA logo later. -->
-        <span class="brand-logo">BSA</span>
-
-        <span class="brand-text">
-          <strong>Bangladesh Students Association</strong>
-          <span>University of Massachusetts Lowell</span>
-        </span>
+        <img class="header-bsa-logo" src="../assets/bsa-logo.png" alt="BSA UML">
       </a>
 
-      <!-- Future UMLপ্রাঙ্গণ wordart -->
-      <div class="center-wordmark" aria-label="UML Prangon wordmark placeholder">
-        UMLপ্রাঙ্গণ
-      </div>
+      <a class="center-wordmark" href="../index.html" aria-label="UML Prangon homepage">
+        <img src="../assets/uml-prangon.png" alt="UMLপ্রাঙ্গণ">
+      </a>
 
       <div class="nav-area">
         <nav class="top-nav" aria-label="Main navigation">
-          <!--
-            These two links are intentionally image-ready.
-            Later, replace the text inside each <a> with the corresponding logo image.
-          -->
-          <a class="active" href="index.html">BSA<br>Bulletin</a>
-          <a href="../community/index.html">BSA<br>Community</a>
+          <a class="active" href="index.html" aria-label="BSA Bulletin">
+            <img src="../assets/bsa-bulletin.png" alt="BSA Bulletin">
+          </a>
+
+          <a href="../community/index.html" aria-label="BSA Community">
+            <img src="../assets/bsa-community.png" alt="BSA Community">
+          </a>
         </nav>
 
-        <!--
-          Official UML logo goes here later.
-          Example:
-          <img src="images/umass-lowell-logo.png" alt="UMass Lowell">
-        -->
-        <div class="uml-logo-slot" aria-label="UMass Lowell logo placeholder">
-          UMass<br>Lowell
-        </div>
+        <a class="uml-logo-slot" href="https://www.uml.edu/" aria-label="UMass Lowell">
+          <img src="../assets/umass-lowell.png" alt="UMass Lowell">
+        </a>
       </div>
     </div>
   </header>
@@ -781,15 +712,14 @@
   <main>
     <section class="bulletin-hero">
       <div class="container hero-inner">
-        <div class="hero-title-row">
-          <h1>BSA Bulletin</h1>
-          <a class="home-button" href="../index.html">Return to UMLপ্রাঙ্গণ</a>
-        </div>
+        <h1>BSA Bulletin</h1>
 
         <p>
           Events, announcements, achievements, milestones, and updates from the
           Bangladesh Students Association and our wider community.
         </p>
+
+        <a class="home-button" href="../index.html">Return to UMLপ্রাঙ্গণ</a>
       </div>
     </section>
 
