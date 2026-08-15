@@ -542,6 +542,38 @@
       font-size: 1.25rem;
     }
 
+    .bulletin-social-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .bulletin-social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.52rem 0.9rem;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(3, 24, 19, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .bulletin-social-links a:hover,
+    .bulletin-social-links a:focus-visible {
+      background: rgba(11, 75, 58, 0.86);
+      border-color: rgba(255, 255, 255, 0.24);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
     /* Cards float directly above the flag */
 
     .bulletin-section {
@@ -550,7 +582,7 @@
 
     .bulletin-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       grid-auto-flow: dense;
       gap: 1.25rem;
     }
@@ -575,13 +607,11 @@
     }
 
     .bulletin-card.vertical {
-      grid-column: span 4;
-      min-height: 440px;
+      min-height: 430px;
     }
 
     .bulletin-card.horizontal {
-      grid-column: span 8;
-      min-height: 310px;
+      min-height: 280px;
     }
 
     .bulletin-card:hover,
@@ -892,10 +922,13 @@
         font-size: 1.35rem;
       }
 
+      .bulletin-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .bulletin-card.vertical,
       .bulletin-card.horizontal {
-        grid-column: span 6;
-        min-height: 365px;
+        min-height: 340px;
       }
     }
 
@@ -956,7 +989,6 @@
 
       .bulletin-card.vertical,
       .bulletin-card.horizontal {
-        grid-column: 1;
         min-height: 325px;
       }
 
@@ -1052,6 +1084,8 @@
         <h1 id="bulletinPageTitle"></h1>
 
         <p id="bulletinPageDescription"></p>
+
+        <div class="bulletin-social-links" id="bulletinSocialLinks"></div>
 
         <a class="home-button" id="returnHomeButton" href="../index.html"></a>
       </div>
@@ -1214,6 +1248,19 @@
 
       const returnButton = document.getElementById("returnHomeButton");
       returnButton.textContent = data.page.return_text;
+
+      const socialLinks = document.getElementById("bulletinSocialLinks");
+      const pageLinks = [
+        data.page.facebook
+          ? `<a href="${escapeHTML(data.page.facebook)}" target="_blank" rel="noopener noreferrer">Facebook</a>`
+          : "",
+        data.page.instagram
+          ? `<a href="${escapeHTML(data.page.instagram)}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+          : ""
+      ].filter(Boolean).join("");
+
+      socialLinks.innerHTML = pageLinks;
+      socialLinks.style.display = pageLinks ? "flex" : "none";
 
       bulletinItems = [...data.items].sort(
         (a, b) => new Date(b.date) - new Date(a.date)
