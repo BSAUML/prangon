@@ -220,6 +220,7 @@
     .nav-logo-box {
       width: 164px;
       height: 106px;
+      transform: translateX(48px);
       position: relative;
       display: grid;
       place-items: center;
@@ -234,7 +235,7 @@
 
     .nav-logo-box:hover,
     .nav-logo-box:focus-visible {
-      transform: translateY(-2px);
+      transform: translate(48px, -2px);
       opacity: 0.9;
       outline: none;
     }
@@ -257,12 +258,12 @@
       inset: 0;
       z-index: 2;
       min-height: 68px;
-      display: none;
+      display: grid;
       place-items: center;
       color: rgba(255, 255, 255, 0.96);
-      font-size: 1.22rem;
+      font-size: 1.28rem;
       font-weight: 600;
-      line-height: 0.95;
+      line-height: 0.92;
       text-align: center;
       text-shadow:
         0 2px 5px rgba(0, 0, 0, 0.9),
@@ -335,6 +336,12 @@
       .nav-logo-box {
         width: 130px;
         height: 84px;
+        transform: translateX(28px);
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translate(28px, -2px);
       }
 
       .uml-logo-link {
@@ -384,6 +391,12 @@
         width: 104px;
         height: 72px;
         border-radius: 14px;
+        transform: translateX(12px);
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translate(12px, -2px);
       }
 
       .nav-logo-fallback {
@@ -443,6 +456,12 @@
         height: 54px;
         padding: 0.15rem;
         border-radius: 10px;
+        transform: translateX(0);
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
       }
 
       .nav-logo-fallback {
@@ -979,7 +998,7 @@
           <img
             src="../assets/bsa-bulletin.png"
             alt="BSA Bulletin"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            onerror="this.style.display='none';"
           >
           <span class="nav-logo-fallback">BSA<br>Bulletin</span>
         </a>
@@ -988,7 +1007,7 @@
           <img
             src="../assets/bsa-community.png"
             alt="BSA Community"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            onerror="this.style.display='none';"
           >
           <span class="nav-logo-fallback">BSA<br>Community</span>
         </a>
