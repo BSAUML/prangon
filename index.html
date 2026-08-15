@@ -6,42 +6,75 @@
 
   <meta
     name="description"
-    content="Official website of the Bangladesh Students Association at the University of Massachusetts Lowell."
+    content="Official website of the Bangladeshi Students Association at the University of Massachusetts Lowell."
   >
 
-  <title>Bangladesh Students Association | UMass Lowell</title>
+  <title>Bangladeshi Students Association | UMass Lowell</title>
+
+  <!-- One font for the entire page: Atma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
-      --green: #006a4e;
-      --green-dark: #064c39;
-      --red: #d62828;
-      --text: #18211e;
-      --muted: #66716d;
-      --line: #e4e9e7;
-      --soft: #f7f9f8;
+      --green: #0b4b3a;
+      --green-deep: #082f26;
+      --green-dark: #061f1a;
+      --red: #7f2429;
+      --red-deep: #5f1b20;
       --white: #ffffff;
+      --text-light: rgba(255, 255, 255, 0.95);
+      --text-soft: rgba(255, 255, 255, 0.76);
+      --line: rgba(255, 255, 255, 0.16);
+      --header-line: #e4e9e7;
       --max-width: 1160px;
-      --radius: 18px;
+      --radius: 20px;
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      --font: "Atma", cursive;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: var(--font);
     }
 
     html {
       scroll-behavior: smooth;
+      background: var(--green-deep);
     }
 
     body {
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
+      min-height: 100vh;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 72% 37%,
+          rgba(127, 36, 41, 0.62) 0,
+          rgba(127, 36, 41, 0.52) 14vw,
+          rgba(95, 27, 32, 0.28) 24vw,
+          rgba(95, 27, 32, 0) 40vw
+        ),
+        radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.025) 0%,
+          rgba(0, 0, 0, 0.14) 68%,
+          rgba(0, 0, 0, 0.34) 100%
+        ),
+        linear-gradient(
+          145deg,
+          #061f1a 0%,
+          #0a392e 43%,
+          #082f27 72%,
+          #051b17 100%
+        );
+      background-attachment: fixed;
+      line-height: 1.55;
     }
 
     img {
@@ -63,156 +96,642 @@
       margin-inline: auto;
     }
 
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      margin-bottom: 0.65rem;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-    }
-
-    .section-intro {
-      max-width: 680px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* Header */
+    /* Dark expanded top bar */
 
     .site-header {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.94);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 31, 25, 0.98),
+          rgba(6, 42, 33, 0.96)
+        );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(12px);
     }
 
     .navbar {
-      min-height: 76px;
-      display: flex;
+      min-height: 180px;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(360px, 1fr) minmax(510px, auto);
       align-items: center;
-      justify-content: space-between;
       gap: 2rem;
     }
 
-    .brand {
+    .brand-block {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      justify-self: start;
+      gap: 1.05rem;
       min-width: 0;
     }
 
-    .brand-logo {
-      width: 44px;
-      height: 44px;
+    .brand-logo-wrap {
+      width: 104px;
+      height: 104px;
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
-      overflow: hidden;
-      color: var(--white);
-      background: var(--green);
+      flex: 0 0 104px;
+    }
+
+    .brand-logo-wrap img {
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
       border-radius: 50%;
-      font-size: 0.8rem;
-      font-weight: 800;
     }
 
-    .brand-text {
-      line-height: 1.15;
+    .brand-logo-fallback {
+      width: 104px;
+      height: 104px;
+      display: none;
+      place-items: center;
+      color: var(--white);
+      background: #0c5d49;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 600;
     }
 
-    .brand-text strong {
+    .brand-copy {
       display: block;
-      font-size: 0.98rem;
+      min-width: 0;
+      line-height: 1.02;
+      white-space: nowrap;
     }
 
-    .brand-text span {
+    .brand-copy strong {
       display: block;
-      margin-top: 0.18rem;
-      color: var(--muted);
-      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.28rem;
+      font-weight: 600;
     }
 
-    .top-nav {
+    .brand-copy span {
+      display: block;
+      margin-top: 0.22rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .prangon-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 285px;
+      min-height: 88px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .prangon-center img {
+      width: 100%;
+      max-width: 280px;
+      max-height: 96px;
+      object-fit: contain;
+    }
+
+    .prangon-fallback {
+      min-height: 72px;
+      display: none;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .header-right {
+      grid-column: 2;
+      justify-self: end;
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.28rem;
+      transform: translateX(72px);
     }
 
-    .top-nav a {
-      padding: 0.72rem 1rem;
-      border: 1px solid transparent;
+    .nav-logo-box {
+      width: 178px;
+      height: 116px;
+      transform: none;
+      position: relative;
+      left: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      transition:
+        transform 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .nav-logo-box:hover,
+    .nav-logo-box:focus-visible {
+      transform: translateY(-2px);
+      opacity: 0.9;
+      outline: none;
+    }
+
+    .active-logo {
+      background: transparent;
+      border: 0;
+    }
+
+    .nav-logo-box img {
+      width: 100%;
+      max-width: 172px;
+      max-height: 112px;
+      object-fit: contain;
+      opacity: 1;
+    }
+
+    .nav-logo-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.24rem;
+      font-weight: 600;
+      line-height: 0.9;
+      text-align: center;
+      text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.72);
+      pointer-events: none;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 104px;
+      margin: 0 -0.45rem 0 1.55rem;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .uml-logo-link {
+      width: 132px;
+      min-height: 104px;
+      display: grid;
+      place-items: center;
+      padding: 0.35rem;
+    }
+
+    .uml-logo-link img {
+      width: 100%;
+      max-width: 122px;
+      max-height: 92px;
+      object-fit: contain;
+    }
+
+    .uml-logo-fallback {
+      min-height: 60px;
+      display: none;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .navbar {
+        min-height: 160px;
+        grid-template-columns: minmax(310px, 1fr) minmax(430px, auto);
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 88px;
+        height: 88px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 88px;
+      }
+
+      .brand-copy strong {
+        font-size: 1.08rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.78rem;
+      }
+
+      .prangon-center {
+        width: 210px;
+      }
+
+      .nav-logo-box {
+        width: 130px;
+        height: 84px;
+        transform: none;
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .uml-logo-link {
+        width: 96px;
+      }
+
+      .header-divider {
+        height: 86px;
+        margin: 0 0.25rem;
+      }
+
+      .header-right {
+        transform: translateX(28px);
+      }
+    }
+
+    @media (max-width: 930px) {
+      .navbar {
+        min-height: 140px;
+        grid-template-columns: minmax(250px, 1fr) minmax(355px, auto);
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 70px;
+        height: 70px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 70px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.85rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.62rem;
+      }
+
+      .prangon-center {
+        width: 160px;
+      }
+
+      .nav-logo-box {
+        width: 104px;
+        height: 72px;
+        border-radius: 14px;
+        transform: none;
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .nav-logo-fallback {
+        font-size: 1rem;
+      }
+
+      .uml-logo-link {
+        width: 78px;
+      }
+
+      .header-right {
+        transform: translateX(12px);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navbar {
+        min-height: 112px;
+        grid-template-columns: minmax(180px, 1fr) minmax(240px, auto);
+        gap: 0.3rem;
+      }
+
+      .brand-block {
+        gap: 0.5rem;
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 50px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.62rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.46rem;
+      }
+
+      .prangon-center {
+        width: 105px;
+      }
+
+      .header-right {
+        gap: 0.15rem;
+        transform: translateX(0);
+      }
+
+      .nav-logo-box {
+        width: 67px;
+        height: 54px;
+        padding: 0.15rem;
+        border-radius: 10px;
+        transform: translateX(0);
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .nav-logo-fallback {
+        min-height: 42px;
+        font-size: 0.7rem;
+      }
+
+      .header-divider {
+        height: 52px;
+        margin: 0 0.12rem;
+      }
+
+      .uml-logo-link {
+        width: 58px;
+        min-height: 52px;
+      }
+
+      .uml-logo-fallback {
+        min-height: 40px;
+        font-size: 0.65rem;
+      }
+    }
+
+
+    /* Only BSA Bulletin: move right beside BSA Community */
+    .header-right .nav-logo-box:first-child {
+      left: 105px;
+    }
+
+    /* Hero sits directly on the flag background — no white panel */
+
+    .bulletin-hero {
+      position: relative;
+      padding: 5.2rem 0 3.2rem;
+    }
+
+    .hero-inner {
+      /* Keep the normal .container width so this aligns with the cards below. */
+    }
+
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.15rem;
+      padding: 0.68rem 1.05rem;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(3, 24, 19, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
-      font-size: 0.92rem;
-      font-weight: 750;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+      font-size: 1.25rem;
+      font-weight: 400;
       transition: 160ms ease;
     }
 
-    .top-nav a:hover,
-    .top-nav a:focus-visible {
-      color: var(--green);
-      background: #f2f7f5;
-      border-color: #d7e6e0;
-    }
-
-    .top-nav a:last-child {
+    .home-button:hover,
+    .home-button:focus-visible {
       color: var(--white);
-      background: var(--green);
+      background: rgba(11, 75, 58, 0.9);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
     }
 
-    .top-nav a:last-child:hover,
-    .top-nav a:last-child:focus-visible {
+    h1 {
+      font-size: clamp(2.7rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .bulletin-hero p {
+      max-width: 670px;
+      margin-top: 1.4rem;
+      color: var(--text-soft);
+      font-size: 1.25rem;
+    }
+
+    /* Cards float directly above the flag */
+
+    .bulletin-section {
+      padding: 0.8rem 0 6rem;
+    }
+
+    .bulletin-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 1.25rem;
+    }
+
+    .bulletin-card {
+      position: relative;
+      overflow: hidden;
       color: var(--white);
-      background: var(--green-dark);
+      background: rgba(4, 32, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: var(--radius);
+      box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.42),
+        0 3px 12px rgba(0, 0, 0, 0.26);
+      cursor: pointer;
+      text-align: left;
+      isolation: isolate;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
     }
 
-    /* Hero */
-
-    .hero {
-      padding: 7rem 0 6rem;
-      border-bottom: 1px solid var(--line);
+    .bulletin-card.vertical {
+      grid-column: span 4;
+      min-height: 440px;
     }
 
-    .hero-copy {
-      max-width: 830px;
+    .bulletin-card.horizontal {
+      grid-column: span 8;
+      min-height: 310px;
     }
 
-    .hero-kicker {
+    .bulletin-card:hover,
+    .bulletin-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 26px 62px rgba(0, 0, 0, 0.52);
+      outline: none;
+    }
+
+    .bulletin-card img {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 350ms ease;
+    }
+
+    .bulletin-card:hover img {
+      transform: scale(1.025);
+    }
+
+    .bulletin-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          to top,
+          rgba(2, 18, 14, 0.96) 0%,
+          rgba(2, 18, 14, 0.58) 48%,
+          rgba(2, 18, 14, 0.14) 100%
+        );
+    }
+
+    .card-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.82);
+      background:
+        radial-gradient(
+          circle at 72% 36%,
+          rgba(190, 32, 41, 0.96) 0,
+          rgba(190, 32, 41, 0.96) 18%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(135deg, #004d39, #003b2d);
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+
+    .card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.55rem;
+    }
+
+    .card-date {
+      display: block;
+      margin-bottom: 0.22rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .card-title {
+      display: block;
+      max-width: 94%;
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      font-weight: 600;
+      line-height: 0.95;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 4rem 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+      border: 1px dashed rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      font-size: 1.2rem;
+    }
+
+    /* Homepage */
+
+    .home-hero {
+      padding: 6rem 0 5rem;
+    }
+
+    .home-hero-copy {
+      max-width: 860px;
+    }
+
+    .home-kicker {
       display: inline-block;
-      margin-bottom: 1rem;
-      color: var(--red);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    .hero h1 {
-      max-width: 850px;
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
+    .home-hero h1 {
+      max-width: 900px;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: clamp(3.8rem, 8vw, 6.8rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
     }
 
-    .hero h1 span {
-      color: var(--green);
+    .home-hero h1 span {
+      color: rgba(215, 84, 88, 0.95);
     }
 
-    .hero p {
-      max-width: 710px;
-      margin-top: 1.6rem;
-      color: var(--muted);
-      font-size: 1.12rem;
+    .home-hero p {
+      max-width: 720px;
+      margin-top: 1.5rem;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 1.25rem;
     }
 
-    /* Featured slider */
+    .home-section {
+      padding: 4.8rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
 
-    .featured {
-      background: var(--soft);
-      border-bottom: 1px solid var(--line);
+    .home-section-title {
+      margin-bottom: 0.65rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .home-section-intro {
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 1.05rem;
+    }
+
+    .featured-home {
+      background: rgba(2, 18, 14, 0.12);
     }
 
     .featured-head {
@@ -223,18 +742,24 @@
       gap: 2rem;
     }
 
-    .featured-head a {
-      color: var(--green);
-      font-weight: 750;
+    .text-link {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      font-weight: 500;
       white-space: nowrap;
+    }
+
+    .text-link:hover {
+      color: var(--white);
     }
 
     .slider {
       position: relative;
       overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 24px;
+      background: rgba(3, 24, 19, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 22px;
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.30);
     }
 
     .slides {
@@ -251,7 +776,13 @@
 
     .slide-image {
       min-height: 320px;
-      background: #dfe7e4;
+      background:
+        radial-gradient(
+          circle at 70% 40%,
+          rgba(127, 36, 41, 0.48),
+          transparent 38%
+        ),
+        linear-gradient(145deg, #0b4b3a, #061f1a);
     }
 
     .slide-image img {
@@ -264,10 +795,9 @@
       min-height: 320px;
       display: grid;
       place-items: center;
-      color: #7b8984;
-      background:
-        linear-gradient(135deg, #e8efec, #dbe7e2);
-      font-weight: 700;
+      color: rgba(255, 255, 255, 0.40);
+      font-size: 1.15rem;
+      font-weight: 500;
     }
 
     .slide-copy {
@@ -275,26 +805,27 @@
       flex-direction: column;
       justify-content: center;
       padding: clamp(2rem, 5vw, 4rem);
+      background: rgba(3, 24, 19, 0.48);
     }
 
     .slide-copy small {
-      margin-bottom: 0.8rem;
-      color: var(--red);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+      color: rgba(215, 84, 88, 0.94);
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .slide-copy h3 {
-      margin-bottom: 1rem;
-      font-size: clamp(1.8rem, 4vw, 2.7rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      margin-bottom: 0.85rem;
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      line-height: 1;
     }
 
     .slide-copy p {
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 1.05rem;
     }
 
     .slider-controls {
@@ -308,16 +839,15 @@
     .slider-button {
       width: 42px;
       height: 42px;
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.94);
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(3, 24, 19, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 50%;
       cursor: pointer;
     }
 
     .slider-button:hover {
-      background: var(--white);
-      border-color: #c8d2ce;
+      background: rgba(11, 75, 58, 0.94);
     }
 
     .slider-dots {
@@ -331,16 +861,14 @@
       width: 8px;
       height: 8px;
       border: 0;
-      background: #c9d2cf;
+      background: rgba(255, 255, 255, 0.25);
       border-radius: 50%;
       cursor: pointer;
     }
 
     .dot.active {
-      background: var(--green);
+      background: rgba(215, 84, 88, 0.95);
     }
-
-    /* Main destinations */
 
     .destination-grid {
       margin-top: 2.25rem;
@@ -355,51 +883,49 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 2rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
       transition:
         transform 180ms ease,
-        border-color 180ms ease,
-        background 180ms ease;
+        background 180ms ease,
+        border-color 180ms ease;
     }
 
     .destination:hover {
       transform: translateY(-3px);
-      background: var(--soft);
-      border-color: #bfd1ca;
+      background: rgba(11, 75, 58, 0.46);
+      border-color: rgba(255, 255, 255, 0.16);
     }
 
-    .destination-label {
-      color: var(--red);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .destination-label,
+    .resource-card small {
+      color: rgba(215, 84, 88, 0.92);
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .destination h3 {
-      margin: 1rem 0 0.65rem;
-      font-size: clamp(1.7rem, 4vw, 2.4rem);
-      letter-spacing: -0.04em;
+      margin: 0.8rem 0 0.6rem;
+      color: var(--white);
+      font-size: 2rem;
+      font-weight: 600;
     }
 
-    .destination p {
-      max-width: 500px;
-      color: var(--muted);
+    .destination p,
+    .resource-card p {
+      color: rgba(255, 255, 255, 0.58);
     }
 
     .destination-arrow {
       margin-top: 2rem;
-      color: var(--green);
-      font-weight: 800;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 500;
     }
 
-    /* Resources */
-
-    .resources {
-      background: var(--soft);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .resources-home {
+      background: rgba(2, 18, 14, 0.12);
     }
 
     .resource-grid {
@@ -411,42 +937,195 @@
 
     .resource-card {
       padding: 1.7rem;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      transition: border-color 180ms ease;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
     }
 
     .resource-card:hover {
-      border-color: #b8ccc4;
-    }
-
-    .resource-card small {
-      color: var(--red);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      transform: translateY(-2px);
+      background: rgba(11, 75, 58, 0.42);
+      border-color: rgba(255, 255, 255, 0.16);
     }
 
     .resource-card h3 {
       margin: 0.5rem 0;
-      font-size: 1.3rem;
+      color: var(--white);
+      font-size: 1.45rem;
+      font-weight: 600;
     }
-
-    .resource-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* Contact */
 
     .contact-box {
       min-height: 180px;
       margin-top: 2rem;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
     }
 
-    /* Footer */
+    @media (max-width: 800px) {
+      .slide {
+        grid-template-columns: 1fr;
+      }
+
+      .slide-copy {
+        padding: 2rem;
+      }
+
+      .destination-grid,
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .home-hero {
+        padding: 4.5rem 0 3.8rem;
+      }
+
+      .home-section {
+        padding: 4rem 0;
+      }
+    }
+
+    /* Detail panel */
+
+    .panel-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      background: rgba(0, 16, 12, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .panel-backdrop.open {
+      display: block;
+    }
+
+    .detail-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2001;
+      width: min(590px, 100%);
+      height: 100vh;
+      overflow-y: auto;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 78% 18%,
+          rgba(190, 32, 41, 0.9) 0,
+          rgba(190, 32, 41, 0.48) 20%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(155deg, #004d39, #002e23);
+      box-shadow: -18px 0 55px rgba(0, 0, 0, 0.42);
+      transform: translateX(100%);
+      transition: transform 240ms ease;
+    }
+
+    .detail-panel.open {
+      transform: translateX(0);
+    }
+
+    .panel-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: var(--white);
+      background: rgba(0, 34, 25, 0.8);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.55rem;
+    }
+
+    .panel-image {
+      min-height: 350px;
+      background: #003f2f;
+    }
+
+    .panel-image img {
+      height: 100%;
+      min-height: 350px;
+      object-fit: cover;
+    }
+
+    .panel-fallback {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.86);
+      background:
+        radial-gradient(
+          circle at 68% 40%,
+          rgba(190, 32, 41, 0.98) 0,
+          rgba(190, 32, 41, 0.98) 18%,
+          rgba(190, 32, 41, 0) 43%
+        ),
+        linear-gradient(135deg, #00513b, #00372a);
+      font-size: 2.6rem;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      padding: 2.4rem;
+    }
+
+    .panel-date {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .panel-title {
+      margin-bottom: 1rem;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    .panel-description {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.18rem;
+      white-space: pre-line;
+    }
+
+    .panel-links {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .panel-links a {
+      padding: 0.65rem 0.95rem;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    body.panel-open {
+      overflow: hidden;
+    }
+
+    /* Footer: retained as the clean dark bottom bar */
 
     .site-footer {
       padding: 3.5rem 0 1.5rem;
@@ -461,21 +1140,23 @@
     }
 
     .footer-brand {
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
       color: var(--white);
-      font-size: 1.05rem;
-      font-weight: 800;
+      font-size: 1.2rem;
+      font-weight: 600;
     }
 
     .footer-copy {
       max-width: 500px;
       color: rgba(255, 255, 255, 0.64);
+      font-size: 1rem;
     }
 
     .footer-connect h3 {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.65rem;
       color: var(--white);
-      font-size: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
     }
 
     .footer-links {
@@ -483,6 +1164,7 @@
       flex-wrap: wrap;
       gap: 0.9rem;
       list-style: none;
+      font-size: 1rem;
     }
 
     .footer-links a:hover {
@@ -492,68 +1174,118 @@
 
     .footer-bottom {
       margin-top: 3rem;
-      padding-top: 1.3rem;
+      padding-top: 1.25rem;
       display: flex;
       justify-content: space-between;
       gap: 1rem;
       color: rgba(255, 255, 255, 0.5);
       border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.86rem;
+      font-size: 0.92rem;
     }
 
-    /* Responsive */
-
-    @media (max-width: 800px) {
-      .brand-text span {
-        display: none;
-      }
-
-      .slide {
-        grid-template-columns: 1fr;
-      }
-
-      .slide-copy {
-        padding: 2rem;
-      }
-
-      .destination-grid,
-      .resource-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .featured-head {
-        align-items: start;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-    }
-
-    @media (max-width: 620px) {
+    @media (max-width: 1000px) {
       .navbar {
-        min-height: 70px;
+        min-height: 126px;
+      }
+
+      .logo-navbar {
+        grid-template-columns:
+          minmax(70px, 0.8fr)
+          minmax(150px, 1.5fr)
+          minmax(105px, 1fr)
+          minmax(105px, 1fr)
+          minmax(85px, 0.8fr);
         gap: 0.8rem;
       }
 
-      .brand-text {
-        display: none;
+      .logo-slot {
+        min-height: 76px;
+        padding: 0.35rem;
       }
 
-      .top-nav {
-        gap: 0.25rem;
+      .logo-slot img {
+        max-height: 68px;
       }
 
-      .top-nav a {
-        padding: 0.62rem 0.7rem;
-        font-size: 0.8rem;
+      .logo-fallback {
+        min-height: 54px;
+        font-size: 1rem;
       }
 
-      .hero {
-        padding: 5rem 0 4rem;
+      .prangon-fallback {
+        font-size: 1.35rem;
       }
 
-      .section {
-        padding: 4rem 0;
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: span 6;
+        min-height: 365px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        background:
+          radial-gradient(
+            circle at 72% 28%,
+            rgba(127, 36, 41, 0.56) 0,
+            rgba(127, 36, 41, 0.48) 22vw,
+            rgba(127, 36, 41, 0) 52vw
+          ),
+          linear-gradient(145deg, #061f1a, #0a392e 55%, #051b17);
+        background-attachment: fixed;
+      }
+
+      .navbar {
+        min-height: auto;
+      }
+
+      .logo-navbar {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.2rem;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+      }
+
+      .logo-slot {
+        min-height: 52px;
+        padding: 0.2rem;
+        border-radius: 10px;
+      }
+
+      .logo-slot img {
+        max-height: 46px;
+      }
+
+      .logo-fallback {
+        min-height: 42px;
+        font-size: 0.72rem;
+      }
+
+      .prangon-fallback {
+        font-size: 0.88rem;
+      }
+
+      .bulletin-hero {
+        padding: 4.2rem 0 3rem;
+      }
+
+      .home-button {
+        font-size: 1.05rem;
+      }
+
+      .bulletin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: 1;
+        min-height: 325px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
       .footer-bottom {
@@ -566,28 +1298,84 @@
 <body>
   <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="index.html" aria-label="BSA UML homepage">
-        <!-- Replace this placeholder with the actual BSA logo image later. -->
-        <span class="brand-logo">BSA</span>
 
-        <span class="brand-text">
-          <strong>Bangladesh Students Association</strong>
-          <span>University of Massachusetts Lowell</span>
+      <a class="brand-block" id="brandHomeLink" href="index.html" aria-label="BSA UML homepage">
+        <span class="brand-logo-wrap">
+          <img
+            id="bsaLogo"
+            src="assets/bsa-logo.jpg"
+            alt="BSA UML"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+          <span class="brand-logo-fallback">BSA</span>
+        </span>
+
+        <span class="brand-copy">
+          <strong id="associationName"></strong>
+          <span id="associationUniversity"></span>
         </span>
       </a>
 
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="bulletin/index.html">BSA Bulletin</a>
-        <a href="community/index.html">BSA Community</a>
-      </nav>
+      <a class="prangon-center" id="prangonHomeLink" href="index.html" aria-label="UML Prangon homepage">
+        <img
+          id="prangonLogo"
+          src="assets/uml-prangon.png"
+          alt="UMLপ্রাঙ্গণ"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="prangon-fallback">UMLপ্রাঙ্গণ</span>
+      </a>
+
+      <div class="header-right">
+        <a class="nav-logo-box" id="bulletinNavLink" href="index.html" aria-label="BSA Bulletin">
+          <img
+            id="bulletinLogo"
+            src="assets/bsa-bulletin.png"
+            alt="BSA Bulletin"
+            onerror="this.style.display='none';"
+          >
+          <span class="nav-logo-fallback">BSA<br>Bulletin</span>
+        </a>
+
+        <a class="nav-logo-box" id="communityNavLink" href="community/index.html" aria-label="BSA Community">
+          <img
+            id="communityLogo"
+            src="assets/bsa-community.png"
+            alt="BSA Community"
+            onerror="this.style.display='none';"
+          >
+          <span class="nav-logo-fallback">BSA<br>Community</span>
+        </a>
+
+        <span class="header-divider" aria-hidden="true"></span>
+
+        <a
+          class="uml-logo-link"
+          id="umlNavLink"
+          href="https://www.uml.edu/"
+          aria-label="UMass Lowell"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            id="umlLogo"
+            src="assets/umass-lowell.png"
+            alt="UMass Lowell"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+          <span class="uml-logo-fallback">UMass<br>Lowell</span>
+        </a>
+      </div>
+
     </div>
   </header>
 
+
   <main>
-    <section class="hero">
+    <section class="home-hero">
       <div class="container">
-        <div class="hero-copy">
-          <span class="hero-kicker">Welcome to Prangon</span>
+        <div class="home-hero-copy">
+          <span class="home-kicker">Welcome to Prangon</span>
 
           <h1>
             A community that feels
@@ -595,7 +1383,7 @@
           </h1>
 
           <p>
-            The Bangladesh Students Association at UMass Lowell brings students
+            The Bangladeshi Students Association at UMass Lowell brings students
             together through culture, friendship, academic support, celebration,
             and shared community.
           </p>
@@ -603,17 +1391,17 @@
       </div>
     </section>
 
-    <section class="section featured">
+    <section class="home-section featured-home">
       <div class="container">
         <div class="featured-head">
           <div>
-            <h2 class="section-title">Upcoming & featured</h2>
-            <p class="section-intro">
+            <h2 class="home-section-title">Upcoming &amp; featured</h2>
+            <p class="home-section-intro">
               Important events and updates from the BSA community.
             </p>
           </div>
 
-          <a href="bulletin/index.html">View BSA Bulletin →</a>
+          <a class="text-link" href="bulletin/index.html">View BSA Bulletin →</a>
         </div>
 
         <div class="slider" aria-label="Featured BSA updates">
@@ -695,10 +1483,11 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="home-section">
       <div class="container">
-        <h2 class="section-title">Explore BSA UML</h2>
-        <p class="section-intro">
+        <h2 class="home-section-title">Explore BSA UML</h2>
+
+        <p class="home-section-intro">
           Follow what is happening in the association or meet the people who
           make up our community.
         </p>
@@ -706,11 +1495,11 @@
         <div class="destination-grid">
           <a class="destination" href="bulletin/index.html">
             <div>
-              <span class="destination-label">News & events</span>
+              <span class="destination-label">News &amp; events</span>
               <h3>BSA Bulletin</h3>
               <p>
                 Events, announcements, achievements, milestones, and updates
-                from the Bangladesh Students Association and our community.
+                from the Bangladeshi Students Association and our community.
               </p>
             </div>
 
@@ -733,10 +1522,11 @@
       </div>
     </section>
 
-    <section class="section resources" id="resources">
+    <section class="home-section resources-home" id="resources">
       <div class="container">
-        <h2 class="section-title">Resources</h2>
-        <p class="section-intro">
+        <h2 class="home-section-title">Resources</h2>
+
+        <p class="home-section-intro">
           A simple starting point for Bangladeshi students navigating life at
           UMass Lowell and in the wider Lowell community.
         </p>
@@ -763,9 +1553,9 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="home-section" id="contact">
       <div class="container">
-        <h2 class="section-title">Contact Us</h2>
+        <h2 class="home-section-title">Contact Us</h2>
         <div class="contact-box">
           <!-- Contact content will be added later. -->
         </div>
@@ -773,42 +1563,121 @@
     </section>
   </main>
 
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">
-            Bangladesh Students Association at UMass Lowell
-          </div>
+          <div class="footer-brand" id="footerBrand"></div>
 
-          <p class="footer-copy">
-            Building community, celebrating Bangladeshi culture, and supporting
-            students at the University of Massachusetts Lowell.
-          </p>
+          <p class="footer-copy" id="footerDescription"></p>
         </div>
 
         <div class="footer-connect">
-          <h3>Connect</h3>
+          <h3 id="footerConnectHeading"></h3>
 
           <ul class="footer-links">
-            <!-- Replace # with the official BSA UML social links. -->
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <span>
-          © <span id="currentYear"></span> Bangladesh Students Association at UMass Lowell.
+          © <span id="currentYear"></span> <span id="footerCopyrightName"></span>
         </span>
 
-        <span>প্রাঙ্গণ · Community beyond borders</span>
+        <span id="footerTagline"></span>
       </div>
     </div>
   </footer>
 
   <script>
+    /*
+      site.json was originally introduced for pages one directory below root.
+      This helper converts those shared ../ paths for the root homepage.
+    */
+    function rootPath(value = "") {
+      return String(value).replace(/^\.\.\//, "");
+    }
+
+    function applySiteData(site) {
+      document.getElementById("associationName").textContent =
+        site.association.name;
+
+      document.getElementById("associationUniversity").textContent =
+        site.association.university;
+
+      document.getElementById("brandHomeLink").href =
+        "index.html";
+
+      document.getElementById("prangonHomeLink").href =
+        "index.html";
+
+      document.getElementById("bulletinNavLink").href =
+        "bulletin/index.html";
+
+      document.getElementById("communityNavLink").href =
+        "community/index.html";
+
+      document.getElementById("umlNavLink").href =
+        site.navigation.uml_url;
+
+      document.getElementById("bsaLogo").src =
+        rootPath(site.assets.bsa_logo);
+
+      document.getElementById("prangonLogo").src =
+        rootPath(site.assets.prangon_logo);
+
+      document.getElementById("bulletinLogo").src =
+        rootPath(site.assets.bulletin_logo);
+
+      document.getElementById("communityLogo").src =
+        rootPath(site.assets.community_logo);
+
+      document.getElementById("umlLogo").src =
+        rootPath(site.assets.uml_logo);
+
+      document.getElementById("footerBrand").textContent =
+        site.footer.brand;
+
+      document.getElementById("footerDescription").textContent =
+        site.footer.description;
+
+      document.getElementById("footerConnectHeading").textContent =
+        site.footer.connect_heading;
+
+      const instagramLink = document.getElementById("instagramLink");
+      instagramLink.textContent = site.footer.instagram_label;
+      instagramLink.href = site.footer.instagram_url;
+
+      const facebookLink = document.getElementById("facebookLink");
+      facebookLink.textContent = site.footer.facebook_label;
+      facebookLink.href = site.footer.facebook_url;
+
+      document.getElementById("footerCopyrightName").textContent =
+        site.footer.copyright_name;
+
+      document.getElementById("footerTagline").textContent =
+        site.footer.tagline;
+    }
+
+    fetch("assets/site.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load assets/site.json");
+        }
+
+        return response.json();
+      })
+      .then((siteData) => {
+        applySiteData(siteData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     const slides = document.getElementById("slides");
     const dots = [...document.querySelectorAll(".dot")];
     const previousButton = document.getElementById("previousSlide");
