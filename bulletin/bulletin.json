@@ -1,42 +1,970 @@
-[
-  {
-    "id": "welcome-gathering-2026",
-    "title": "Welcome Gathering",
-    "date": "2026-09-05",
-    "image": "images/welcome-gathering.jpg",
-    "layout": "horizontal",
-    "description": "Meet new and returning Bangladeshi students and connect with the BSA community at UMass Lowell. Event details can be added here as they are finalized.",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "id": "fall-graduates-2026",
-    "title": "Celebrating Our Fall Graduates",
-    "date": "2026-12-18",
-    "image": "images/fall-graduates.jpg",
-    "layout": "vertical",
-    "description": "BSA UML congratulates our graduating students and celebrates this important milestone with the wider Bangladeshi community.",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "id": "community-update",
-    "title": "Community Update",
-    "date": "2026-08-20",
-    "image": "images/community-update.jpg",
-    "layout": "vertical",
-    "description": "This is a sample Bulletin entry for an announcement, achievement, faculty update, or other important community news.",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "id": "faculty-news-sample",
-    "title": "Faculty News",
-    "date": "2026-08-15",
-    "image": "images/faculty-news.jpg",
-    "layout": "horizontal",
-    "description": "This sample entry shows how faculty promotions, awards, recognitions, and other community news can appear alongside BSA events.",
-    "facebook": "",
-    "instagram": ""
-  }
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="BSA Bulletin — news, events, announcements, and community updates from the Bangladesh Students Association at UMass Lowell."
+  >
+
+  <title>BSA Bulletin | UMass Lowell</title>
+
+  <!-- One font for the entire page: Atma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --green: #005c43;
+      --green-deep: #003f2f;
+      --green-dark: #002f24;
+      --red: #be2029;
+      --red-deep: #8f171e;
+      --white: #ffffff;
+      --text-light: rgba(255, 255, 255, 0.95);
+      --text-soft: rgba(255, 255, 255, 0.76);
+      --line: rgba(255, 255, 255, 0.16);
+      --header-line: #e4e9e7;
+      --max-width: 1160px;
+      --radius: 20px;
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      --font: "Atma", cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--green-deep);
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 72% 37%,
+          rgba(190, 32, 41, 0.96) 0,
+          rgba(190, 32, 41, 0.96) 15vw,
+          rgba(143, 23, 30, 0.72) 24vw,
+          rgba(143, 23, 30, 0) 38vw
+        ),
+        linear-gradient(
+          145deg,
+          #003c2d 0%,
+          #00543e 45%,
+          #004735 72%,
+          #003528 100%
+        );
+      background-attachment: fixed;
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+    /* Header: retained as a clean white top bar */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      color: #18211e;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--header-line);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar {
+      min-height: 152px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      justify-self: start;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .brand-text {
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 0.12rem;
+      color: #66716d;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .center-wordmark {
+      min-width: 230px;
+      min-height: 78px;
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      padding: 0.2rem 1rem;
+      color: #52605b;
+      border: 1px dashed #c6d0cc;
+      border-radius: 999px;
+      font-size: 1.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .nav-area {
+      display: flex;
+      align-items: center;
+      justify-self: end;
+      gap: 1rem;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.42rem;
+    }
+
+    .top-nav a {
+      min-width: 112px;
+      min-height: 72px;
+      display: grid;
+      place-items: center;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid #dce5e1;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      transition: 160ms ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      color: var(--green);
+      background: #f1f6f4;
+      border-color: #bcd1c9;
+      transform: translateY(-2px);
+    }
+
+    .top-nav .active {
+      color: var(--green-dark);
+      background: #f4f8f6;
+      border-color: #c9d9d3;
+    }
+
+    .top-nav a img {
+      max-width: 104px;
+      max-height: 62px;
+      object-fit: contain;
+    }
+
+    .uml-logo-slot {
+      width: 118px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      padding-left: 1rem;
+      color: #5e6d67;
+      border-left: 1px solid var(--header-line);
+      font-size: 0.77rem;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .uml-logo-slot img {
+      max-width: 108px;
+      max-height: 66px;
+      object-fit: contain;
+    }
+
+    /* Hero sits directly on the flag background — no white panel */
+
+    .bulletin-hero {
+      position: relative;
+      padding: 6.5rem 0 3.8rem;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(4.5rem, 10vw, 8rem);
+      font-weight: 600;
+      line-height: 0.84;
+      letter-spacing: -0.035em;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .bulletin-hero p {
+      max-width: 670px;
+      margin-top: 1.4rem;
+      color: var(--text-soft);
+      font-size: 1.25rem;
+    }
+
+    /* Cards float directly above the flag */
+
+    .bulletin-section {
+      padding: 0.8rem 0 6rem;
+    }
+
+    .bulletin-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 1.25rem;
+    }
+
+    .bulletin-card {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: rgba(0, 38, 28, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      text-align: left;
+      isolation: isolate;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .bulletin-card.vertical {
+      grid-column: span 4;
+      min-height: 440px;
+    }
+
+    .bulletin-card.horizontal {
+      grid-column: span 8;
+      min-height: 310px;
+    }
+
+    .bulletin-card:hover,
+    .bulletin-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.34);
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.38);
+      outline: none;
+    }
+
+    .bulletin-card img {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 350ms ease;
+    }
+
+    .bulletin-card:hover img {
+      transform: scale(1.025);
+    }
+
+    .bulletin-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 20, 15, 0.92) 0%,
+          rgba(0, 20, 15, 0.48) 46%,
+          rgba(0, 20, 15, 0.06) 100%
+        );
+    }
+
+    .card-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.82);
+      background:
+        radial-gradient(
+          circle at 72% 36%,
+          rgba(190, 32, 41, 0.96) 0,
+          rgba(190, 32, 41, 0.96) 18%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(135deg, #004d39, #003b2d);
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+
+    .card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.55rem;
+    }
+
+    .card-date {
+      display: block;
+      margin-bottom: 0.22rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .card-title {
+      display: block;
+      max-width: 94%;
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      font-weight: 600;
+      line-height: 0.95;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 4rem 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+      border: 1px dashed rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      font-size: 1.2rem;
+    }
+
+    /* Detail panel */
+
+    .panel-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      background: rgba(0, 16, 12, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .panel-backdrop.open {
+      display: block;
+    }
+
+    .detail-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2001;
+      width: min(590px, 100%);
+      height: 100vh;
+      overflow-y: auto;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 78% 18%,
+          rgba(190, 32, 41, 0.9) 0,
+          rgba(190, 32, 41, 0.48) 20%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(155deg, #004d39, #002e23);
+      box-shadow: -18px 0 55px rgba(0, 0, 0, 0.42);
+      transform: translateX(100%);
+      transition: transform 240ms ease;
+    }
+
+    .detail-panel.open {
+      transform: translateX(0);
+    }
+
+    .panel-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: var(--white);
+      background: rgba(0, 34, 25, 0.8);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.55rem;
+    }
+
+    .panel-image {
+      min-height: 350px;
+      background: #003f2f;
+    }
+
+    .panel-image img {
+      height: 100%;
+      min-height: 350px;
+      object-fit: cover;
+    }
+
+    .panel-fallback {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.86);
+      background:
+        radial-gradient(
+          circle at 68% 40%,
+          rgba(190, 32, 41, 0.98) 0,
+          rgba(190, 32, 41, 0.98) 18%,
+          rgba(190, 32, 41, 0) 43%
+        ),
+        linear-gradient(135deg, #00513b, #00372a);
+      font-size: 2.6rem;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      padding: 2.4rem;
+    }
+
+    .panel-date {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .panel-title {
+      margin-bottom: 1rem;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    .panel-description {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.18rem;
+      white-space: pre-line;
+    }
+
+    .panel-links {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .panel-links a {
+      padding: 0.65rem 0.95rem;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    body.panel-open {
+      overflow: hidden;
+    }
+
+    /* Footer: retained as the clean dark bottom bar */
+
+    .site-footer {
+      padding: 3.5rem 0 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      background: #082b21;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      margin-bottom: 0.75rem;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer-copy {
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 1rem;
+    }
+
+    .footer-connect h3 {
+      margin-bottom: 0.65rem;
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      list-style: none;
+      font-size: 1rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1000px) {
+      .navbar {
+        min-height: 122px;
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .brand-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .center-wordmark {
+        min-width: 160px;
+        min-height: 64px;
+        font-size: 1.35rem;
+      }
+
+      .uml-logo-slot {
+        display: none;
+      }
+
+      .top-nav a {
+        min-width: 92px;
+        min-height: 62px;
+        font-size: 0.9rem;
+      }
+
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: span 6;
+        min-height: 365px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        background:
+          radial-gradient(
+            circle at 72% 28%,
+            rgba(190, 32, 41, 0.95) 0,
+            rgba(190, 32, 41, 0.95) 22vw,
+            rgba(190, 32, 41, 0) 52vw
+          ),
+          linear-gradient(145deg, #003c2d, #00523c 55%, #00362a);
+        background-attachment: fixed;
+      }
+
+      .navbar {
+        min-height: 92px;
+        grid-template-columns: auto 1fr;
+        gap: 0.65rem;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .center-wordmark {
+        display: none;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .nav-area {
+        gap: 0.2rem;
+      }
+
+      .top-nav {
+        gap: 0.18rem;
+      }
+
+      .top-nav a {
+        min-width: 76px;
+        min-height: 52px;
+        padding: 0.4rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.78rem;
+      }
+
+      .bulletin-hero {
+        padding: 5rem 0 3rem;
+      }
+
+      .bulletin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: 1;
+        min-height: 325px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="../index.html" aria-label="BSA UML homepage">
+        <!-- Replace with official BSA logo later. -->
+        <span class="brand-logo">BSA</span>
+
+        <span class="brand-text">
+          <strong>Bangladesh Students Association</strong>
+          <span>University of Massachusetts Lowell</span>
+        </span>
+      </a>
+
+      <!-- Future UMLপ্রাঙ্গণ wordart -->
+      <div class="center-wordmark" aria-label="UML Prangon wordmark placeholder">
+        UMLপ্রাঙ্গণ
+      </div>
+
+      <div class="nav-area">
+        <nav class="top-nav" aria-label="Main navigation">
+          <!--
+            These two links are intentionally image-ready.
+            Later, replace the text inside each <a> with the corresponding logo image.
+          -->
+          <a class="active" href="index.html">BSA<br>Bulletin</a>
+          <a href="../community/index.html">BSA<br>Community</a>
+        </nav>
+
+        <!--
+          Official UML logo goes here later.
+          Example:
+          <img src="images/umass-lowell-logo.png" alt="UMass Lowell">
+        -->
+        <div class="uml-logo-slot" aria-label="UMass Lowell logo placeholder">
+          UMass<br>Lowell
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bulletin-hero">
+      <div class="container hero-inner">
+        <span class="eyebrow">BSA UML</span>
+        <h1>BSA Bulletin</h1>
+
+        <p>
+          Events, announcements, achievements, milestones, and updates from the
+          Bangladesh Students Association and our wider community.
+        </p>
+      </div>
+    </section>
+
+    <section class="bulletin-section">
+      <div class="container">
+        <div class="bulletin-grid" id="bulletinGrid">
+          <div class="empty-state">Loading Bulletin...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="panel-backdrop" id="panelBackdrop"></div>
+
+  <aside
+    class="detail-panel"
+    id="detailPanel"
+    aria-hidden="true"
+    aria-label="Bulletin details"
+  >
+    <button
+      class="panel-close"
+      id="panelClose"
+      type="button"
+      aria-label="Close details"
+    >
+      ×
+    </button>
+
+    <div id="panelBody"></div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            Bangladesh Students Association at UMass Lowell
+          </div>
+
+          <p class="footer-copy">
+            Building community, celebrating Bangladeshi culture, and supporting
+            students at the University of Massachusetts Lowell.
+          </p>
+        </div>
+
+        <div class="footer-connect">
+          <h3>Connect</h3>
+
+          <ul class="footer-links">
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> Bangladesh Students Association at UMass Lowell.
+        </span>
+
+        <span>প্রাঙ্গণ · Community beyond borders</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const bulletinGrid = document.getElementById("bulletinGrid");
+    const detailPanel = document.getElementById("detailPanel");
+    const panelBackdrop = document.getElementById("panelBackdrop");
+    const panelBody = document.getElementById("panelBody");
+    const panelClose = document.getElementById("panelClose");
+
+    let bulletinItems = [];
+
+    function escapeHTML(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(`${dateString}T12:00:00`);
+
+      return new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).format(date);
+    }
+
+    function safeLayout(layout) {
+      return layout === "horizontal" ? "horizontal" : "vertical";
+    }
+
+    function renderBulletin(items) {
+      if (!items.length) {
+        bulletinGrid.innerHTML =
+          '<div class="empty-state">No Bulletin entries yet.</div>';
+        return;
+      }
+
+      bulletinGrid.innerHTML = items.map((item, index) => `
+        <button
+          class="bulletin-card ${safeLayout(item.layout)}"
+          type="button"
+          data-index="${index}"
+          aria-label="Open ${escapeHTML(item.title)}"
+        >
+          <img
+            src="${escapeHTML(item.image)}"
+            alt=""
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+
+          <span class="card-fallback" style="display:none;">
+            BSA Bulletin
+          </span>
+
+          <span class="card-content">
+            <span class="card-date">${formatDate(item.date)}</span>
+            <span class="card-title">${escapeHTML(item.title)}</span>
+          </span>
+        </button>
+      `).join("");
+
+      document.querySelectorAll(".bulletin-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          openPanel(Number(card.dataset.index));
+        });
+      });
+    }
+
+    function openPanel(index) {
+      const item = bulletinItems[index];
+      if (!item) return;
+
+      const socialLinks = [
+        item.facebook
+          ? `<a href="${escapeHTML(item.facebook)}" target="_blank" rel="noopener noreferrer">Facebook</a>`
+          : "",
+        item.instagram
+          ? `<a href="${escapeHTML(item.instagram)}" target="_blank" rel="noopener noreferrer">Instagram</a>`
+          : ""
+      ].filter(Boolean).join("");
+
+      panelBody.innerHTML = `
+        <div class="panel-image">
+          <img
+            src="${escapeHTML(item.image)}"
+            alt=""
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+
+          <div class="panel-fallback" style="display:none;">
+            BSA Bulletin
+          </div>
+        </div>
+
+        <div class="panel-content">
+          <span class="panel-date">${formatDate(item.date)}</span>
+          <h2 class="panel-title">${escapeHTML(item.title)}</h2>
+          <p class="panel-description">${escapeHTML(item.description)}</p>
+
+          ${socialLinks ? `<div class="panel-links">${socialLinks}</div>` : ""}
+        </div>
+      `;
+
+      detailPanel.classList.add("open");
+      panelBackdrop.classList.add("open");
+      detailPanel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("panel-open");
+      panelClose.focus();
+    }
+
+    function closePanel() {
+      detailPanel.classList.remove("open");
+      panelBackdrop.classList.remove("open");
+      detailPanel.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("panel-open");
+    }
+
+    panelClose.addEventListener("click", closePanel);
+    panelBackdrop.addEventListener("click", closePanel);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closePanel();
+      }
+    });
+
+    fetch("bulletin.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load bulletin.json");
+        }
+        return response.json();
+      })
+      .then((items) => {
+        bulletinItems = [...items].sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
+        renderBulletin(bulletinItems);
+      })
+      .catch((error) => {
+        console.error(error);
+
+        bulletinGrid.innerHTML = `
+          <div class="empty-state">
+            Bulletin data could not be loaded.
+          </div>
+        `;
+      });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
