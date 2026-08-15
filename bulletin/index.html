@@ -21,11 +21,11 @@
 
   <style>
     :root {
-      --green: #005c43;
-      --green-deep: #003f2f;
-      --green-dark: #002f24;
-      --red: #be2029;
-      --red-deep: #8f171e;
+      --green: #0b4b3a;
+      --green-deep: #082f26;
+      --green-dark: #061f1a;
+      --red: #7f2429;
+      --red-deep: #5f1b20;
       --white: #ffffff;
       --text-light: rgba(255, 255, 255, 0.95);
       --text-soft: rgba(255, 255, 255, 0.76);
@@ -55,17 +55,23 @@
       background:
         radial-gradient(
           circle at 72% 37%,
-          rgba(190, 32, 41, 0.96) 0,
-          rgba(190, 32, 41, 0.96) 15vw,
-          rgba(143, 23, 30, 0.72) 24vw,
-          rgba(143, 23, 30, 0) 38vw
+          rgba(127, 36, 41, 0.62) 0,
+          rgba(127, 36, 41, 0.52) 14vw,
+          rgba(95, 27, 32, 0.28) 24vw,
+          rgba(95, 27, 32, 0) 40vw
+        ),
+        radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.025) 0%,
+          rgba(0, 0, 0, 0.14) 68%,
+          rgba(0, 0, 0, 0.34) 100%
         ),
         linear-gradient(
           145deg,
-          #003c2d 0%,
-          #00543e 45%,
-          #004735 72%,
-          #003528 100%
+          #061f1a 0%,
+          #0a392e 43%,
+          #082f27 72%,
+          #051b17 100%
         );
       background-attachment: fixed;
       line-height: 1.55;
@@ -90,16 +96,22 @@
       margin-inline: auto;
     }
 
-    /* Header: retained as a clean white top bar */
+    /* Dark expanded top bar */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      color: #18211e;
-      background: rgba(255, 255, 255, 0.97);
-      border-bottom: 1px solid var(--header-line);
-      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.94);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 31, 25, 0.98),
+          rgba(6, 42, 33, 0.96)
+        );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(12px);
     }
 
     .navbar {
@@ -144,7 +156,7 @@
     .brand-text span {
       display: block;
       margin-top: 0.12rem;
-      color: #66716d;
+      color: rgba(255, 255, 255, 0.58);
       font-size: 0.78rem;
       font-weight: 500;
     }
@@ -156,8 +168,8 @@
       place-items: center;
       justify-self: center;
       padding: 0.2rem 1rem;
-      color: #52605b;
-      border: 1px dashed #c6d0cc;
+      color: rgba(255, 255, 255, 0.72);
+      border: 1px dashed rgba(255, 255, 255, 0.22);
       border-radius: 999px;
       font-size: 1.7rem;
       font-weight: 600;
@@ -183,7 +195,7 @@
       display: grid;
       place-items: center;
       padding: 0.6rem 0.85rem;
-      border: 1px solid #dce5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       font-size: 1.05rem;
       font-weight: 600;
@@ -194,16 +206,16 @@
 
     .top-nav a:hover,
     .top-nav a:focus-visible {
-      color: var(--green);
-      background: #f1f6f4;
-      border-color: #bcd1c9;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
     }
 
     .top-nav .active {
-      color: var(--green-dark);
-      background: #f4f8f6;
-      border-color: #c9d9d3;
+      color: var(--white);
+      background: rgba(11, 75, 58, 0.88);
+      border-color: rgba(255, 255, 255, 0.16);
     }
 
     .top-nav a img {
@@ -218,8 +230,8 @@
       display: grid;
       place-items: center;
       padding-left: 1rem;
-      color: #5e6d67;
-      border-left: 1px solid var(--header-line);
+      color: rgba(255, 255, 255, 0.66);
+      border-left: 1px solid rgba(255, 255, 255, 0.13);
       font-size: 0.77rem;
       font-weight: 700;
       line-height: 1;
@@ -240,25 +252,46 @@
     }
 
     .hero-inner {
-      max-width: 780px;
+      max-width: 900px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 0.7rem;
-      color: rgba(255, 255, 255, 0.72);
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .home-button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1rem;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(3, 24, 19, 0.56);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
       font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: 160ms ease;
+    }
+
+    .home-button:hover,
+    .home-button:focus-visible {
+      background: rgba(11, 75, 58, 0.86);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
     }
 
     h1 {
-      font-size: clamp(4.5rem, 10vw, 8rem);
+      font-size: clamp(3rem, 6vw, 4.9rem);
       font-weight: 600;
-      line-height: 0.84;
-      letter-spacing: -0.035em;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
     }
 
     .bulletin-hero p {
@@ -285,10 +318,12 @@
       position: relative;
       overflow: hidden;
       color: var(--white);
-      background: rgba(0, 38, 28, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.17);
+      background: rgba(4, 32, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.11);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.42),
+        0 3px 12px rgba(0, 0, 0, 0.26);
       cursor: pointer;
       text-align: left;
       isolation: isolate;
@@ -311,8 +346,8 @@
     .bulletin-card:hover,
     .bulletin-card:focus-visible {
       transform: translateY(-5px);
-      border-color: rgba(255, 255, 255, 0.34);
-      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.38);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 26px 62px rgba(0, 0, 0, 0.52);
       outline: none;
     }
 
@@ -337,9 +372,9 @@
       background:
         linear-gradient(
           to top,
-          rgba(0, 20, 15, 0.92) 0%,
-          rgba(0, 20, 15, 0.48) 46%,
-          rgba(0, 20, 15, 0.06) 100%
+          rgba(2, 18, 14, 0.96) 0%,
+          rgba(2, 18, 14, 0.58) 48%,
+          rgba(2, 18, 14, 0.14) 100%
         );
     }
 
@@ -627,11 +662,11 @@
         background:
           radial-gradient(
             circle at 72% 28%,
-            rgba(190, 32, 41, 0.95) 0,
-            rgba(190, 32, 41, 0.95) 22vw,
-            rgba(190, 32, 41, 0) 52vw
+            rgba(127, 36, 41, 0.56) 0,
+            rgba(127, 36, 41, 0.48) 22vw,
+            rgba(127, 36, 41, 0) 52vw
           ),
-          linear-gradient(145deg, #003c2d, #00523c 55%, #00362a);
+          linear-gradient(145deg, #061f1a, #0a392e 55%, #051b17);
         background-attachment: fixed;
       }
 
@@ -671,7 +706,16 @@
       }
 
       .bulletin-hero {
-        padding: 5rem 0 3rem;
+        padding: 4.2rem 0 3rem;
+      }
+
+      .hero-title-row {
+        gap: 0.75rem;
+      }
+
+      .home-button {
+        min-height: 42px;
+        font-size: 0.9rem;
       }
 
       .bulletin-grid {
@@ -738,8 +782,10 @@
   <main>
     <section class="bulletin-hero">
       <div class="container hero-inner">
-        <span class="eyebrow">BSA UML</span>
-        <h1>BSA Bulletin</h1>
+        <div class="hero-title-row">
+          <a class="home-button" href="../index.html">← Return to UMLপ্রাঙ্গণ</a>
+          <h1>BSA Bulletin</h1>
+        </div>
 
         <p>
           Events, announcements, achievements, milestones, and updates from the
