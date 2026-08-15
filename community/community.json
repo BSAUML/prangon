@@ -1,0 +1,46 @@
+{
+  "page": {
+    "title": "BSA Community",
+    "description": "Meet the students, faculty, postdocs, executive boards, and community members who make up the Bangladeshi Students Association at UMass Lowell.",
+    "return_text": "Return to UMLপ্রাঙ্গণ"
+  },
+  "sections": {
+    "eboard": {
+      "title": "E-Board",
+      "academic_years": [
+        "AY-2026-2027",
+        "AY-2025-2026",
+        "AY-2024-2025"
+      ]
+    },
+    "cohorts": {
+      "title": "Student Cohorts",
+      "academic_years": [
+        "AY-2026-2027",
+        "AY-2025-2026",
+        "AY-2024-2025",
+        "AY-2023-2024"
+      ]
+    },
+    "tags": {
+      "title": "Community",
+      "items": [
+        "Graduate Students",
+        "Faculty",
+        "Postdocs",
+        "Undergraduates",
+        "Community Members"
+      ]
+    }
+  },
+  "tally": {
+    "title": "Community at a Glance",
+    "member_types": [
+      "Graduate Students",
+      "Faculty",
+      "Postdocs",
+      "Undergraduates",
+      "Community Members"
+    ]
+  }
+}
