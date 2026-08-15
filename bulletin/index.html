@@ -975,9 +975,10 @@
   <header class="site-header">
     <div class="container navbar">
 
-      <a class="brand-block" href="../index.html" aria-label="BSA UML homepage">
+      <a class="brand-block" id="brandHomeLink" href="../index.html" aria-label="BSA UML homepage">
         <span class="brand-logo-wrap">
           <img
+            id="bsaLogo"
             src="../assets/bsa-logo.jpg"
             alt="BSA UML"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
@@ -986,13 +987,14 @@
         </span>
 
         <span class="brand-copy">
-          <strong>Bangladesh Students Association</strong>
-          <span>University of Massachusetts Lowell</span>
+          <strong id="associationName"></strong>
+          <span id="associationUniversity"></span>
         </span>
       </a>
 
-      <a class="prangon-center" href="../index.html" aria-label="UML Prangon homepage">
+      <a class="prangon-center" id="prangonHomeLink" href="../index.html" aria-label="UML Prangon homepage">
         <img
+          id="prangonLogo"
           src="../assets/uml-prangon.png"
           alt="UMLপ্রাঙ্গণ"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
@@ -1001,8 +1003,9 @@
       </a>
 
       <div class="header-right">
-        <a class="nav-logo-box active-logo" href="index.html" aria-label="BSA Bulletin">
+        <a class="nav-logo-box active-logo" id="bulletinNavLink" href="index.html" aria-label="BSA Bulletin">
           <img
+            id="bulletinLogo"
             src="../assets/bsa-bulletin.png"
             alt="BSA Bulletin"
             onerror="this.style.display='none';"
@@ -1010,8 +1013,9 @@
           <span class="nav-logo-fallback">BSA<br>Bulletin</span>
         </a>
 
-        <a class="nav-logo-box" href="../community/index.html" aria-label="BSA Community">
+        <a class="nav-logo-box" id="communityNavLink" href="../community/index.html" aria-label="BSA Community">
           <img
+            id="communityLogo"
             src="../assets/bsa-community.png"
             alt="BSA Community"
             onerror="this.style.display='none';"
@@ -1023,12 +1027,14 @@
 
         <a
           class="uml-logo-link"
+          id="umlNavLink"
           href="https://www.uml.edu/"
           aria-label="UMass Lowell"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
+            id="umlLogo"
             src="../assets/umass-lowell.png"
             alt="UMass Lowell"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
@@ -1043,14 +1049,11 @@
   <main>
     <section class="bulletin-hero">
       <div class="container hero-inner">
-        <h1>BSA Bulletin</h1>
+        <h1 id="bulletinPageTitle"></h1>
 
-        <p>
-          Events, announcements, achievements, milestones, and updates from the
-          Bangladesh Students Association and our wider community.
-        </p>
+        <p id="bulletinPageDescription"></p>
 
-        <a class="home-button" href="../index.html">Return to UMLপ্রাঙ্গণ</a>
+        <a class="home-button" id="returnHomeButton" href="../index.html"></a>
       </div>
     </section>
 
@@ -1087,32 +1090,27 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">
-            Bangladesh Students Association at UMass Lowell
-          </div>
+          <div class="footer-brand" id="footerBrand"></div>
 
-          <p class="footer-copy">
-            Building community, celebrating Bangladeshi culture, and supporting
-            students at the University of Massachusetts Lowell.
-          </p>
+          <p class="footer-copy" id="footerDescription"></p>
         </div>
 
         <div class="footer-connect">
-          <h3>Connect</h3>
+          <h3 id="footerConnectHeading"></h3>
 
           <ul class="footer-links">
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <span>
-          © <span id="currentYear"></span> Bangladesh Students Association at UMass Lowell.
+          © <span id="currentYear"></span> <span id="footerCopyrightName"></span>
         </span>
 
-        <span>প্রাঙ্গণ · Community beyond borders</span>
+        <span id="footerTagline"></span>
       </div>
     </div>
   </footer>
@@ -1147,6 +1145,81 @@
 
     function safeLayout(layout) {
       return layout === "horizontal" ? "horizontal" : "vertical";
+    }
+
+    function applySiteData(site) {
+      document.getElementById("associationName").textContent =
+        site.association.name;
+
+      document.getElementById("associationUniversity").textContent =
+        site.association.university;
+
+      document.getElementById("brandHomeLink").href =
+        site.navigation.home_url;
+
+      document.getElementById("prangonHomeLink").href =
+        site.navigation.home_url;
+
+      document.getElementById("communityNavLink").href =
+        site.navigation.community_url;
+
+      document.getElementById("umlNavLink").href =
+        site.navigation.uml_url;
+
+      document.getElementById("bsaLogo").src =
+        site.assets.bsa_logo;
+
+      document.getElementById("prangonLogo").src =
+        site.assets.prangon_logo;
+
+      document.getElementById("bulletinLogo").src =
+        site.assets.bulletin_logo;
+
+      document.getElementById("communityLogo").src =
+        site.assets.community_logo;
+
+      document.getElementById("umlLogo").src =
+        site.assets.uml_logo;
+
+      document.getElementById("footerBrand").textContent =
+        site.footer.brand;
+
+      document.getElementById("footerDescription").textContent =
+        site.footer.description;
+
+      document.getElementById("footerConnectHeading").textContent =
+        site.footer.connect_heading;
+
+      const instagramLink = document.getElementById("instagramLink");
+      instagramLink.textContent = site.footer.instagram_label;
+      instagramLink.href = site.footer.instagram_url;
+
+      const facebookLink = document.getElementById("facebookLink");
+      facebookLink.textContent = site.footer.facebook_label;
+      facebookLink.href = site.footer.facebook_url;
+
+      document.getElementById("footerCopyrightName").textContent =
+        site.footer.copyright_name;
+
+      document.getElementById("footerTagline").textContent =
+        site.footer.tagline;
+    }
+
+    function applyBulletinPageData(data) {
+      document.getElementById("bulletinPageTitle").textContent =
+        data.page.title;
+
+      document.getElementById("bulletinPageDescription").textContent =
+        data.page.description;
+
+      const returnButton = document.getElementById("returnHomeButton");
+      returnButton.textContent = data.page.return_text;
+
+      bulletinItems = [...data.items].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
+
+      renderBulletin(bulletinItems);
     }
 
     function renderBulletin(items) {
@@ -1245,26 +1318,33 @@
       }
     });
 
-    fetch("bulletin.json")
-      .then((response) => {
+    Promise.all([
+      fetch("../assets/site.json").then((response) => {
+        if (!response.ok) {
+          throw new Error("Could not load ../assets/site.json");
+        }
+        return response.json();
+      }),
+      fetch("bulletin.json").then((response) => {
         if (!response.ok) {
           throw new Error("Could not load bulletin.json");
         }
         return response.json();
       })
-      .then((items) => {
-        bulletinItems = [...items].sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
-        );
+    ])
+      .then(([siteData, bulletinData]) => {
+        applySiteData(siteData);
+        applyBulletinPageData(bulletinData);
 
-        renderBulletin(bulletinItems);
+        document.getElementById("returnHomeButton").href =
+          siteData.navigation.home_url;
       })
       .catch((error) => {
         console.error(error);
 
         bulletinGrid.innerHTML = `
           <div class="empty-state">
-            Bulletin data could not be loaded.
+            Site data could not be loaded.
           </div>
         `;
       });
