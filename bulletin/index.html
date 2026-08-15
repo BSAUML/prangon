@@ -218,9 +218,9 @@
     }
 
     .nav-logo-box {
-      width: 164px;
-      height: 106px;
-      transform: translateX(48px);
+      width: 178px;
+      height: 116px;
+      transform: translateX(66px);
       position: relative;
       display: grid;
       place-items: center;
@@ -233,11 +233,20 @@
         opacity 160ms ease;
     }
 
+    .header-right .nav-logo-box:first-child {
+      transform: translateX(82px);
+    }
+
     .nav-logo-box:hover,
     .nav-logo-box:focus-visible {
-      transform: translate(48px, -2px);
+      transform: translate(66px, -2px);
       opacity: 0.9;
       outline: none;
+    }
+
+    .header-right .nav-logo-box:first-child:hover,
+    .header-right .nav-logo-box:first-child:focus-visible {
+      transform: translate(82px, -2px);
     }
 
     .active-logo {
@@ -247,8 +256,8 @@
 
     .nav-logo-box img {
       width: 100%;
-      max-width: 158px;
-      max-height: 100px;
+      max-width: 172px;
+      max-height: 112px;
       object-fit: contain;
       opacity: 1;
     }
@@ -261,9 +270,9 @@
       display: grid;
       place-items: center;
       color: rgba(255, 255, 255, 0.96);
-      font-size: 1.28rem;
+      font-size: 1.24rem;
       font-weight: 600;
-      line-height: 0.92;
+      line-height: 0.9;
       text-align: center;
       text-shadow:
         0 2px 5px rgba(0, 0, 0, 0.9),
@@ -274,7 +283,7 @@
     .header-divider {
       width: 1px;
       height: 104px;
-      margin: 0 0.55rem;
+      margin: 0 -0.15rem 0 1.25rem;
       background: rgba(255, 255, 255, 0.12);
     }
 
