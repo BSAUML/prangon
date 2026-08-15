@@ -1,0 +1,29 @@
+{
+  "association": {
+    "name": "Bangladesh Students Association",
+    "university": "University of Massachusetts Lowell"
+  },
+  "navigation": {
+    "home_url": "../index.html",
+    "community_url": "../community/index.html",
+    "uml_url": "https://www.uml.edu/"
+  },
+  "assets": {
+    "bsa_logo": "../assets/bsa-logo.jpg",
+    "prangon_logo": "../assets/uml-prangon.png",
+    "bulletin_logo": "../assets/bsa-bulletin.png",
+    "community_logo": "../assets/bsa-community.png",
+    "uml_logo": "../assets/umass-lowell.png"
+  },
+  "footer": {
+    "brand": "Bangladesh Students Association at UMass Lowell",
+    "description": "Building community, celebrating Bangladeshi culture, and supporting students at the University of Massachusetts Lowell.",
+    "connect_heading": "Connect",
+    "instagram_label": "Instagram",
+    "instagram_url": "#",
+    "facebook_label": "Facebook",
+    "facebook_url": "#",
+    "copyright_name": "Bangladesh Students Association at UMass Lowell.",
+    "tagline": "প্রাঙ্গণ · Community beyond borders"
+  }
+}
