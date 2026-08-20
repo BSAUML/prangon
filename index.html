@@ -1332,7 +1332,11 @@
     .voice-role { color:rgba(255,255,255,.55); margin-bottom:.7rem; }
     .voice-speech { color:rgba(255,255,255,.68); }
 
-    .constitution-wrap { margin-top:2rem; display:grid; grid-template-columns:1.25fr auto; align-items:center; gap:1.5rem; padding:1.8rem; background:rgba(3,24,19,.34); border:1px solid rgba(255,255,255,.09); border-radius:18px; }
+    .constitution-wrap { margin-top:2rem; position:relative; min-height:190px; display:grid; place-items:center; overflow:hidden; background:rgba(3,24,19,.34); border:1px solid rgba(255,255,255,.09); border-radius:18px; transition:transform 180ms ease,border-color 180ms ease; }
+    .constitution-wrap:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.16); }
+    .constitution-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.52; }
+    .constitution-wrap::after { content:""; position:absolute; inset:0; background:rgba(2,18,14,.48); }
+    .constitution-wrap .constitution-label { position:relative; z-index:2; color:white; font-size:1.2rem; font-weight:600; text-align:center; }
     .pill-link { display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1rem; border:1px solid rgba(255,255,255,.2); border-radius:999px; background:rgba(3,24,19,.55); color:white; white-space:nowrap; transition:160ms ease; }
     .pill-link:hover { background:rgba(11,75,58,.8); transform:translateY(-1px); }
     .contact-box { min-height:0; border-top:0; }
@@ -1476,10 +1480,10 @@
       <div class="container">
         <h2 class="home-section-title" id="constitutionTitle"></h2>
         <p class="home-section-intro" id="constitutionDescription"></p>
-        <div class="constitution-wrap">
-          <div><h3 id="constitutionCardTitle" style="font-size:1.7rem;color:white;margin-bottom:.45rem"></h3><p id="constitutionCardDescription" style="color:rgba(255,255,255,.62)"></p></div>
-          <a class="pill-link" id="constitutionLink" href="#">Read the Constitution</a>
-        </div>
+        <a class="constitution-wrap" id="constitutionLink" href="#">
+          <img id="constitutionImage" src="" alt="">
+          <span class="constitution-label" id="constitutionLinkLabel">Read the Constitution</span>
+        </a>
       </div>
     </section>
 
@@ -1555,8 +1559,10 @@
       const vg=document.getElementById("voicesGrid"); vg.innerHTML="";
       (info.voices.people||[]).forEach(p=>{ const card=document.createElement("article"); card.className="voice-card"; card.innerHTML=`<div class="voice-photo">${p.image?`<img src="${rootPath(p.image)}" alt="${p.name||''}">`:'<div class="slide-placeholder">Photo</div>'}</div><div class="voice-meta"><small>${p.title||''}</small><h3>${p.name||''}</h3><div class="voice-role">${p.role||''}</div><p class="voice-speech">${p.speech||''}</p></div>`; vg.appendChild(card); });
       setText("resourcesTitle",info.resources.title); setText("resourcesDescription",info.resources.description);
-      setText("constitutionTitle",info.constitution.title); setText("constitutionDescription",info.constitution.description); setText("constitutionCardTitle",info.constitution.card_title); setText("constitutionCardDescription",info.constitution.card_description);
-      const cl=document.getElementById("constitutionLink"); cl.textContent=info.constitution.link_label||"Read the Constitution"; cl.href=rootPath(info.constitution.url||"#");
+      setText("constitutionTitle",info.constitution.title); setText("constitutionDescription",info.constitution.description);
+      const cl=document.getElementById("constitutionLink"); cl.href=rootPath(info.constitution.url||"#");
+      setText("constitutionLinkLabel",info.constitution.link_label||"Read the Constitution");
+      const ci=document.getElementById("constitutionImage"); ci.src=rootPath(info.constitution.image||"assets/constitution-card.jpg"); ci.alt=info.constitution.image_alt||"BSA Constitution";
       setText("contactTitle",info.contact.title); setText("contactDescription",info.contact.description); const c=document.getElementById("communityContactLink"); c.textContent=info.contact.link_label||"BSA Community"; c.href=rootPath(info.contact.url||"community/index.html");
     }
 
