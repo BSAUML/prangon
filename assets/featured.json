@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Welcome Gathering",
+    "date": "September 2026",
+    "description": "Meet new and returning Bangladeshi students and connect with the BSA UML community.",
+    "image": "assets/welcome-gathering.jpg",
+    "upcoming": true,
+    "facebook": "#",
+    "instagram": "#"
+  },
+  {
+    "title": "Community Celebration",
+    "date": "Fall 2026",
+    "description": "A celebration of Bangladeshi culture, food, language, friendship, and community at UMass Lowell.",
+    "image": "assets/community-celebration.jpg",
+    "upcoming": false,
+    "tag": "Featured",
+    "facebook": "#",
+    "instagram": "#"
+  },
+  {
+    "title": "Latest from BSA UML",
+    "date": "2026",
+    "description": "Use this space for a major student, faculty, association, or wider community highlight.",
+    "image": "assets/bsa-highlight.jpg",
+    "upcoming": false,
+    "tag": "Community"
+  },
+  {
+    "title": "Add Another Event",
+    "date": "Date here",
+    "description": "Duplicate an entry in featured.json whenever you want to add another featured or upcoming card.",
+    "image": "assets/event-placeholder.jpg",
+    "upcoming": false,
+    "tag": "Featured"
+  }
+]

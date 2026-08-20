@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "title": "Welcome to UMLপ্রাঙ্গণ",
+    "description": "UMLপ্রাঙ্গণ is the digital home of the Bangladeshi Students' Association at UMass Lowell, bringing together the people, events, resources, stories, and shared traditions that shape our community. Whether you are new to Lowell, already part of the association, or simply looking to stay connected, this is a place to find what matters across BSA UML.",
+    "image": "assets/prangon-welcome.jpg",
+    "image_alt": "BSA UML community"
+  },
+  "featured": {
+    "title": "Upcoming & featured",
+    "description": "Key events, celebrations, and community highlights from BSA UML."
+  },
+  "explore": {
+    "title": "Explore",
+    "description": "A community that feels like home.",
+    "cards": [
+      {
+        "label": "News & events",
+        "title": "BSA Bulletin",
+        "description": "Events, announcements, achievements, milestones, and updates from BSA UML and the wider Bangladeshi community.",
+        "url": "bulletin/index.html"
+      },
+      {
+        "label": "Our people",
+        "title": "BSA Community",
+        "description": "Meet students, faculty, community members, and current and past BSA executive boards.",
+        "url": "community/index.html"
+      }
+    ]
+  },
+  "voices": {
+    "title": "A Few Words from BSA UML",
+    "description": "No দেশি website is complete without this.",
+    "people": [
+      {
+        "name": "Faculty Advisor Name",
+        "title": "From our Faculty Advisor",
+        "role": "Faculty Advisor, BSA UML",
+        "image": "assets/faculty-advisor.jpg",
+        "speech": "It is a joy to watch this community grow, support one another, and carry a little piece of Bangladesh wherever it goes. May UMLপ্রাঙ্গণ help every student find connection, confidence, and perhaps also the correct invitation to the next biryani night."
+      },
+      {
+        "name": "President Name",
+        "title": "From our President",
+        "role": "President, BSA UML",
+        "image": "assets/president.jpg",
+        "speech": "BSA UML is more than an organization; it is the place where unfamiliar faces become friends, friends become family, and every event somehow ends with more food than originally planned. Welcome to our community and to UMLপ্রাঙ্গণ."
+      }
+    ]
+  },
+  "resources": {
+    "title": "Resources",
+    "description": "A simple starting point for Bangladeshi students navigating UMass Lowell, life in the United States, and the wider Lowell community."
+  },
+  "constitution": {
+    "title": "BSA Constitution",
+    "description": "The constitution defines the structure, responsibilities, and guiding framework of the Bangladeshi Students' Association at UMass Lowell.",
+    "card_title": "Constitution of BSA UML",
+    "card_description": "View the current governing document of the association, including its organizational structure, membership framework, executive responsibilities, and operating principles.",
+    "link_label": "Read the Constitution",
+    "url": "#"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We are available through Instagram, WhatsApp, and Facebook, but it is usually easier to reach a representative directly. Please contact any member of the current E-Board; we are happy to help.",
+    "link_label": "Meet the current E-Board",
+    "url": "community/index.html"
+  }
+}
