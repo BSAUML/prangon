@@ -32,14 +32,14 @@
     "description": "No দেশি website is complete without this.",
     "people": [
       {
-        "name": "Faculty Advisor Name",
+        "name": "Dr. Abu Hena Muhammad Nazir Hossain",
         "title": "From our Faculty Advisor",
-        "role": "Faculty Advisor, BSA UML",
+        "role": "Adjunct Faculty, ECE Dept.",
         "image": "assets/faculty-advisor.jpg",
-        "speech": "It is a joy to watch this community grow, support one another, and carry a little piece of Bangladesh wherever it goes. May UMLপ্রাঙ্গণ help every student find connection, confidence, and perhaps also the correct invitation to the next biryani night."
+        "speech": "তো সালেহ, এই Sunday ফুটবল খেলতে আসবা না?"
       },
       {
-        "name": "President Name",
+        "name": "Progga Paul",
         "title": "From our President",
         "role": "President, BSA UML",
         "image": "assets/president.jpg",
