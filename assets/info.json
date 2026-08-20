@@ -57,6 +57,8 @@
     "card_title": "Constitution of BSA UML",
     "card_description": "View the current governing document of the association, including its organizational structure, membership framework, executive responsibilities, and operating principles.",
     "link_label": "Read the Constitution",
+    "image": "assets/constitution.png",
+    "image_alt": "BSA Constitution",
     "url": "#"
   },
   "contact": {
