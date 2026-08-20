@@ -1437,7 +1437,14 @@
     <section class="home-section featured-home">
       <div class="container">
         <div class="featured-head"><div><h2 class="home-section-title" id="featuredTitle"></h2><p class="home-section-intro" id="featuredDescription"></p></div></div>
-        <div class="featured-strip" id="featuredStrip" aria-label="Upcoming and featured events"></div>
+        <div class="slider" aria-label="Featured BSA events">
+          <div class="slides" id="featuredSlides"></div>
+          <div class="slider-controls">
+            <button class="slider-button" id="previousSlide" type="button" aria-label="Previous slide">←</button>
+            <button class="slider-button" id="nextSlide" type="button" aria-label="Next slide">→</button>
+          </div>
+        </div>
+        <div class="slider-dots" id="featuredDots" aria-label="Select featured slide"></div>
       </div>
     </section>
 
@@ -1553,9 +1560,41 @@
       setText("contactTitle",info.contact.title); setText("contactDescription",info.contact.description); const c=document.getElementById("communityContactLink"); c.textContent=info.contact.link_label||"BSA Community"; c.href=rootPath(info.contact.url||"community/index.html");
     }
 
+    let currentSlide = 0;
+    let featuredTimer = null;
+
+    function showFeaturedSlide(index){
+      const slides = document.getElementById("featuredSlides");
+      const dots = [...document.querySelectorAll("#featuredDots .dot")];
+      if(!dots.length) return;
+      currentSlide = (index + dots.length) % dots.length;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot,i)=>dot.classList.toggle("active",i===currentSlide));
+    }
+
+    function startFeaturedAutoscroll(){
+      clearInterval(featuredTimer);
+      featuredTimer = setInterval(()=>showFeaturedSlide(currentSlide + 1),6000);
+    }
+
     function renderFeatured(items){
-      const wrap=document.getElementById("featuredStrip"); wrap.innerHTML="";
-      items.forEach(item=>{ const card=document.createElement("article"); card.className="feature-card"; const links=[]; if(item.facebook) links.push(`<a href="${item.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>`); if(item.instagram) links.push(`<a href="${item.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>`); card.innerHTML=`${item.image?`<img src="${rootPath(item.image)}" alt="${item.title||''}">`:''}<div class="feature-card-copy">${item.upcoming?'<span class="event-tag upcoming">Upcoming</span>':`<span class="event-tag">${item.tag||'Featured'}</span>`}<div class="feature-card-date">${item.date||''}</div><h3>${item.title||''}</h3><p>${item.description||''}</p>${links.length?`<div class="feature-links">${links.join('')}</div>`:''}</div>`; wrap.appendChild(card); });
+      const wrap=document.getElementById("featuredSlides");
+      const dotsWrap=document.getElementById("featuredDots");
+      wrap.innerHTML=""; dotsWrap.innerHTML="";
+      items.forEach((item,index)=>{
+        const slide=document.createElement("article");
+        slide.className="slide";
+        const links=[];
+        if(item.facebook) links.push(`<a href="${item.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>`);
+        if(item.instagram) links.push(`<a href="${item.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>`);
+        slide.innerHTML=`<div class="slide-image">${item.image?`<img src="${rootPath(item.image)}" alt="${item.title||''}">`:'<div class="slide-placeholder">Event image</div>'}</div><div class="slide-copy">${item.upcoming?'<span class="event-tag upcoming">Upcoming</span>':`<span class="event-tag">${item.tag||'Featured'}</span>`}<small>${item.date||''}</small><h3>${item.title||''}</h3><p>${item.description||''}</p>${links.length?`<div class="feature-links">${links.join('')}</div>`:''}</div>`;
+        wrap.appendChild(slide);
+        const dot=document.createElement("button"); dot.className=`dot${index===0?' active':''}`; dot.type="button"; dot.setAttribute("aria-label",`Slide ${index+1}`); dot.addEventListener("click",()=>{showFeaturedSlide(index);startFeaturedAutoscroll();}); dotsWrap.appendChild(dot);
+      });
+      currentSlide=0; showFeaturedSlide(0);
+      document.getElementById("previousSlide").onclick=()=>{showFeaturedSlide(currentSlide-1);startFeaturedAutoscroll();};
+      document.getElementById("nextSlide").onclick=()=>{showFeaturedSlide(currentSlide+1);startFeaturedAutoscroll();};
+      startFeaturedAutoscroll();
     }
 
     function renderResources(items){ const grid=document.getElementById("resourceGrid"); grid.innerHTML=""; items.forEach(r=>{const a=document.createElement("a");a.className="resource-card";a.href=rootPath(r.url||"#"); if(r.external){a.target="_blank";a.rel="noopener noreferrer";} a.innerHTML=`<small>${r.label||''}</small><h3>${r.title||''}</h3><p>${r.description||''}</p>`;grid.appendChild(a);}); }
