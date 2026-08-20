@@ -1303,6 +1303,11 @@
     .home-kicker.hero-title { margin:0 0 1rem; color:rgba(255,255,255,.96); font-size:clamp(2.2rem,4vw,3.4rem); font-weight:600; line-height:1; }
     .home-hero p { max-width:none; margin-top:0; font-size:1.25rem; }
 
+    .home-jump-nav { padding:0 0 2.2rem; }
+    .home-jump-nav-inner { display:flex; flex-wrap:wrap; justify-content:center; gap:.65rem; }
+    .home-jump-link { display:inline-flex; align-items:center; justify-content:center; padding:.62rem .95rem; color:rgba(255,255,255,.82); background:rgba(3,24,19,.42); border:1px solid rgba(255,255,255,.12); border-radius:999px; font-size:1rem; font-weight:500; transition:160ms ease; }
+    .home-jump-link:hover,.home-jump-link:focus-visible { color:#fff; background:rgba(11,75,58,.78); border-color:rgba(255,255,255,.24); transform:translateY(-1px); outline:none; }
+
     .featured-head { align-items:start; }
     .featured-strip { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, 34%); gap:1rem; overflow-x:auto; padding:.35rem .05rem 1rem; scroll-snap-type:x mandatory; }
     .feature-card { position:relative; min-height:390px; overflow:hidden; border-radius:20px; border:1px solid rgba(255,255,255,.10); background:rgba(3,24,19,.42); box-shadow:0 18px 40px rgba(0,0,0,.28); scroll-snap-align:start; }
@@ -1312,7 +1317,7 @@
     .feature-card-date { color:rgba(255,255,255,.72); font-size:.96rem; }
     .feature-card h3 { margin:.2rem 0 .5rem; color:white; font-size:1.9rem; line-height:1; }
     .feature-card p { color:rgba(255,255,255,.68); }
-    .event-tag { display:inline-flex; align-items:center; gap:.4rem; margin-bottom:.55rem; padding:.3rem .62rem; border-radius:999px; background:rgba(127,36,41,.82); border:1px solid rgba(255,255,255,.2); font-size:.78rem; font-weight:600; }
+    .event-tag { display:inline-flex; align-items:center; align-self:flex-start; width:max-content; max-width:100%; gap:.4rem; margin-bottom:.55rem; padding:.3rem .62rem; border-radius:999px; background:rgba(127,36,41,.82); border:1px solid rgba(255,255,255,.2); font-size:.78rem; font-weight:600; }
     .event-tag.upcoming::before { content:""; width:7px; height:7px; border-radius:50%; background:#fff; animation:pulseTag 1.4s ease-in-out infinite; }
     @keyframes pulseTag { 0%,100%{transform:scale(.75);opacity:.55} 50%{transform:scale(1.25);opacity:1} }
     .feature-links { display:flex; gap:.55rem; margin-top:.85rem; flex-wrap:wrap; }
@@ -1438,7 +1443,18 @@
       </div>
     </section>
 
-    <section class="home-section featured-home">
+    <nav class="home-jump-nav" aria-label="Homepage sections">
+      <div class="container home-jump-nav-inner">
+        <a class="home-jump-link" href="#featured">Featured</a>
+        <a class="home-jump-link" href="#explore">Explore</a>
+        <a class="home-jump-link" href="#voices">বার্তা</a>
+        <a class="home-jump-link" href="#resources">Resources</a>
+        <a class="home-jump-link" href="#constitution">Constitution</a>
+        <a class="home-jump-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="home-section featured-home" id="featured">
       <div class="container">
         <div class="featured-head"><div><h2 class="home-section-title" id="featuredTitle"></h2><p class="home-section-intro" id="featuredDescription"></p></div></div>
         <div class="slider" aria-label="Featured BSA events">
@@ -1452,7 +1468,7 @@
       </div>
     </section>
 
-    <section class="home-section">
+    <section class="home-section" id="explore">
       <div class="container">
         <h2 class="home-section-title" id="exploreTitle"></h2>
         <p class="home-section-intro" id="exploreDescription"></p>
