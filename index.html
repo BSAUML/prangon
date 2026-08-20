@@ -1292,6 +1292,58 @@
         flex-direction: column;
       }
     }
+  
+
+    /* JSON-driven homepage refinements */
+    .home-hero { padding: 5.2rem 0 4.8rem; }
+    .home-hero-grid { display:grid; grid-template-columns: 0.92fr 1.08fr; gap:3rem; align-items:center; }
+    .home-hero-image { min-height:430px; overflow:hidden; border-radius:24px; border:1px solid rgba(255,255,255,.1); background:rgba(3,24,19,.34); box-shadow:var(--shadow); }
+    .home-hero-image img { width:100%; height:100%; min-height:430px; object-fit:cover; }
+    .home-hero-image .slide-placeholder { min-height:430px; }
+    .home-kicker.hero-title { margin:0 0 1rem; color:rgba(255,255,255,.96); font-size:clamp(2.2rem,4vw,3.4rem); font-weight:600; line-height:1; }
+    .home-hero p { max-width:none; margin-top:0; font-size:1.25rem; }
+
+    .featured-head { align-items:start; }
+    .featured-strip { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, 34%); gap:1rem; overflow-x:auto; padding:.35rem .05rem 1rem; scroll-snap-type:x mandatory; }
+    .feature-card { position:relative; min-height:390px; overflow:hidden; border-radius:20px; border:1px solid rgba(255,255,255,.10); background:rgba(3,24,19,.42); box-shadow:0 18px 40px rgba(0,0,0,.28); scroll-snap-align:start; }
+    .feature-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .feature-card::after { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(2,18,14,.96),rgba(2,18,14,.48) 58%,rgba(2,18,14,.08)); }
+    .feature-card-copy { position:absolute; z-index:2; left:0; right:0; bottom:0; padding:1.45rem; }
+    .feature-card-date { color:rgba(255,255,255,.72); font-size:.96rem; }
+    .feature-card h3 { margin:.2rem 0 .5rem; color:white; font-size:1.9rem; line-height:1; }
+    .feature-card p { color:rgba(255,255,255,.68); }
+    .event-tag { display:inline-flex; align-items:center; gap:.4rem; margin-bottom:.55rem; padding:.3rem .62rem; border-radius:999px; background:rgba(127,36,41,.82); border:1px solid rgba(255,255,255,.2); font-size:.78rem; font-weight:600; }
+    .event-tag.upcoming::before { content:""; width:7px; height:7px; border-radius:50%; background:#fff; animation:pulseTag 1.4s ease-in-out infinite; }
+    @keyframes pulseTag { 0%,100%{transform:scale(.75);opacity:.55} 50%{transform:scale(1.25);opacity:1} }
+    .feature-links { display:flex; gap:.55rem; margin-top:.85rem; flex-wrap:wrap; }
+    .feature-links a { padding:.45rem .7rem; border:1px solid rgba(255,255,255,.25); border-radius:999px; font-size:.86rem; }
+
+    .destination-grid { align-items:stretch; }
+    .destination { min-height:220px; }
+    .destination:hover { transform:translateY(-3px); }
+    .destination-arrow { display:none; }
+
+    .voices-grid { margin-top:2.2rem; display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+    .voice-card { display:grid; grid-template-columns:150px 1fr; gap:1.25rem; padding:1.35rem; background:rgba(3,24,19,.34); border:1px solid rgba(255,255,255,.09); border-radius:18px; }
+    .voice-photo { width:150px; aspect-ratio:1/1; overflow:hidden; border-radius:14px; background:rgba(255,255,255,.05); }
+    .voice-photo img { width:100%; height:100%; object-fit:cover; }
+    .voice-meta small { color:rgba(215,84,88,.92); }
+    .voice-meta h3 { margin:.2rem 0 .1rem; color:white; font-size:1.7rem; }
+    .voice-role { color:rgba(255,255,255,.55); margin-bottom:.7rem; }
+    .voice-speech { color:rgba(255,255,255,.68); }
+
+    .constitution-wrap { margin-top:2rem; display:grid; grid-template-columns:1.25fr auto; align-items:center; gap:1.5rem; padding:1.8rem; background:rgba(3,24,19,.34); border:1px solid rgba(255,255,255,.09); border-radius:18px; }
+    .pill-link { display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1rem; border:1px solid rgba(255,255,255,.2); border-radius:999px; background:rgba(3,24,19,.55); color:white; white-space:nowrap; transition:160ms ease; }
+    .pill-link:hover { background:rgba(11,75,58,.8); transform:translateY(-1px); }
+    .contact-box { min-height:0; border-top:0; }
+    .contact-box p { max-width:760px; color:rgba(255,255,255,.64); margin-bottom:1.15rem; }
+
+    @media (max-width:900px){
+      .home-hero-grid,.voices-grid{grid-template-columns:1fr}.home-hero-image{order:2}.featured-strip{grid-auto-columns:minmax(280px,78%)}
+      .voice-card{grid-template-columns:110px 1fr}.voice-photo{width:110px}.constitution-wrap{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){.feature-card{min-height:350px}.featured-strip{grid-auto-columns:88%}.voice-card{grid-template-columns:1fr}.voice-photo{width:100%;max-width:180px}.home-hero-image,.home-hero-image img,.home-hero-image .slide-placeholder{min-height:300px}}
+
   </style>
 </head>
 
@@ -1373,192 +1425,61 @@
 
   <main>
     <section class="home-hero">
-      <div class="container">
+      <div class="container home-hero-grid">
+        <div class="home-hero-image" id="heroImageWrap"><div class="slide-placeholder">Community image</div></div>
         <div class="home-hero-copy">
-          <span class="home-kicker">Welcome to Prangon</span>
-
-          <h1>
-            A community that feels
-            <span>like home.</span>
-          </h1>
-
-          <p>
-            The Bangladeshi Students Association at UMass Lowell brings students
-            together through culture, friendship, academic support, celebration,
-            and shared community.
-          </p>
+          <div class="home-kicker hero-title" id="heroTitle"></div>
+          <p id="heroDescription"></p>
         </div>
       </div>
     </section>
 
     <section class="home-section featured-home">
       <div class="container">
-        <div class="featured-head">
-          <div>
-            <h2 class="home-section-title">Upcoming &amp; featured</h2>
-            <p class="home-section-intro">
-              Important events and updates from the BSA community.
-            </p>
-          </div>
-
-          <a class="text-link" href="bulletin/index.html">View BSA Bulletin →</a>
-        </div>
-
-        <div class="slider" aria-label="Featured BSA updates">
-          <div class="slides" id="slides">
-
-            <article class="slide">
-              <div class="slide-image">
-                <div class="slide-placeholder">Event image</div>
-              </div>
-
-              <div class="slide-copy">
-                <small>Upcoming event</small>
-                <h3>Welcome Gathering</h3>
-                <p>
-                  Meet new and returning Bangladeshi students and connect with
-                  the BSA community at UMass Lowell.
-                </p>
-              </div>
-            </article>
-
-            <article class="slide">
-              <div class="slide-image">
-                <div class="slide-placeholder">Event image</div>
-              </div>
-
-              <div class="slide-copy">
-                <small>BSA event</small>
-                <h3>Community Celebration</h3>
-                <p>
-                  Celebrate Bangladeshi culture, food, language, and community
-                  with students and friends across UML.
-                </p>
-              </div>
-            </article>
-
-            <article class="slide">
-              <div class="slide-image">
-                <div class="slide-placeholder">Update image</div>
-              </div>
-
-              <div class="slide-copy">
-                <small>Community update</small>
-                <h3>Latest from BSA UML</h3>
-                <p>
-                  This space can feature a major student, faculty, community,
-                  or association update.
-                </p>
-              </div>
-            </article>
-
-          </div>
-
-          <div class="slider-controls">
-            <button
-              class="slider-button"
-              id="previousSlide"
-              type="button"
-              aria-label="Previous slide"
-            >
-              ←
-            </button>
-
-            <button
-              class="slider-button"
-              id="nextSlide"
-              type="button"
-              aria-label="Next slide"
-            >
-              →
-            </button>
-          </div>
-        </div>
-
-        <div class="slider-dots" aria-label="Select slide">
-          <button class="dot active" type="button" data-slide="0" aria-label="Slide 1"></button>
-          <button class="dot" type="button" data-slide="1" aria-label="Slide 2"></button>
-          <button class="dot" type="button" data-slide="2" aria-label="Slide 3"></button>
-        </div>
+        <div class="featured-head"><div><h2 class="home-section-title" id="featuredTitle"></h2><p class="home-section-intro" id="featuredDescription"></p></div></div>
+        <div class="featured-strip" id="featuredStrip" aria-label="Upcoming and featured events"></div>
       </div>
     </section>
 
     <section class="home-section">
       <div class="container">
-        <h2 class="home-section-title">Explore BSA UML</h2>
-
-        <p class="home-section-intro">
-          Follow what is happening in the association or meet the people who
-          make up our community.
-        </p>
-
-        <div class="destination-grid">
-          <a class="destination" href="bulletin/index.html">
-            <div>
-              <span class="destination-label">News &amp; events</span>
-              <h3>BSA Bulletin</h3>
-              <p>
-                Events, announcements, achievements, milestones, and updates
-                from the Bangladeshi Students Association and our community.
-              </p>
-            </div>
-
-            <span class="destination-arrow">Open Bulletin →</span>
-          </a>
-
-          <a class="destination" href="community/index.html">
-            <div>
-              <span class="destination-label">Our people</span>
-              <h3>BSA Community</h3>
-              <p>
-                Meet students, faculty, community members, and past and present
-                BSA executive boards.
-              </p>
-            </div>
-
-            <span class="destination-arrow">Meet the Community →</span>
-          </a>
-        </div>
+        <h2 class="home-section-title" id="exploreTitle"></h2>
+        <p class="home-section-intro" id="exploreDescription"></p>
+        <div class="destination-grid" id="exploreGrid"></div>
       </div>
     </section>
 
-    <section class="home-section resources-home" id="resources">
+    <section class="home-section resources-home" id="voices">
       <div class="container">
-        <h2 class="home-section-title">Resources</h2>
+        <h2 class="home-section-title" id="voicesTitle"></h2>
+        <p class="home-section-intro" id="voicesDescription"></p>
+        <div class="voices-grid" id="voicesGrid"></div>
+      </div>
+    </section>
 
-        <p class="home-section-intro">
-          A simple starting point for Bangladeshi students navigating life at
-          UMass Lowell and in the wider Lowell community.
-        </p>
+    <section class="home-section" id="resources">
+      <div class="container">
+        <h2 class="home-section-title" id="resourcesTitle"></h2>
+        <p class="home-section-intro" id="resourcesDescription"></p>
+        <div class="resource-grid" id="resourceGrid"></div>
+      </div>
+    </section>
 
-        <div class="resource-grid">
-          <a class="resource-card" href="#">
-            <small>For incoming students</small>
-            <h3>New Student Guide</h3>
-            <p>
-              Essential information for newly admitted and incoming Bangladeshi
-              students.
-            </p>
-          </a>
-
-          <a class="resource-card" href="#">
-            <small>Useful information</small>
-            <h3>Community Resources</h3>
-            <p>
-              Helpful campus, housing, transportation, local, and community
-              information in one place.
-            </p>
-          </a>
+    <section class="home-section resources-home" id="constitution">
+      <div class="container">
+        <h2 class="home-section-title" id="constitutionTitle"></h2>
+        <p class="home-section-intro" id="constitutionDescription"></p>
+        <div class="constitution-wrap">
+          <div><h3 id="constitutionCardTitle" style="font-size:1.7rem;color:white;margin-bottom:.45rem"></h3><p id="constitutionCardDescription" style="color:rgba(255,255,255,.62)"></p></div>
+          <a class="pill-link" id="constitutionLink" href="#">Read the Constitution</a>
         </div>
       </div>
     </section>
 
     <section class="home-section" id="contact">
       <div class="container">
-        <h2 class="home-section-title">Contact Us</h2>
-        <div class="contact-box">
-          <!-- Contact content will be added later. -->
-        </div>
+        <h2 class="home-section-title" id="contactTitle"></h2>
+        <div class="contact-box"><p id="contactDescription"></p><a class="pill-link" id="communityContactLink" href="community/index.html">BSA Community</a></div>
       </div>
     </section>
   </main>
@@ -1594,127 +1515,58 @@
   </footer>
 
   <script>
-    /*
-      site.json was originally introduced for pages one directory below root.
-      This helper converts those shared ../ paths for the root homepage.
-    */
-    function rootPath(value = "") {
-      return String(value).replace(/^\.\.\//, "");
-    }
+    function rootPath(value = "") { return String(value).replace(/^\.\.\//, ""); }
+    function setText(id, value="") { const el=document.getElementById(id); if(el) el.textContent=value; }
 
     function applySiteData(site) {
-      document.getElementById("associationName").textContent =
-        site.association.name;
-
-      document.getElementById("associationUniversity").textContent =
-        site.association.university;
-
-      document.getElementById("brandHomeLink").href =
-        "index.html";
-
-      document.getElementById("prangonHomeLink").href =
-        "index.html";
-
-      document.getElementById("bulletinNavLink").href =
-        "bulletin/index.html";
-
-      document.getElementById("communityNavLink").href =
-        "community/index.html";
-
-      document.getElementById("umlNavLink").href =
-        site.navigation.uml_url;
-
-      document.getElementById("bsaLogo").src =
-        rootPath(site.assets.bsa_logo);
-
-      document.getElementById("prangonLogo").src =
-        rootPath(site.assets.prangon_logo);
-
-      document.getElementById("bulletinLogo").src =
-        rootPath(site.assets.bulletin_logo);
-
-      document.getElementById("communityLogo").src =
-        rootPath(site.assets.community_logo);
-
-      document.getElementById("umlLogo").src =
-        rootPath(site.assets.uml_logo);
-
-      document.getElementById("footerBrand").textContent =
-        site.footer.brand;
-
-      document.getElementById("footerDescription").textContent =
-        site.footer.description;
-
-      document.getElementById("footerConnectHeading").textContent =
-        site.footer.connect_heading;
-
-      const instagramLink = document.getElementById("instagramLink");
-      instagramLink.textContent = site.footer.instagram_label;
-      instagramLink.href = site.footer.instagram_url;
-
-      const facebookLink = document.getElementById("facebookLink");
-      facebookLink.textContent = site.footer.facebook_label;
-      facebookLink.href = site.footer.facebook_url;
-
-      document.getElementById("footerCopyrightName").textContent =
-        site.footer.copyright_name;
-
-      document.getElementById("footerTagline").textContent =
-        site.footer.tagline;
+      setText("associationName", site.association.name);
+      setText("associationUniversity", site.association.university);
+      document.getElementById("brandHomeLink").href="index.html";
+      document.getElementById("prangonHomeLink").href="index.html";
+      document.getElementById("bulletinNavLink").href="bulletin/index.html";
+      document.getElementById("communityNavLink").href="community/index.html";
+      document.getElementById("umlNavLink").href=site.navigation.uml_url;
+      document.getElementById("bsaLogo").src=rootPath(site.assets.bsa_logo);
+      document.getElementById("prangonLogo").src=rootPath(site.assets.prangon_logo);
+      document.getElementById("bulletinLogo").src=rootPath(site.assets.bulletin_logo);
+      document.getElementById("communityLogo").src=rootPath(site.assets.community_logo);
+      document.getElementById("umlLogo").src=rootPath(site.assets.uml_logo);
+      setText("footerBrand",site.footer.brand); setText("footerDescription",site.footer.description); setText("footerConnectHeading",site.footer.connect_heading);
+      const ig=document.getElementById("instagramLink"); ig.textContent=site.footer.instagram_label; ig.href=site.footer.instagram_url;
+      const fb=document.getElementById("facebookLink"); fb.textContent=site.footer.facebook_label; fb.href=site.footer.facebook_url;
+      setText("footerCopyrightName",site.footer.copyright_name); setText("footerTagline",site.footer.tagline);
     }
 
-    fetch("assets/site.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not load assets/site.json");
-        }
-
-        return response.json();
-      })
-      .then((siteData) => {
-        applySiteData(siteData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    const slides = document.getElementById("slides");
-    const dots = [...document.querySelectorAll(".dot")];
-    const previousButton = document.getElementById("previousSlide");
-    const nextButton = document.getElementById("nextSlide");
-
-    let currentSlide = 0;
-    const totalSlides = dots.length;
-
-    function showSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-      dots.forEach((dot, dotIndex) => {
-        dot.classList.toggle("active", dotIndex === currentSlide);
-      });
+    function renderInfo(info){
+      setText("heroTitle",info.hero.title); setText("heroDescription",info.hero.description);
+      const hero=document.getElementById("heroImageWrap"); if(info.hero.image){ hero.innerHTML=`<img src="${rootPath(info.hero.image)}" alt="${info.hero.image_alt || ''}">`; }
+      setText("featuredTitle",info.featured.title); setText("featuredDescription",info.featured.description);
+      setText("exploreTitle",info.explore.title); setText("exploreDescription",info.explore.description);
+      const eg=document.getElementById("exploreGrid"); eg.innerHTML="";
+      (info.explore.cards||[]).forEach(c=>{ const a=document.createElement("a"); a.className="destination"; a.href=rootPath(c.url||"#"); a.innerHTML=`<div><span class="destination-label">${c.label||''}</span><h3>${c.title||''}</h3><p>${c.description||''}</p></div>`; eg.appendChild(a); });
+      setText("voicesTitle",info.voices.title); setText("voicesDescription",info.voices.description);
+      const vg=document.getElementById("voicesGrid"); vg.innerHTML="";
+      (info.voices.people||[]).forEach(p=>{ const card=document.createElement("article"); card.className="voice-card"; card.innerHTML=`<div class="voice-photo">${p.image?`<img src="${rootPath(p.image)}" alt="${p.name||''}">`:'<div class="slide-placeholder">Photo</div>'}</div><div class="voice-meta"><small>${p.title||''}</small><h3>${p.name||''}</h3><div class="voice-role">${p.role||''}</div><p class="voice-speech">${p.speech||''}</p></div>`; vg.appendChild(card); });
+      setText("resourcesTitle",info.resources.title); setText("resourcesDescription",info.resources.description);
+      setText("constitutionTitle",info.constitution.title); setText("constitutionDescription",info.constitution.description); setText("constitutionCardTitle",info.constitution.card_title); setText("constitutionCardDescription",info.constitution.card_description);
+      const cl=document.getElementById("constitutionLink"); cl.textContent=info.constitution.link_label||"Read the Constitution"; cl.href=rootPath(info.constitution.url||"#");
+      setText("contactTitle",info.contact.title); setText("contactDescription",info.contact.description); const c=document.getElementById("communityContactLink"); c.textContent=info.contact.link_label||"BSA Community"; c.href=rootPath(info.contact.url||"community/index.html");
     }
 
-    previousButton.addEventListener("click", () => {
-      showSlide(currentSlide - 1);
-    });
+    function renderFeatured(items){
+      const wrap=document.getElementById("featuredStrip"); wrap.innerHTML="";
+      items.forEach(item=>{ const card=document.createElement("article"); card.className="feature-card"; const links=[]; if(item.facebook) links.push(`<a href="${item.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>`); if(item.instagram) links.push(`<a href="${item.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>`); card.innerHTML=`${item.image?`<img src="${rootPath(item.image)}" alt="${item.title||''}">`:''}<div class="feature-card-copy">${item.upcoming?'<span class="event-tag upcoming">Upcoming</span>':`<span class="event-tag">${item.tag||'Featured'}</span>`}<div class="feature-card-date">${item.date||''}</div><h3>${item.title||''}</h3><p>${item.description||''}</p>${links.length?`<div class="feature-links">${links.join('')}</div>`:''}</div>`; wrap.appendChild(card); });
+    }
 
-    nextButton.addEventListener("click", () => {
-      showSlide(currentSlide + 1);
-    });
+    function renderResources(items){ const grid=document.getElementById("resourceGrid"); grid.innerHTML=""; items.forEach(r=>{const a=document.createElement("a");a.className="resource-card";a.href=rootPath(r.url||"#"); if(r.external){a.target="_blank";a.rel="noopener noreferrer";} a.innerHTML=`<small>${r.label||''}</small><h3>${r.title||''}</h3><p>${r.description||''}</p>`;grid.appendChild(a);}); }
 
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        showSlide(Number(dot.dataset.slide));
-      });
-    });
-
-    setInterval(() => {
-      showSlide(currentSlide + 1);
-    }, 6000);
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    Promise.all([
+      fetch("assets/site.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/site.json");return r.json()}),
+      fetch("assets/info.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/info.json");return r.json()}),
+      fetch("assets/featured.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/featured.json");return r.json()}),
+      fetch("assets/resources.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/resources.json");return r.json()})
+    ]).then(([site,info,featured,resources])=>{applySiteData(site);renderInfo(info);renderFeatured(featured);renderResources(resources);}).catch(console.error);
+    document.getElementById("currentYear").textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
