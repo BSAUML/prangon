@@ -1677,9 +1677,11 @@
       document.getElementById("bulletinLogo").src=rootPath(site.assets.bulletin_logo);
       document.getElementById("communityLogo").src=rootPath(site.assets.community_logo);
       document.getElementById("umlLogo").src=rootPath(site.assets.uml_logo);
-      setText("footerBrand",site.footer.brand); setText("footerDescription",site.footer.description); setText("footerConnectHeading",site.footer.connect_heading);
+      setText("footerBrand",site.footer.brand); setText("footerDescription",site.footer.description); setText("footerMaintained",site.footer.maintained_by || ""); setText("footerConnectHeading",site.footer.connect_heading);
       const ig=document.getElementById("instagramLink"); ig.textContent=site.footer.instagram_label; ig.href=site.footer.instagram_url;
       const fb=document.getElementById("facebookLink"); fb.textContent=site.footer.facebook_label; fb.href=site.footer.facebook_url;
+      const wa=document.getElementById("whatsappLink"); wa.textContent=site.footer.whatsapp_label || "WhatsApp"; wa.href=site.footer.whatsapp_url || "#";
+      const gh=document.getElementById("githubLink"); gh.textContent=site.footer.github_label || "GitHub"; gh.href=site.footer.github_url || "#";
       setText("footerCopyrightName",site.footer.copyright_name); setText("footerTagline",site.footer.tagline);
     }
 
