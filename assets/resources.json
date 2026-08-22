@@ -7,16 +7,23 @@
     "external": false
   },
   {
-    "label": "Useful information",
+    "label": "Everyday essentials",
     "title": "Community Resources",
     "description": "Helpful campus, housing, transportation, local, and community information in one place.",
     "url": "#",
     "external": false
   },
   {
-    "label": "Practical help",
-    "title": "Tax Help",
-    "description": "Basic tax-season guidance and links to useful resources for students and community members.",
+    "label": "Around the city",
+    "title": "Explore Lowell",
+    "description": "Discover places to visit, eat, shop, relax, and explore around Lowell and the surrounding area.",
+    "url": "#",
+    "external": false
+  },
+  {
+    "label": "Religion & worship",
+    "title": "Spiritual Life",
+    "description": "Find mosques, temples, prayer spaces, halal food, and other faith-related resources around Lowell.",
     "url": "#",
     "external": false
   }
