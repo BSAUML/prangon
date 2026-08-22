@@ -24,6 +24,11 @@
     "facebook_label": "Facebook",
     "facebook_url": "#",
     "copyright_name": "Bangladeshi Students Association at UMass Lowell.",
-    "tagline": "প্রাঙ্গণ · Community beyond borders"
+    "tagline": "প্রাঙ্গণ · Community beyond borders",
+    "maintained_by": "This website is maintained by graduate students of the University of Massachusetts Lowell.",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_url": "#",
+    "github_label": "GitHub",
+    "github_url": "#"
   }
 }
