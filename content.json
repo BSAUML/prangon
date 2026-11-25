@@ -78,7 +78,7 @@
           "title": "From our President",
           "role": "Graduate Research Assistant, Department of Pharmaceutical Sciences",
           "image": "assets/president.jpg",
-          "speech": "Insert speech here"
+          "speech": "BSA is more than just a student association. It's a community away from home. Serving as a President of BSA is both an honor and responsibility. I look forward to working with all our members to strenthen our community and celebrate the culture and connections that bring us together."
         }
       ]
     },
@@ -103,43 +103,6 @@
       "url": "community/index.html"
     }
   },
-  "featured": [
-    {
-      "title": "Welcome Gathering",
-      "date": "September 2026",
-      "description": "Meet new and returning Bangladeshi students and connect with the BSA UML community.",
-      "image": "",
-      "upcoming": true,
-      "facebook": "",
-      "instagram": ""
-    },
-    {
-      "title": "Community Celebration",
-      "date": "Fall 2026",
-      "description": "A celebration of Bangladeshi culture, food, language, friendship, and community at UMass Lowell.",
-      "image": "",
-      "upcoming": false,
-      "tag": "Featured",
-      "facebook": "",
-      "instagram": ""
-    },
-    {
-      "title": "Latest from BSA UML",
-      "date": "2026",
-      "description": "Use this space for a major student, faculty, association, or wider community highlight.",
-      "image": "",
-      "upcoming": false,
-      "tag": "Community"
-    },
-    {
-      "title": "Add Another Event",
-      "date": "Date here",
-      "description": "Duplicate an entry in featured.json whenever you want to add another featured or upcoming card.",
-      "image": "",
-      "upcoming": false,
-      "tag": "Featured"
-    }
-  ],
   "resources": [
     {
       "label": "For incoming students",
