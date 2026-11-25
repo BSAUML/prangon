@@ -21,14 +21,12 @@
       "description": "Building community, celebrating Bangladeshi culture, and supporting students at the University of Massachusetts Lowell.",
       "connect_heading": "Connect",
       "instagram_label": "Instagram",
-      "instagram_url": "#",
+      "instagram_url": "https://www.instagram.com/bsa.uml?gwpx=M3ZuNXFnaHhpdXI0",
       "facebook_label": "Facebook",
-      "facebook_url": "#",
+      "facebook_url": "https://www.facebook.com/profile.php?id=100086471186659",
       "copyright_name": "Bangladeshi Students Association at UMass Lowell.",
       "tagline": "প্রাঙ্গণ · Community beyond borders",
       "maintained_by": "This website is maintained by graduate students of the University of Massachusetts Lowell.",
-      "whatsapp_label": "WhatsApp",
-      "whatsapp_url": "#",
       "github_label": "GitHub",
       "github_url": "https://github.com/BSAUML/prangon"
     }
@@ -98,7 +96,7 @@
     },
     "contact": {
       "title": "Contact Us",
-      "description": "We are available through Instagram, WhatsApp, and Facebook, but it is usually easier to reach a representative directly. Please contact any member of the current E-Board; we are happy to help.",
+      "description": "We are available through Instagram and Facebook, but it is usually easier to reach a representative directly. Please contact any member of the current E-Board; we are happy to help.",
       "link_label": "Meet the current E-Board",
       "url": "community/index.html"
     }
@@ -136,9 +134,7 @@
   "bulletin": {
     "title": "BSA Bulletin",
     "description": "Events, announcements, achievements, milestones, and updates from the Bangladesh Students Association and our wider community.",
-    "return_text": "Return to UMLপ্রাঙ্গণ",
-    "facebook": "",
-    "instagram": ""
+    "return_text": "Return to UMLপ্রাঙ্গণ"
   },
   "community": {
     "page": {
