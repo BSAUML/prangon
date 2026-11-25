@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="BSA Community — students, faculty, postdocs, executive boards, and community members connected with the Bangladeshi Students Association at UMass Lowell."
+  >
+
+  <title>BSA Community | UMass Lowell</title>
+  <link rel="icon" type="image/jpeg" href="../assets/bsa-logo.jpg">
+
+  <!-- One font for the entire page: Atma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --green: #0b4b3a;
+      --green-deep: #082f26;
+      --green-dark: #061f1a;
+      --red: #7f2429;
+      --red-deep: #5f1b20;
+      --white: #ffffff;
+      --text-light: rgba(255, 255, 255, 0.95);
+      --text-soft: rgba(255, 255, 255, 0.76);
+      --line: rgba(255, 255, 255, 0.16);
+      --header-line: #e4e9e7;
+      --max-width: 1160px;
+      --radius: 20px;
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      --font: "Atma", cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--green-deep);
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 72% 37%,
+          rgba(127, 36, 41, 0.62) 0,
+          rgba(127, 36, 41, 0.52) 14vw,
+          rgba(95, 27, 32, 0.28) 24vw,
+          rgba(95, 27, 32, 0) 40vw
+        ),
+        radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.025) 0%,
+          rgba(0, 0, 0, 0.14) 68%,
+          rgba(0, 0, 0, 0.34) 100%
+        ),
+        linear-gradient(
+          145deg,
+          #061f1a 0%,
+          #0a392e 43%,
+          #082f27 72%,
+          #051b17 100%
+        );
+      background-attachment: fixed;
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+    /* Dark expanded top bar */
+
+    .site-header {
+      position: relative;
+      z-index: 1000;
+      color: rgba(255, 255, 255, 0.94);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 31, 25, 0.98),
+          rgba(6, 42, 33, 0.96)
+        );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar {
+      min-height: 180px;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(360px, 1fr) minmax(510px, auto);
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      gap: 1.05rem;
+      min-width: 0;
+    }
+
+    .brand-logo-wrap {
+      width: 104px;
+      height: 104px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 104px;
+    }
+
+    .brand-logo-wrap img {
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand-logo-fallback {
+      width: 104px;
+      height: 104px;
+      display: none;
+      place-items: center;
+      color: var(--white);
+      background: #0c5d49;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .brand-copy {
+      display: block;
+      min-width: 0;
+      line-height: 1.02;
+      white-space: nowrap;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.28rem;
+      font-weight: 600;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 0.22rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .prangon-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 285px;
+      min-height: 88px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .prangon-center img {
+      width: 100%;
+      max-width: 280px;
+      max-height: 96px;
+      object-fit: contain;
+    }
+
+    .prangon-fallback {
+      min-height: 72px;
+      display: none;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .header-right {
+      grid-column: 2;
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 0.28rem;
+      transform: translateX(72px);
+    }
+
+    .nav-logo-box {
+      width: 178px;
+      height: 116px;
+      transform: none;
+      position: relative;
+      left: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      transition:
+        transform 160ms ease,
+        opacity 160ms ease;
+    }
+
+    .nav-logo-box:hover,
+    .nav-logo-box:focus-visible {
+      transform: translateY(-2px);
+      opacity: 0.9;
+      outline: none;
+    }
+
+    .active-logo {
+      background: transparent;
+      border: 0;
+    }
+
+    .nav-logo-box img {
+      width: 100%;
+      max-width: 172px;
+      max-height: 112px;
+      object-fit: contain;
+      opacity: 1;
+    }
+
+    .nav-logo-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.24rem;
+      font-weight: 600;
+      line-height: 0.9;
+      text-align: center;
+      text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.72);
+      pointer-events: none;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 104px;
+      margin: 0 -0.45rem 0 1.55rem;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .uml-logo-link {
+      width: 132px;
+      min-height: 104px;
+      display: grid;
+      place-items: center;
+      padding: 0.35rem;
+    }
+
+    .uml-logo-link img {
+      width: 100%;
+      max-width: 122px;
+      max-height: 92px;
+      object-fit: contain;
+    }
+
+    .uml-logo-fallback {
+      min-height: 60px;
+      display: none;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .navbar {
+        min-height: 160px;
+        grid-template-columns: minmax(310px, 1fr) minmax(430px, auto);
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 88px;
+        height: 88px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 88px;
+      }
+
+      .brand-copy strong {
+        font-size: 1.08rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.78rem;
+      }
+
+      .prangon-center {
+        width: 210px;
+      }
+
+      .nav-logo-box {
+        width: 130px;
+        height: 84px;
+        transform: none;
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .uml-logo-link {
+        width: 96px;
+      }
+
+      .header-divider {
+        height: 86px;
+        margin: 0 0.25rem;
+      }
+
+      .header-right {
+        transform: translateX(28px);
+      }
+    }
+
+    @media (max-width: 930px) {
+      .navbar {
+        min-height: 140px;
+        grid-template-columns: minmax(250px, 1fr) minmax(355px, auto);
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 70px;
+        height: 70px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 70px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.85rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.62rem;
+      }
+
+      .prangon-center {
+        width: 160px;
+      }
+
+      .nav-logo-box {
+        width: 104px;
+        height: 72px;
+        border-radius: 14px;
+        transform: none;
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .nav-logo-fallback {
+        font-size: 1rem;
+      }
+
+      .uml-logo-link {
+        width: 78px;
+      }
+
+      .header-right {
+        transform: translateX(12px);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .navbar {
+        min-height: 112px;
+        grid-template-columns: minmax(180px, 1fr) minmax(240px, auto);
+        gap: 0.3rem;
+      }
+
+      .brand-block {
+        gap: 0.5rem;
+      }
+
+      .brand-logo-wrap,
+      .brand-logo-wrap img,
+      .brand-logo-fallback {
+        width: 50px;
+        height: 50px;
+      }
+
+      .brand-logo-wrap {
+        flex-basis: 50px;
+      }
+
+      .brand-copy strong {
+        font-size: 0.62rem;
+      }
+
+      .brand-copy span {
+        font-size: 0.46rem;
+      }
+
+      .prangon-center {
+        width: 105px;
+      }
+
+      .header-right {
+        gap: 0.15rem;
+        transform: translateX(0);
+      }
+
+      .nav-logo-box {
+        width: 67px;
+        height: 54px;
+        padding: 0.15rem;
+        border-radius: 10px;
+        transform: translateX(0);
+      }
+
+      .nav-logo-box:hover,
+      .nav-logo-box:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .nav-logo-fallback {
+        min-height: 42px;
+        font-size: 0.7rem;
+      }
+
+      .header-divider {
+        height: 52px;
+        margin: 0 0.12rem;
+      }
+
+      .uml-logo-link {
+        width: 58px;
+        min-height: 52px;
+      }
+
+      .uml-logo-fallback {
+        min-height: 40px;
+        font-size: 0.65rem;
+      }
+    }
+
+
+    /* Mobile header: stack into three clean rows */
+    @media (max-width: 680px) {
+      .site-header .navbar {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+      }
+
+      .site-header .brand-block {
+        width: 100%;
+        justify-content: center;
+        justify-self: auto;
+        gap: 0.75rem;
+      }
+
+      .site-header .brand-logo-wrap,
+      .site-header .brand-logo-wrap img,
+      .site-header .brand-logo-fallback {
+        width: 58px;
+        height: 58px;
+      }
+
+      .site-header .brand-logo-wrap {
+        flex-basis: 58px;
+      }
+
+      .site-header .brand-copy {
+        white-space: normal;
+        text-align: left;
+      }
+
+      .site-header .brand-copy strong {
+        font-size: 0.92rem;
+      }
+
+      .site-header .brand-copy span {
+        font-size: 0.68rem;
+      }
+
+      .site-header .prangon-center {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 160px;
+        min-height: 64px;
+        margin: 0.45rem auto 0.55rem;
+        transform: none;
+      }
+
+      .site-header .header-right {
+        width: 100%;
+        display: flex;
+        grid-column: auto;
+        justify-self: auto;
+        justify-content: center;
+        align-items: center;
+        gap: 0.45rem;
+        transform: none;
+      }
+
+      .site-header .nav-logo-box {
+        position: relative;
+        left: auto !important;
+        width: 86px;
+        height: 64px;
+        padding: 0;
+        transform: none;
+      }
+
+      .site-header .nav-logo-box img {
+        max-width: 82px;
+        max-height: 58px;
+      }
+
+      .site-header .nav-logo-fallback {
+        min-height: 50px;
+        font-size: 0.62rem;
+        line-height: 0.92;
+      }
+
+      .site-header .header-divider {
+        height: 56px;
+        margin: 0 0.15rem;
+      }
+
+      .site-header .uml-logo-link {
+        width: 66px;
+        min-height: 58px;
+        padding: 0.2rem;
+      }
+
+      .site-header .uml-logo-link img {
+        max-width: 62px;
+        max-height: 52px;
+      }
+
+      .site-header .uml-logo-fallback {
+        min-height: 44px;
+        font-size: 0.58rem;
+      }
+    }
+
+    /* Only BSA Bulletin: move right beside BSA Community */
+    .header-right .nav-logo-box:first-child {
+      left: 105px;
+    }
+
+    /* Hero sits directly on the flag background — no white panel */
+
+    .bulletin-hero {
+      position: relative;
+      padding: 5.2rem 0 3.2rem;
+    }
+
+    .hero-inner {
+      /* Keep the normal .container width so this aligns with the cards below. */
+    }
+
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.15rem;
+      padding: 0.68rem 1.05rem;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(3, 24, 19, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+      font-size: 1.25rem;
+      font-weight: 400;
+      transition: 160ms ease;
+    }
+
+    .home-button:hover,
+    .home-button:focus-visible {
+      color: var(--white);
+      background: rgba(11, 75, 58, 0.9);
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
+    }
+
+    .bulletin-hero p {
+      max-width: 670px;
+      margin-top: 1.4rem;
+      color: var(--text-soft);
+      font-size: 1.25rem;
+    }
+
+    /* Cards float directly above the flag */
+
+    .bulletin-section {
+      padding: 0.8rem 0 6rem;
+    }
+
+    .bulletin-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 1.25rem;
+    }
+
+    .bulletin-card {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: rgba(4, 32, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: var(--radius);
+      box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.42),
+        0 3px 12px rgba(0, 0, 0, 0.26);
+      cursor: pointer;
+      text-align: left;
+      isolation: isolate;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+    }
+
+    .bulletin-card.vertical {
+      grid-column: span 4;
+      min-height: 440px;
+    }
+
+    .bulletin-card.horizontal {
+      grid-column: span 8;
+      min-height: 310px;
+    }
+
+    .bulletin-card:hover,
+    .bulletin-card:focus-visible {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 26px 62px rgba(0, 0, 0, 0.52);
+      outline: none;
+    }
+
+    .bulletin-card img {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 350ms ease;
+    }
+
+    .bulletin-card:hover img {
+      transform: scale(1.025);
+    }
+
+    .bulletin-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(
+          to top,
+          rgba(2, 18, 14, 0.96) 0%,
+          rgba(2, 18, 14, 0.58) 48%,
+          rgba(2, 18, 14, 0.14) 100%
+        );
+    }
+
+    .card-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.82);
+      background:
+        radial-gradient(
+          circle at 72% 36%,
+          rgba(190, 32, 41, 0.96) 0,
+          rgba(190, 32, 41, 0.96) 18%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(135deg, #004d39, #003b2d);
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+
+    .card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.55rem;
+    }
+
+    .card-date {
+      display: block;
+      margin-bottom: 0.22rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .card-title {
+      display: block;
+      max-width: 94%;
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      font-weight: 600;
+      line-height: 0.95;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 4rem 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      text-align: center;
+      border: 1px dashed rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      font-size: 1.2rem;
+    }
+
+    /* Community directory */
+
+    .community-hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      align-items: start;
+      gap: 3rem;
+    }
+
+    .community-directory {
+      padding: 0.8rem 0 6rem;
+    }
+
+    .community-main {
+      min-width: 0;
+    }
+
+    .community-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 2rem;
+    }
+
+    .community-tab {
+      min-height: 46px;
+      padding: 0.62rem 1.05rem;
+      color: rgba(255, 255, 255, 0.68);
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition:
+        color 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .community-tab:hover,
+    .community-tab:focus-visible {
+      color: rgba(255, 255, 255, 0.94);
+      background: rgba(11, 75, 58, 0.72);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .community-tab.active {
+      color: var(--white);
+      background: rgba(11, 75, 58, 0.92);
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.20);
+    }
+
+    .community-panel[hidden] {
+      display: none;
+    }
+
+    .community-section {
+      padding: 0 0 3.2rem;
+    }
+
+    .section-heading-row {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading-row h2,
+    .community-tally h2 {
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .member-group + .member-group {
+      margin-top: 2.2rem;
+    }
+
+    .group-title {
+      margin-bottom: 0.9rem;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+
+    .profile-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .profile {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+    }
+
+    .profile-photo {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 58px;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.86);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11, 75, 58, 0.95),
+          rgba(95, 27, 32, 0.68)
+        );
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 50%;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-copy {
+      min-width: 0;
+    }
+
+    .profile-name {
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.05;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .profile-affiliation {
+      display: -webkit-box;
+      margin-top: 0.22rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.18;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .community-tally {
+      padding: 1.35rem;
+      background: rgba(3, 24, 19, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-tally {
+      margin-top: 0;
+    }
+
+    .community-tally h2 {
+      margin-bottom: 1rem;
+      font-size: 1.45rem;
+    }
+
+    .tally-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tally-row:first-child {
+      border-top: 0;
+    }
+
+    .tally-label {
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.92rem;
+      line-height: 1.05;
+    }
+
+    .tally-count {
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .empty-group {
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 0.92rem;
+    }
+
+    .directory-error {
+      padding: 2rem 0;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    @media (max-width: 1000px) {
+      .community-hero-layout {
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 2rem;
+      }
+
+      .profile-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .community-hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-tally {
+        margin-top: 1rem;
+      }
+
+      .profile-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    /* Workshopped E-Board presentation */
+
+    .eboard-current-group {
+      margin-bottom: 3rem;
+      padding: 1.4rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.20);
+    }
+
+    .eboard-current-group .group-title {
+      margin-bottom: 1.25rem;
+      color: rgba(255, 255, 255, 0.90);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+
+    .eboard-current-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .eboard-current-card {
+      min-width: 0;
+      padding: 1rem;
+      background: rgba(6, 31, 25, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+    }
+
+    .eboard-current-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.84);
+      background: linear-gradient(145deg, rgba(11, 75, 58, 0.95), rgba(95, 27, 32, 0.68));
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 14px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .eboard-current-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .eboard-current-position {
+      margin-top: 0.9rem;
+      color: rgba(215, 84, 88, 0.92);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .eboard-current-name {
+      margin-top: 0.18rem;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .eboard-current-affiliation {
+      display: -webkit-box;
+      margin-top: 0.28rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.85rem;
+      line-height: 1.2;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .eboard-current-bio {
+      margin-top: 0.7rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .eboard-history-card {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem;
+      background: rgba(3, 24, 19, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+    }
+
+    .eboard-history-position {
+      color: rgba(215, 84, 88, 0.88);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .eboard-history-bio {
+      display: -webkit-box;
+      margin-top: 0.22rem;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.8rem;
+      line-height: 1.2;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    @media (max-width: 900px) {
+      .eboard-current-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .eboard-current-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Detail panel */
+
+    .panel-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      background: rgba(0, 16, 12, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .panel-backdrop.open {
+      display: block;
+    }
+
+    .detail-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2001;
+      width: min(590px, 100%);
+      height: 100vh;
+      overflow-y: auto;
+      color: var(--text-light);
+      background:
+        radial-gradient(
+          circle at 78% 18%,
+          rgba(190, 32, 41, 0.9) 0,
+          rgba(190, 32, 41, 0.48) 20%,
+          rgba(190, 32, 41, 0) 42%
+        ),
+        linear-gradient(155deg, #004d39, #002e23);
+      box-shadow: -18px 0 55px rgba(0, 0, 0, 0.42);
+      transform: translateX(100%);
+      transition: transform 240ms ease;
+    }
+
+    .detail-panel.open {
+      transform: translateX(0);
+    }
+
+    .panel-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: var(--white);
+      background: rgba(0, 34, 25, 0.8);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.55rem;
+    }
+
+    .panel-image {
+      min-height: 350px;
+      background: #003f2f;
+    }
+
+    .panel-image img {
+      height: 100%;
+      min-height: 350px;
+      object-fit: cover;
+    }
+
+    .panel-fallback {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.86);
+      background:
+        radial-gradient(
+          circle at 68% 40%,
+          rgba(190, 32, 41, 0.98) 0,
+          rgba(190, 32, 41, 0.98) 18%,
+          rgba(190, 32, 41, 0) 43%
+        ),
+        linear-gradient(135deg, #00513b, #00372a);
+      font-size: 2.6rem;
+      font-weight: 600;
+    }
+
+    .panel-content {
+      padding: 2.4rem;
+    }
+
+    .panel-date {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .panel-title {
+      margin-bottom: 1rem;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    .panel-description {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.18rem;
+      white-space: pre-line;
+    }
+
+    .panel-links {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .panel-links a {
+      padding: 0.65rem 0.95rem;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    body.panel-open {
+      overflow: hidden;
+    }
+
+    /* Footer: retained as the clean dark bottom bar */
+
+    .site-footer {
+      padding: 3.5rem 0 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      background: #082b21;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      margin-bottom: 0.75rem;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer-copy {
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 1rem;
+    }
+
+    .footer-maintained {
+      max-width: 560px;
+      margin-top: 0.8rem;
+      color: rgba(255, 255, 255, 0.50);
+      font-size: 0.92rem;
+    }
+
+    .footer-connect h3 {
+      margin-bottom: 0.65rem;
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      list-style: none;
+      font-size: 1rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1000px) {
+      .navbar {
+        min-height: 126px;
+      }
+
+      .logo-navbar {
+        grid-template-columns:
+          minmax(70px, 0.8fr)
+          minmax(150px, 1.5fr)
+          minmax(105px, 1fr)
+          minmax(105px, 1fr)
+          minmax(85px, 0.8fr);
+        gap: 0.8rem;
+      }
+
+      .logo-slot {
+        min-height: 76px;
+        padding: 0.35rem;
+      }
+
+      .logo-slot img {
+        max-height: 68px;
+      }
+
+      .logo-fallback {
+        min-height: 54px;
+        font-size: 1rem;
+      }
+
+      .prangon-fallback {
+        font-size: 1.35rem;
+      }
+
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: span 6;
+        min-height: 365px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        background:
+          radial-gradient(
+            circle at 72% 28%,
+            rgba(127, 36, 41, 0.56) 0,
+            rgba(127, 36, 41, 0.48) 22vw,
+            rgba(127, 36, 41, 0) 52vw
+          ),
+          linear-gradient(145deg, #061f1a, #0a392e 55%, #051b17);
+        background-attachment: fixed;
+      }
+
+      .navbar {
+        min-height: auto;
+      }
+
+      .logo-navbar {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.2rem;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+      }
+
+      .logo-slot {
+        min-height: 52px;
+        padding: 0.2rem;
+        border-radius: 10px;
+      }
+
+      .logo-slot img {
+        max-height: 46px;
+      }
+
+      .logo-fallback {
+        min-height: 42px;
+        font-size: 0.72rem;
+      }
+
+      .prangon-fallback {
+        font-size: 0.88rem;
+      }
+
+      .bulletin-hero {
+        padding: 4.2rem 0 3rem;
+      }
+
+      .home-button {
+        font-size: 1.05rem;
+      }
+
+      .bulletin-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bulletin-card.vertical,
+      .bulletin-card.horizontal {
+        grid-column: 1;
+        min-height: 325px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a class="brand-block" id="brandHomeLink" href="../index.html" aria-label="BSA UML homepage">
+        <span class="brand-logo-wrap">
+          <img
+            id="bsaLogo"
+            src="../assets/bsa-logo.jpg"
+            alt="BSA UML"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+          <span class="brand-logo-fallback">BSA</span>
+        </span>
+
+        <span class="brand-copy">
+          <strong id="associationName"></strong>
+          <span id="associationUniversity"></span>
+        </span>
+      </a>
+
+      <a class="prangon-center" id="prangonHomeLink" href="../index.html" aria-label="UML Prangon homepage">
+        <img
+          id="prangonLogo"
+          src="../assets/uml-prangon.png"
+          alt="UMLপ্রাঙ্গণ"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
+        <span class="prangon-fallback">UMLপ্রাঙ্গণ</span>
+      </a>
+
+      <div class="header-right">
+        <a class="nav-logo-box" id="bulletinNavLink" href="../bulletin/index.html" aria-label="BSA Bulletin">
+          <img
+            id="bulletinLogo"
+            src="../assets/bsa-bulletin.png"
+            alt="BSA Bulletin"
+            onerror="this.style.display='none';"
+          >
+          <span class="nav-logo-fallback">BSA<br>Bulletin</span>
+        </a>
+
+        <a class="nav-logo-box active-logo" id="communityNavLink" href="index.html" aria-label="BSA Community">
+          <img
+            id="communityLogo"
+            src="../assets/bsa-community.png"
+            alt="BSA Community"
+            onerror="this.style.display='none';"
+          >
+          <span class="nav-logo-fallback">BSA<br>Community</span>
+        </a>
+
+        <span class="header-divider" aria-hidden="true"></span>
+
+        <a
+          class="uml-logo-link"
+          id="umlNavLink"
+          href="https://www.uml.edu/"
+          aria-label="UMass Lowell"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            id="umlLogo"
+            src="../assets/umass-lowell.png"
+            alt="UMass Lowell"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+          >
+          <span class="uml-logo-fallback">UMass<br>Lowell</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="bulletin-hero">
+      <div class="container community-hero-layout">
+        <div class="hero-inner">
+          <h1 id="communityPageTitle"></h1>
+
+          <p id="communityPageDescription"></p>
+
+          <a class="home-button" id="returnHomeButton" href="../index.html"></a>
+        </div>
+
+        <aside class="community-tally hero-tally">
+          <h2 id="tallyTitle"></h2>
+          <div id="tallyList"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="community-directory">
+      <div class="container">
+
+        <div class="community-tabs" role="tablist" aria-label="Community directory sections">
+          <button
+            class="community-tab active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="eboardSection"
+            data-target="eboardSection"
+            id="eboardTab"
+          >
+            E-Board
+          </button>
+
+          <button
+            class="community-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="cohortSection"
+            data-target="cohortSection"
+            id="cohortTab"
+          >
+            Student Cohorts
+          </button>
+
+          <button
+            class="community-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tagSection"
+            data-target="tagSection"
+            id="tagTab"
+          >
+            Community
+          </button>
+        </div>
+
+        <div class="community-main">
+          <section
+            class="community-section community-panel active"
+            id="eboardSection"
+            role="tabpanel"
+            aria-labelledby="eboardTab"
+          >
+            <div class="section-heading-row">
+              <h2 id="eboardTitle"></h2>
+            </div>
+            <div id="eboardGroups"></div>
+          </section>
+
+          <section
+            class="community-section community-panel"
+            id="cohortSection"
+            role="tabpanel"
+            aria-labelledby="cohortTab"
+            hidden
+          >
+            <div class="section-heading-row">
+              <h2 id="cohortTitle"></h2>
+            </div>
+            <div id="cohortGroups"></div>
+          </section>
+
+          <section
+            class="community-section community-panel"
+            id="tagSection"
+            role="tabpanel"
+            aria-labelledby="tagTab"
+            hidden
+          >
+            <div class="section-heading-row">
+              <h2 id="tagTitle"></h2>
+            </div>
+            <div id="tagGroups"></div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand" id="footerBrand"></div>
+
+          <p class="footer-copy" id="footerDescription"></p>
+          <p class="footer-maintained" id="footerMaintained"></p>
+        </div>
+
+        <div class="footer-connect">
+          <h3 id="footerConnectHeading"></h3>
+
+          <ul class="footer-links">
+            <li><a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+            <li><a id="githubLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>
+          © <span id="currentYear"></span> <span id="footerCopyrightName"></span>
+        </span>
+
+        <span id="footerTagline"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+  <script>
+
+async function loadPrangonWorkbook(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Cannot load workbook: ${url}`);
+  const buffer = await response.arrayBuffer();
+  const workbook = XLSX.read(buffer, {type:'array'});
+  const zip = await JSZip.loadAsync(buffer);
+  const parser = new DOMParser();
+  const relNS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+  const normalize = (base,target) => {
+    const parts = (target.startsWith('/') ? target.slice(1) : base.split('/').slice(0,-1).concat(target).join('/')).split('/');
+    const out=[]; for(const part of parts){if(part==='..')out.pop();else if(part&&part!=='.')out.push(part);} return out.join('/');
+  };
+  const readXml = async(path) => zip.file(path) ? parser.parseFromString(await zip.file(path).async('text'),'application/xml') : null;
+  const relationships = async(path) => {
+    const relpath=path.replace(/([^/]+)$/,'_rels/$1.rels');
+    const doc=await readXml(relpath); const result=new Map();
+    if(doc) for(const el of [...doc.getElementsByTagName('*')]) if(el.localName==='Relationship')result.set(el.getAttribute('Id'),normalize(path,el.getAttribute('Target')||''));
+    return result;
+  };
+  const result={};
+  for(let i=0;i<workbook.SheetNames.length;i++) {
+    const name=workbook.SheetNames[i], sheet=workbook.Sheets[name];
+    const rows=XLSX.utils.sheet_to_json(sheet,{defval:'',raw:false});
+    const sheetPath=`xl/worksheets/sheet${i+1}.xml`;
+    const sheetXml=await readXml(sheetPath), sheetRels=await relationships(sheetPath);
+    if(sheetXml){
+      const drawings=[...sheetXml.getElementsByTagName('*')].filter(el=>el.localName==='drawing');
+      for(const drawing of drawings){
+        const relid=drawing.getAttributeNS(relNS,'id')||drawing.getAttribute('r:id');
+        const drawingPath=sheetRels.get(relid); if(!drawingPath)continue;
+        const drawingXml=await readXml(drawingPath), drawingRels=await relationships(drawingPath);
+        if(!drawingXml)continue;
+        const anchors=[...drawingXml.getElementsByTagName('*')].filter(el=>['oneCellAnchor','twoCellAnchor'].includes(el.localName));
+        for(const anchor of anchors){
+          const marker=[...anchor.children].find(el=>el.localName==='from');if(!marker)continue;
+          const cell=(key)=>{const el=[...marker.children].find(x=>x.localName===key);return el?parseInt(el.textContent,10):NaN;};
+          const row=cell('row'), col=cell('col'); if(!Number.isFinite(row)||!Number.isFinite(col)||row<1)continue;
+          const blip=[...anchor.getElementsByTagName('*')].find(el=>el.localName==='blip');if(!blip)continue;
+          const imageId=blip.getAttributeNS(relNS,'embed')||blip.getAttribute('r:embed');
+          const imagePath=drawingRels.get(imageId); if(!imagePath||!zip.file(imagePath))continue;
+          const ext=imagePath.split('.').pop().toLowerCase();
+          const mime=({jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',gif:'image/gif',webp:'image/webp'})[ext]; if(!mime)continue;
+          // Each image is associated with the row where its top-left corner is anchored.
+          const bin=await zip.file(imagePath).async('base64');
+          const uri=`data:${mime};base64,${bin}`;
+          const headerCell=sheet[XLSX.utils.encode_cell({r:0,c:col})];
+          const header=headerCell ? String(headerCell.v).trim() : '';
+          const record=rows.find(r=>r.__rowNum__===row);
+          if(record && header) record[header]=uri;
+        }
+      }
+    }
+    result[name]=rows.filter(r=>Object.values(r).some(v=>String(v||'').trim()));
+  }
+  return result;
+}
+
+    function escapeHTML(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function applySiteData(site) {
+      document.getElementById("associationName").textContent = site.association.name;
+      document.getElementById("associationUniversity").textContent = site.association.university;
+      document.getElementById("brandHomeLink").href = site.navigation.home_url;
+      document.getElementById("prangonHomeLink").href = site.navigation.home_url;
+      document.getElementById("bulletinNavLink").href = "../bulletin/index.html";
+      document.getElementById("communityNavLink").href = "index.html";
+      document.getElementById("umlNavLink").href = site.navigation.uml_url;
+      document.getElementById("bsaLogo").src = site.assets.bsa_logo;
+      document.getElementById("prangonLogo").src = site.assets.prangon_logo;
+      document.getElementById("bulletinLogo").src = site.assets.bulletin_logo;
+      document.getElementById("communityLogo").src = site.assets.community_logo;
+      document.getElementById("umlLogo").src = site.assets.uml_logo;
+      document.getElementById("footerBrand").textContent = site.footer.brand;
+      document.getElementById("footerDescription").textContent = site.footer.description;
+      document.getElementById("footerMaintained").textContent = site.footer.maintained_by || "";
+      document.getElementById("footerConnectHeading").textContent = site.footer.connect_heading;
+
+      const instagramLink = document.getElementById("instagramLink");
+      instagramLink.textContent = site.footer.instagram_label;
+      instagramLink.href = site.footer.instagram_url;
+
+      const facebookLink = document.getElementById("facebookLink");
+      facebookLink.textContent = site.footer.facebook_label;
+      facebookLink.href = site.footer.facebook_url;
+
+      const whatsappLink = document.getElementById("whatsappLink");
+      whatsappLink.textContent = site.footer.whatsapp_label || "WhatsApp";
+      whatsappLink.href = site.footer.whatsapp_url || "#";
+
+      const githubLink = document.getElementById("githubLink");
+      githubLink.textContent = site.footer.github_label || "GitHub";
+      githubLink.href = site.footer.github_url || "#";
+
+      document.getElementById("footerCopyrightName").textContent = site.footer.copyright_name;
+      document.getElementById("footerTagline").textContent = site.footer.tagline;
+      document.getElementById("returnHomeButton").href = site.navigation.home_url;
+    }
+
+    function applyCommunityConfig(config) {
+      document.getElementById("communityPageTitle").textContent = config.page.title;
+      document.getElementById("communityPageDescription").textContent = config.page.description;
+      document.getElementById("returnHomeButton").textContent = config.page.return_text;
+      document.getElementById("eboardTitle").textContent = config.sections.eboard.title;
+      document.getElementById("cohortTitle").textContent = config.sections.cohorts.title;
+      document.getElementById("tagTitle").textContent = config.sections.tags.title;
+      document.getElementById("tallyTitle").textContent = config.tally.title;
+      document.getElementById("cohortTab").textContent = config.sections.cohorts.title;
+    }
+
+    function splitValues(value) {
+      return String(value || "").split(";").map((item) => item.trim()).filter(Boolean);
+    }
+
+    function aySort(a, b) {
+      const yearA = Number((String(a).match(/\d{4}/) || ["0"])[0]);
+      const yearB = Number((String(b).match(/\d{4}/) || ["0"])[0]);
+      return yearB - yearA;
+    }
+
+    function initials(name) {
+      return String(name || "?").trim().split(/\s+/).slice(0, 2)
+        .map((part) => part[0] || "").join("").toUpperCase();
+    }
+
+    function isCurrent(value) {
+      return String(value || "").trim().toLowerCase() === "yes";
+    }
+
+    function profileHTML(member) {
+      const name = escapeHTML(member.name || "");
+      const affiliation = escapeHTML(member.affiliation || "");
+      const photo = String(member.photo || "").trim();
+
+      const photoMarkup = photo
+        ? `<div class="profile-photo"><img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(member.name))}';"></div>`
+        : `<div class="profile-photo">${escapeHTML(initials(member.name))}</div>`;
+
+      return `
+        <article class="profile">
+          ${photoMarkup}
+          <div class="profile-copy">
+            <div class="profile-name">${name}</div>
+            <div class="profile-affiliation">${affiliation}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderGroup(container, label, members) {
+      const section = document.createElement("section");
+      section.className = "member-group";
+
+      const title = document.createElement("h3");
+      title.className = "group-title";
+      title.textContent = label;
+      section.appendChild(title);
+
+      if (!members.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-group";
+        empty.textContent = "No members listed yet.";
+        section.appendChild(empty);
+      } else {
+        const list = document.createElement("div");
+        list.className = "profile-list";
+        list.innerHTML = members.map(profileHTML).join("");
+        section.appendChild(list);
+      }
+
+      container.appendChild(section);
+    }
+
+    function currentBoardCard(row, person) {
+      const photo = String(row.photo || person?.photo || "").trim();
+      const photoMarkup = photo
+        ? `<img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';">`
+        : escapeHTML(initials(row.name));
+
+      return `
+        <article class="eboard-current-card">
+          <div class="eboard-current-photo">${photoMarkup}</div>
+          <div class="eboard-current-position">${escapeHTML(row.position || "")}</div>
+          <div class="eboard-current-name">${escapeHTML(row.name || "")}</div>
+          <div class="eboard-current-affiliation">${escapeHTML(person?.affiliation || "")}</div>
+          <div class="eboard-current-bio">${escapeHTML(row.bio || "")}</div>
+        </article>
+      `;
+    }
+
+    function historicalBoardCard(row, person) {
+      const photo = String(row.photo || person?.photo || "").trim();
+      const photoMarkup = photo
+        ? `<div class="profile-photo"><img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';"></div>`
+        : `<div class="profile-photo">${escapeHTML(initials(row.name))}</div>`;
+
+      return `
+        <article class="eboard-history-card">
+          ${photoMarkup}
+          <div class="profile-copy">
+            <div class="eboard-history-position">${escapeHTML(row.position || "")}</div>
+            <div class="profile-name">${escapeHTML(row.name || "")}</div>
+            <div class="profile-affiliation">${escapeHTML(person?.affiliation || "")}</div>
+            <div class="eboard-history-bio">${escapeHTML(row.bio || "")}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderEBoard(boardRows, directory) {
+      const container = document.getElementById("eboardGroups");
+      container.innerHTML = "";
+
+      const directoryByName = new Map(
+        directory.map((person) => [String(person.name || "").trim(), person])
+      );
+
+      const years = [...new Set(
+        boardRows.map((row) => String(row.academic_year || "").trim()).filter(Boolean)
+      )].sort(aySort);
+
+      const latestYear = years[0];
+
+      years.forEach((year) => {
+        const rows = boardRows.filter(
+          (row) => String(row.academic_year || "").trim() === year
+        );
+
+        if (year === latestYear) {
+          const group = document.createElement("section");
+          group.className = "eboard-current-group";
+
+          const title = document.createElement("h3");
+          title.className = "group-title";
+          title.textContent = year;
+          group.appendChild(title);
+
+          const grid = document.createElement("div");
+          grid.className = "eboard-current-grid";
+          grid.innerHTML = rows.map((row) =>
+            currentBoardCard(row, directoryByName.get(String(row.name || "").trim()))
+          ).join("");
+
+          group.appendChild(grid);
+          container.appendChild(group);
+        } else {
+          const group = document.createElement("section");
+          group.className = "member-group";
+
+          const title = document.createElement("h3");
+          title.className = "group-title";
+          title.textContent = year;
+          group.appendChild(title);
+
+          const list = document.createElement("div");
+          list.className = "profile-list";
+          list.innerHTML = rows.map((row) =>
+            historicalBoardCard(row, directoryByName.get(String(row.name || "").trim()))
+          ).join("");
+
+          group.appendChild(list);
+          container.appendChild(group);
+        }
+      });
+    }
+
+    function renderDirectory(config, directory) {
+      const cohortContainer = document.getElementById("cohortGroups");
+      const tagContainer = document.getElementById("tagGroups");
+      const tallyList = document.getElementById("tallyList");
+
+      cohortContainer.innerHTML = "";
+      tagContainer.innerHTML = "";
+      tallyList.innerHTML = "";
+
+      [...config.sections.cohorts.academic_years].sort(aySort).forEach((academicYear) => {
+        const matches = directory.filter(
+          (member) => String(member.joined_ay || "").trim() === academicYear
+        );
+        renderGroup(cohortContainer, academicYear, matches);
+      });
+
+      config.sections.tags.items.forEach((tag) => {
+        const matches = directory.filter((member) =>
+          String(member.member_type || "").trim() === tag ||
+          splitValues(member.tags).includes(tag)
+        );
+        renderGroup(tagContainer, tag, matches);
+      });
+
+      const tallySource = config.tally.count_only_current
+        ? directory.filter((member) => isCurrent(member["current?"]))
+        : directory;
+
+      config.tally.member_types.forEach((type) => {
+        const count = tallySource.filter(
+          (member) => String(member.member_type || "").trim() === type
+        ).length;
+
+        const row = document.createElement("div");
+        row.className = "tally-row";
+        row.innerHTML = `<span class="tally-label">${escapeHTML(type)}</span><span class="tally-count">${count}</span>`;
+        tallyList.appendChild(row);
+      });
+    }
+
+    Promise.all([
+      fetch("../content.json").then(r=>{if(!r.ok)throw new Error("Cannot load content.json");return r.json();}),
+      loadPrangonWorkbook("../database.xlsx")
+    ]).then(([data,sheets])=>{
+      const directory=sheets.Students||[], boardRows=sheets['E-Board']||[];
+      applySiteData(data.site);
+      applyCommunityConfig(data.community);
+      renderEBoard(boardRows,directory);
+      renderDirectory(data.community,directory);
+    }).catch(error=>{
+      console.error(error);
+      document.querySelector(".community-main").innerHTML='<div class="directory-error">Unable to load Community data. Please check the Excel workbook.</div>';
+    });
+
+    const communityTabs = [...document.querySelectorAll(".community-tab")];
+    const communityPanels = [...document.querySelectorAll(".community-panel")];
+
+    communityTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.dataset.target;
+
+        communityTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+
+        communityPanels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.classList.toggle("active", isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
+
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+{
+  "site": {
+    "association": {
+      "name": "Bangladeshi Students Association",
+      "university": "University of Massachusetts Lowell"
+    },
+    "navigation": {
+      "home_url": "../index.html",
+      "community_url": "../community/index.html",
+      "uml_url": "https://www.uml.edu/"
+    },
+    "assets": {
+      "bsa_logo": "../assets/bsa-logo.jpg",
+      "prangon_logo": "../assets/uml-prangon.png",
+      "bulletin_logo": "../assets/bsa-bulletin.png",
+      "community_logo": "../assets/bsa-community.png",
+      "uml_logo": "../assets/umass-lowell.png"
+    },
+    "footer": {
+      "brand": "Bangladeshi Students Association at UMass Lowell",
+      "description": "Building community, celebrating Bangladeshi culture, and supporting students at the University of Massachusetts Lowell.",
+      "connect_heading": "Connect",
+      "instagram_label": "Instagram",
+      "instagram_url": "#",
+      "facebook_label": "Facebook",
+      "facebook_url": "#",
+      "copyright_name": "Bangladeshi Students Association at UMass Lowell.",
+      "tagline": "প্রাঙ্গণ · Community beyond borders",
+      "maintained_by": "This website is maintained by graduate students of the University of Massachusetts Lowell.",
+      "whatsapp_label": "WhatsApp",
+      "whatsapp_url": "#",
+      "github_label": "GitHub",
+      "github_url": "https://github.com/BSAUML/prangon"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to UMLপ্রাঙ্গণ",
+      "description": "UMLপ্রাঙ্গণ is the digital home of the Bangladeshi Students' Association at UMass Lowell, bringing together the people, events, resources, stories, and shared traditions that shape our community. Whether you are new to Lowell, already part of the association, or simply looking to stay connected, this is a place to find what matters across BSA UML.",
+      "image": "assets/prangon-welcome.jpg",
+      "image_alt": "BSA UML community"
+    },
+    "featured": {
+      "title": "Featured",
+      "description": "Key events, celebrations, and community highlights from BSA UML."
+    },
+    "explore": {
+      "title": "Explore",
+      "description": "A community that feels like home.",
+      "cards": [
+        {
+          "label": "News & events",
+          "title": "BSA Bulletin",
+          "description": "Events, announcements, achievements, milestones, and updates from BSA UML and the wider Bangladeshi community.",
+          "url": "bulletin/index.html"
+        },
+        {
+          "label": "Our people",
+          "title": "BSA Community",
+          "description": "Meet students, faculty, community members, and current and past BSA executive boards.",
+          "url": "community/index.html"
+        }
+      ]
+    },
+    "voices": {
+      "title": "বার্তা",
+      "description": "No দেশি website is complete without this.",
+      "people": [
+        {
+          "name": "Dr. Abu Hena Muhammad Nazir Hossain",
+          "title": "From our Faculty Advisor",
+          "role": "Adjunct Faculty, Department of Electrical and Computer Engineering",
+          "image": "assets/faculty-advisor.jpg",
+          "speech": "Insert speech here"
+        },
+        {
+          "name": "Progga Paul",
+          "title": "From our President",
+          "role": "Graduate Research Assistant, Department of Pharmaceutical Sciences",
+          "image": "assets/president.jpg",
+          "speech": "Insert speech here"
+        }
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "A simple starting point for Bangladeshi students navigating UMass Lowell, life in the United States, and the wider Lowell community."
+    },
+    "constitution": {
+      "title": "BSA Constitution",
+      "description": "The constitution defines the structure, responsibilities, and guiding framework of the Bangladeshi Students' Association at UMass Lowell.",
+      "card_title": "Constitution of BSA UML",
+      "card_description": "View the current governing document of the association, including its organizational structure, membership framework, executive responsibilities, and operating principles.",
+      "link_label": "Read the Constitution",
+      "image": "assets/constitution.png",
+      "image_alt": "BSA Constitution",
+      "url": "documents/constitution.pdf"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "We are available through Instagram, WhatsApp, and Facebook, but it is usually easier to reach a representative directly. Please contact any member of the current E-Board; we are happy to help.",
+      "link_label": "Meet the current E-Board",
+      "url": "community/index.html"
+    }
+  },
+  "featured": [
+    {
+      "title": "Welcome Gathering",
+      "date": "September 2026",
+      "description": "Meet new and returning Bangladeshi students and connect with the BSA UML community.",
+      "image": "",
+      "upcoming": true,
+      "facebook": "",
+      "instagram": ""
+    },
+    {
+      "title": "Community Celebration",
+      "date": "Fall 2026",
+      "description": "A celebration of Bangladeshi culture, food, language, friendship, and community at UMass Lowell.",
+      "image": "",
+      "upcoming": false,
+      "tag": "Featured",
+      "facebook": "",
+      "instagram": ""
+    },
+    {
+      "title": "Latest from BSA UML",
+      "date": "2026",
+      "description": "Use this space for a major student, faculty, association, or wider community highlight.",
+      "image": "",
+      "upcoming": false,
+      "tag": "Community"
+    },
+    {
+      "title": "Add Another Event",
+      "date": "Date here",
+      "description": "Duplicate an entry in featured.json whenever you want to add another featured or upcoming card.",
+      "image": "",
+      "upcoming": false,
+      "tag": "Featured"
+    }
+  ],
+  "resources": [
+    {
+      "label": "For incoming students",
+      "title": "New Student Guide",
+      "description": "Essential information for newly admitted and incoming Bangladeshi students.",
+      "url": "documents/new-student-guide.pdf",
+      "external": false
+    },
+    {
+      "label": "Everyday essentials",
+      "title": "Community Resources",
+      "description": "Helpful campus, housing, transportation, local, and community information in one place.",
+      "url": "#",
+      "external": false
+    },
+    {
+      "label": "Around the city",
+      "title": "Explore Lowell",
+      "description": "Discover places to visit, eat, shop, relax, and explore around Lowell and the surrounding area.",
+      "url": "#",
+      "external": false
+    },
+    {
+      "label": "Religion & worship",
+      "title": "Spiritual Life",
+      "description": "Find mosques, temples, prayer spaces, halal food, and other faith-related resources around Lowell.",
+      "url": "#",
+      "external": false
+    }
+  ],
+  "bulletin": {
+    "title": "BSA Bulletin",
+    "description": "Events, announcements, achievements, milestones, and updates from the Bangladesh Students Association and our wider community.",
+    "return_text": "Return to UMLপ্রাঙ্গণ",
+    "facebook": "",
+    "instagram": ""
+  },
+  "community": {
+    "page": {
+      "title": "BSA Community",
+      "description": "Meet the students, faculty, postdoctoral scholars, executive boards, and community members who make up the Bangladeshi Students Association at UMass Lowell.",
+      "return_text": "Return to UMLপ্রাঙ্গণ"
+    },
+    "sections": {
+      "eboard": {
+        "title": "E-Board",
+        "academic_years": [
+          "AY 2026-2027",
+          "AY 2025-2026",
+          "AY 2024-2025"
+        ]
+      },
+      "cohorts": {
+        "title": "Students",
+        "academic_years": [
+          "AY 2026-2027",
+          "AY 2025-2026",
+          "AY 2024-2025",
+          "AY 2023-2024"
+        ]
+      },
+      "tags": {
+        "title": "Community",
+        "items": [
+          "Faculty",
+          "Postdoctoral Scholars",
+          "Graduate Students",
+          "Undergraduate Students",
+          "Community Members"
+        ]
+      }
+    },
+    "tally": {
+      "title": "Community at a Glance",
+      "member_types": [
+        "Faculty",
+        "Postdoctoral Scholars",
+        "Graduate Students",
+        "Undergraduate Students",
+        "Community Members"
+      ],
+      "count_only_current": true
+    }
+  }
+}
