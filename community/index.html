@@ -1563,7 +1563,7 @@
             data-target="cohortSection"
             id="cohortTab"
           >
-            Student Cohorts
+            Students
           </button>
 
           <button
@@ -1840,7 +1840,7 @@ async function loadPrangonWorkbook(url) {
     }
 
     function currentBoardCard(row, person) {
-      const photo = String(row.photo || person?.photo || "").trim();
+      const photo = String(person?.photo || "").trim();
       const photoMarkup = photo
         ? `<img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';">`
         : escapeHTML(initials(row.name));
@@ -1857,7 +1857,7 @@ async function loadPrangonWorkbook(url) {
     }
 
     function historicalBoardCard(row, person) {
-      const photo = String(row.photo || person?.photo || "").trim();
+      const photo = String(person?.photo || "").trim();
       const photoMarkup = photo
         ? `<div class="profile-photo"><img src="${escapeHTML(photo)}" alt="" onerror="this.style.display='none'; this.parentElement.textContent='${escapeHTML(initials(row.name))}';"></div>`
         : `<div class="profile-photo">${escapeHTML(initials(row.name))}</div>`;
@@ -1932,7 +1932,7 @@ async function loadPrangonWorkbook(url) {
       });
     }
 
-    function renderDirectory(config, directory) {
+    function renderDirectory(config, students, community) {
       const cohortContainer = document.getElementById("cohortGroups");
       const tagContainer = document.getElementById("tagGroups");
       const tallyList = document.getElementById("tallyList");
@@ -1941,24 +1941,25 @@ async function loadPrangonWorkbook(url) {
       tagContainer.innerHTML = "";
       tallyList.innerHTML = "";
 
-      [...config.sections.cohorts.academic_years].sort(aySort).forEach((academicYear) => {
-        const matches = directory.filter(
+      [...new Set(students.map((member) => String(member.joined_ay || "").trim()).filter(Boolean))].sort(aySort).forEach((academicYear) => {
+        const matches = students.filter(
           (member) => String(member.joined_ay || "").trim() === academicYear
         );
         renderGroup(cohortContainer, academicYear, matches);
       });
 
-      config.sections.tags.items.forEach((tag) => {
-        const matches = directory.filter((member) =>
+      [...new Set(community.map((member) => String(member.member_type || "").trim()).filter(Boolean))].forEach((tag) => {
+        const matches = community.filter((member) =>
           String(member.member_type || "").trim() === tag ||
           splitValues(member.tags).includes(tag)
         );
         renderGroup(tagContainer, tag, matches);
       });
 
+      const completeDirectory = [...students, ...community];
       const tallySource = config.tally.count_only_current
-        ? directory.filter((member) => isCurrent(member["current?"]))
-        : directory;
+        ? completeDirectory.filter((member) => isCurrent(member["current?"]))
+        : completeDirectory;
 
       config.tally.member_types.forEach((type) => {
         const count = tallySource.filter(
@@ -1976,11 +1977,11 @@ async function loadPrangonWorkbook(url) {
       fetch("../content.json").then(r=>{if(!r.ok)throw new Error("Cannot load content.json");return r.json();}),
       loadPrangonWorkbook("../database.xlsx")
     ]).then(([data,sheets])=>{
-      const directory=sheets.Students||[], boardRows=sheets['E-Board']||[];
+      const students=sheets.Students||[], community=sheets.Community||[], boardRows=sheets['E-Board']||[];
       applySiteData(data.site);
       applyCommunityConfig(data.community);
-      renderEBoard(boardRows,directory);
-      renderDirectory(data.community,directory);
+      renderEBoard(boardRows,students);
+      renderDirectory(data.community,students,community);
     }).catch(error=>{
       console.error(error);
       document.querySelector(".community-main").innerHTML='<div class="directory-error">Unable to load Community data. Please check the Excel workbook.</div>';
