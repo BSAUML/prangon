@@ -1660,7 +1660,66 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script>
+async function loadPrangonWorkbook(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Cannot load workbook: ${url}`);
+  const buffer = await response.arrayBuffer();
+  const workbook = XLSX.read(buffer, {type:'array'});
+  const zip = await JSZip.loadAsync(buffer);
+  const parser = new DOMParser();
+  const relNS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+  const normalize = (base,target) => {
+    const parts = (target.startsWith('/') ? target.slice(1) : base.split('/').slice(0,-1).concat(target).join('/')).split('/');
+    const out=[]; for(const part of parts){if(part==='..')out.pop();else if(part&&part!=='.')out.push(part);} return out.join('/');
+  };
+  const readXml = async(path) => zip.file(path) ? parser.parseFromString(await zip.file(path).async('text'),'application/xml') : null;
+  const relationships = async(path) => {
+    const relpath=path.replace(/([^/]+)$/,'_rels/$1.rels');
+    const doc=await readXml(relpath); const result=new Map();
+    if(doc) for(const el of [...doc.getElementsByTagName('*')]) if(el.localName==='Relationship')result.set(el.getAttribute('Id'),normalize(path,el.getAttribute('Target')||''));
+    return result;
+  };
+  const result={};
+  for(let i=0;i<workbook.SheetNames.length;i++) {
+    const name=workbook.SheetNames[i], sheet=workbook.Sheets[name];
+    const rows=XLSX.utils.sheet_to_json(sheet,{defval:'',raw:false});
+    const sheetPath=`xl/worksheets/sheet${i+1}.xml`;
+    const sheetXml=await readXml(sheetPath), sheetRels=await relationships(sheetPath);
+    if(sheetXml){
+      const drawings=[...sheetXml.getElementsByTagName('*')].filter(el=>el.localName==='drawing');
+      for(const drawing of drawings){
+        const relid=drawing.getAttributeNS(relNS,'id')||drawing.getAttribute('r:id');
+        const drawingPath=sheetRels.get(relid); if(!drawingPath)continue;
+        const drawingXml=await readXml(drawingPath), drawingRels=await relationships(drawingPath);
+        if(!drawingXml)continue;
+        const anchors=[...drawingXml.getElementsByTagName('*')].filter(el=>['oneCellAnchor','twoCellAnchor'].includes(el.localName));
+        for(const anchor of anchors){
+          const marker=[...anchor.children].find(el=>el.localName==='from');if(!marker)continue;
+          const cell=(key)=>{const el=[...marker.children].find(x=>x.localName===key);return el?parseInt(el.textContent,10):NaN;};
+          const row=cell('row'), col=cell('col'); if(!Number.isFinite(row)||!Number.isFinite(col)||row<1)continue;
+          const blip=[...anchor.getElementsByTagName('*')].find(el=>el.localName==='blip');if(!blip)continue;
+          const imageId=blip.getAttributeNS(relNS,'embed')||blip.getAttribute('r:embed');
+          const imagePath=drawingRels.get(imageId); if(!imagePath||!zip.file(imagePath))continue;
+          const ext=imagePath.split('.').pop().toLowerCase();
+          const mime=({jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',gif:'image/gif',webp:'image/webp'})[ext]; if(!mime)continue;
+          // Each image is associated with the row where its top-left corner is anchored.
+          const bin=await zip.file(imagePath).async('base64');
+          const uri=`data:${mime};base64,${bin}`;
+          const headerCell=sheet[XLSX.utils.encode_cell({r:0,c:col})];
+          const header=headerCell ? String(headerCell.v).trim() : '';
+          const record=rows.find(r=>r.__rowNum__===row);
+          if(record && header) record[header]=uri;
+        }
+      }
+    }
+    result[name]=rows.filter(r=>Object.values(r).some(v=>String(v||'').trim()));
+  }
+  return result;
+}
+
     function rootPath(value = "") { return String(value).replace(/^\.\.\//, ""); }
     function setText(id, value="") { const el=document.getElementById(id); if(el) el.textContent=value; }
 
@@ -1720,29 +1779,61 @@
       featuredTimer = setInterval(()=>showFeaturedSlide(currentSlide + 1),6000);
     }
 
+    // Featured and Upcoming are controlled exclusively by database.xlsx > Bulletin.
+    const isYes = value => ['yes','true','1'].includes(String(value ?? '').trim().toLowerCase());
+    const eventDate = value => {
+      const s=String(value ?? '').trim();
+      if(/^\d{4}-\d{2}-\d{2}$/.test(s)){
+        const [y,m,d]=s.split('-').map(Number);
+        return new Date(y,m-1,d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+      }
+      return s;
+    };
+    const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const safeUrl = value => { const v=String(value ?? '').trim();return /^(https?:\/\/)/i.test(v)?escapeHTML(v):''; };
+
     function renderFeatured(items){
-      const wrap=document.getElementById("featuredSlides");
-      const dotsWrap=document.getElementById("featuredDots");
-      wrap.innerHTML=""; dotsWrap.innerHTML="";
+      const wrap=document.getElementById('featuredSlides');
+      const dotsWrap=document.getElementById('featuredDots');
+      wrap.innerHTML=''; dotsWrap.innerHTML='';
+      clearInterval(featuredTimer);
+      if(!items.length){
+        wrap.innerHTML='<div class="slide-copy"><h3>No featured events yet</h3><p>Set featured to Yes in the Bulletin worksheet to display an event here.</p></div>';
+        document.querySelector('.slider-controls').style.display='none';
+        return;
+      }
+      document.querySelector('.slider-controls').style.display=items.length>1?'flex':'none';
       items.forEach((item,index)=>{
-        const slide=document.createElement("article");
-        slide.className="slide";
+        const slide=document.createElement('article');slide.className='slide';
         const links=[];
-        if(item.facebook) links.push(`<a href="${item.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>`);
-        if(item.instagram) links.push(`<a href="${item.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>`);
-        slide.innerHTML=`<div class="slide-image">${item.image?`<img src="${rootPath(item.image)}" alt="${item.title||''}">`:'<div class="slide-placeholder">Event image</div>'}</div><div class="slide-copy">${item.upcoming?'<span class="event-tag upcoming">Upcoming</span>':`<span class="event-tag">${item.tag||'Featured'}</span>`}<small>${item.date||''}</small><h3>${item.title||''}</h3><p>${item.description||''}</p>${links.length?`<div class="feature-links">${links.join('')}</div>`:''}</div>`;
+        if(safeUrl(item.facebook))links.push(`<a href="${safeUrl(item.facebook)}" target="_blank" rel="noopener noreferrer">Facebook</a>`);
+        if(safeUrl(item.instagram))links.push(`<a href="${safeUrl(item.instagram)}" target="_blank" rel="noopener noreferrer">Instagram</a>`);
+        const picture=String(item.photo||'');
+        const image=picture.startsWith('data:image/') ? picture : '';
+        slide.innerHTML=`<div class="slide-image">${image?`<img src="${image}" alt="${escapeHTML(item.title)}">`:'<div class="slide-placeholder">Event image</div>'}</div><div class="slide-copy"><span class="event-tag${isYes(item.upcoming)?' upcoming':''}">${isYes(item.upcoming)?'Upcoming':'Featured'}</span><small>${escapeHTML(eventDate(item.date))}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description)}</p>${links.length?`<div class="feature-links">${links.join('')}</div>`:''}</div>`;
         wrap.appendChild(slide);
-        const dot=document.createElement("button"); dot.className=`dot${index===0?' active':''}`; dot.type="button"; dot.setAttribute("aria-label",`Slide ${index+1}`); dot.addEventListener("click",()=>{showFeaturedSlide(index);startFeaturedAutoscroll();}); dotsWrap.appendChild(dot);
+        const dot=document.createElement('button');dot.className=`dot${index===0?' active':''}`;dot.type='button';dot.setAttribute('aria-label',`Slide ${index+1}`);
+        dot.addEventListener('click',()=>{showFeaturedSlide(index);startFeaturedAutoscroll();});dotsWrap.appendChild(dot);
       });
-      currentSlide=0; showFeaturedSlide(0);
-      document.getElementById("previousSlide").onclick=()=>{showFeaturedSlide(currentSlide-1);startFeaturedAutoscroll();};
-      document.getElementById("nextSlide").onclick=()=>{showFeaturedSlide(currentSlide+1);startFeaturedAutoscroll();};
-      startFeaturedAutoscroll();
+      currentSlide=0;showFeaturedSlide(0);
+      document.getElementById('previousSlide').onclick=()=>{showFeaturedSlide(currentSlide-1);startFeaturedAutoscroll();};
+      document.getElementById('nextSlide').onclick=()=>{showFeaturedSlide(currentSlide+1);startFeaturedAutoscroll();};
+      if(items.length>1)startFeaturedAutoscroll();
     }
 
     function renderResources(items){ const grid=document.getElementById("resourceGrid"); grid.innerHTML=""; items.forEach(r=>{const a=document.createElement("a");a.className="resource-card";a.href=rootPath(r.url||"#"); if(r.external){a.target="_blank";a.rel="noopener noreferrer";} a.innerHTML=`<small>${r.label||''}</small><h3>${r.title||''}</h3><p>${r.description||''}</p>`;grid.appendChild(a);}); }
 
-    fetch("content.json").then(r=>{if(!r.ok)throw new Error("Cannot load content.json");return r.json();}).then(data=>{applySiteData(data.site);renderInfo(data.home);renderFeatured(data.featured);renderResources(data.resources);}).catch(console.error);
+    Promise.all([
+      fetch('content.json').then(r=>{if(!r.ok)throw new Error('Cannot load content.json');return r.json();}),
+      loadPrangonWorkbook('database.xlsx')
+    ]).then(([data,sheets])=>{
+      applySiteData(data.site);renderInfo(data.home);
+      renderFeatured((sheets.Bulletin||[]).filter(row=>isYes(row.featured)));
+      renderResources(data.resources);
+    }).catch(error=>{
+      console.error('Failed to load Prangon homepage data:',error);
+      document.getElementById('featuredSlides').innerHTML='<div class="slide-copy"><h3>Featured events unavailable</h3><p>Please check database.xlsx and reload.</p></div>';
+    });
     document.getElementById("currentYear").textContent=new Date().getFullYear();
   </script>
 </body>
