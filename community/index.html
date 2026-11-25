@@ -1639,7 +1639,7 @@
           <ul class="footer-links">
             <li><a id="instagramLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
             <li><a id="facebookLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
-            <li><a id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+
             <li><a id="githubLink" href="#" target="_blank" rel="noopener noreferrer"></a></li>
           </ul>
         </div>
@@ -1752,9 +1752,6 @@ async function loadPrangonWorkbook(url) {
       facebookLink.textContent = site.footer.facebook_label;
       facebookLink.href = site.footer.facebook_url;
 
-      const whatsappLink = document.getElementById("whatsappLink");
-      whatsappLink.textContent = site.footer.whatsapp_label || "WhatsApp";
-      whatsappLink.href = site.footer.whatsapp_url || "#";
 
       const githubLink = document.getElementById("githubLink");
       githubLink.textContent = site.footer.github_label || "GitHub";
