@@ -1742,12 +1742,7 @@
 
     function renderResources(items){ const grid=document.getElementById("resourceGrid"); grid.innerHTML=""; items.forEach(r=>{const a=document.createElement("a");a.className="resource-card";a.href=rootPath(r.url||"#"); if(r.external){a.target="_blank";a.rel="noopener noreferrer";} a.innerHTML=`<small>${r.label||''}</small><h3>${r.title||''}</h3><p>${r.description||''}</p>`;grid.appendChild(a);}); }
 
-    Promise.all([
-      fetch("assets/site.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/site.json");return r.json()}),
-      fetch("assets/info.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/info.json");return r.json()}),
-      fetch("assets/featured.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/featured.json");return r.json()}),
-      fetch("assets/resources.json").then(r=>{if(!r.ok)throw new Error("Could not load assets/resources.json");return r.json()})
-    ]).then(([site,info,featured,resources])=>{applySiteData(site);renderInfo(info);renderFeatured(featured);renderResources(resources);}).catch(console.error);
+    fetch("content.json").then(r=>{if(!r.ok)throw new Error("Cannot load content.json");return r.json();}).then(data=>{applySiteData(data.site);renderInfo(data.home);renderFeatured(data.featured);renderResources(data.resources);}).catch(console.error);
     document.getElementById("currentYear").textContent=new Date().getFullYear();
   </script>
 </body>
